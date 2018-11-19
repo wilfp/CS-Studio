@@ -1,0 +1,19 @@
+{
+  "name": "Java Test Mappings",
+  
+  "levels": [
+    
+    {
+      "name" : "Beginner",
+      "main-context" : false,
+      "semi-colons" : false,
+      "System.out.println" : "print"
+    },
+    
+    {
+      "name" : "Pure Java",
+      "main-context" : true
+    }
+  ]
+}
+
