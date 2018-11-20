@@ -16,3 +16,11 @@ def profile(request):
     template = loader.get_template("learn/profile.html")
 
     return HttpResponse(template.render(context, request))
+
+
+def challenge(request, challenge_id):
+
+    context = {"challenge_id": challenge_id}
+    template = loader.get_template("learn/challenge.html")
+
+    return HttpResponse(template.render(context, request))

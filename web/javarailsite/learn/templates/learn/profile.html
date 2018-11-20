@@ -5,7 +5,7 @@
 <div>
     <ul>
         {% for challenge in challenge_list %}
-        <li>Challenge {{ challenge.name }} / Level {{ challenge.level }}</li>
+        <li><a href="/learn/challenge/{{challenge.id}}/">Attempt {{challenge.name}}</a></li>
         {% endfor %}
     </ul>
 
