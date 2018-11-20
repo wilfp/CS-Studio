@@ -2,10 +2,14 @@
 
 {% block content %}
 
-<ul>
-    {% for item in item_list %}
-        <li>{{ item }}</li>
-    {% endfor %}
-</ul>
+<div>
+    <ul>
+        {% for challenge in challenge_list %}
+        <li>Challenge {{ challenge.name }} / Level {{ challenge.level }}</li>
+        {% endfor %}
+    </ul>
+
+    Total number of challenges: {{ challenge_list.length }}
+</div>
 
 {% endblock %}

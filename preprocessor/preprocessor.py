@@ -28,5 +28,5 @@ def get_mappings():
 
         # TODO further implement data processing
 
-    return null # TODO implement processing
+    return null  # TODO implement processing
 
