@@ -11,4 +11,4 @@ class Profile(models.Model):
 class Challenge(models.Model):
     name = models.CharField(max_length=200)
     level = models.IntegerField(default=0)
-    path = models.CharField(max_length=200)
+    path = models.FilePathField()
