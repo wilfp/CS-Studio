@@ -2,15 +2,16 @@
 
 {% block content %}
 
-<h1>{{ challenge.name }}</h1>
+<h1 class="title">{{ challenge.name }}</h1>
 
 <div class="columns">
 
 <div class="column">
 
 	<div class="box">
-	
-		{{ challengeDesc }}
+	{% for desc in challenge_desc %}
+		{{ desc }}<br>
+	{% endfor %}
 	
 	</div>
 	
