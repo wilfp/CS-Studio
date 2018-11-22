@@ -1,4 +1,32 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<script src="{% static "javascript/codemirror.js" %}"></script>
+<link rel="stylesheet" href="{% static "css/codemirror.css" %}">
+
+<script src="{% static "javascript/mode/javascript/javascript.js" %}"></script>
+
+<script type="text/javascript">
+
+function onLoadPage(){
+
+var myTextArea = document.getElementById("codearea");
+
+var myCodeMirror = CodeMirror(function(elt) {
+ myTextArea.parentNode.replaceChild(elt, myTextArea);
+}, 
+{
+value: "function myScript(){return 100;}\n", mode: "javascript"
+});
+
+}
+
+window.onload = onLoadPage;
+
+</script>
+
+{% endblock %}
 
 {% block content %}
 
@@ -15,7 +43,7 @@
 	
 	</div>
 	
-	<div class="box"><textarea autofocus="true" placeholder="Start your code here!" rows="4" cols="50"></textarea></div>
+	<div class="box"><textarea id="codearea" autofocus="true" placeholder="Start your code here!" rows="4" cols="50"></textarea></div>
 	
 	<a id="runcode" class="button is-primary">Run Code</a>
 
