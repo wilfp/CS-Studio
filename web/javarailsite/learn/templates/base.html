@@ -2,10 +2,15 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="{% static "css/bulma.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "css/site.css" %}">
     <title>{% block title %}{% endblock %}</title>
+	
+	{% block head %}
+	{% endblock %}
+	
 </head>
 <body>
-	<img src="{% static "images/sitelogo.png" %}" alt="Logo">
+	<div align="center"><img src="{% static "images/sitelogoalt2.png" %}" alt="Logo"></div>
     {% block content %}{% endblock %}
 </body>
 </html>
