@@ -5,7 +5,7 @@
 <script src="{% static "javascript/codemirror.js" %}"></script>
 <link rel="stylesheet" href="{% static "css/codemirror.css" %}">
 
-<script src="{% static "javascript/mode/javascript/javascript.js" %}"></script>
+<script src="{% static "javascript/mode/clike/clike.js" %}"></script>
 
 <script type="text/javascript">
 
@@ -17,7 +17,7 @@ var myCodeMirror = CodeMirror(function(elt) {
  myTextArea.parentNode.replaceChild(elt, myTextArea);
 }, 
 {
-value: "function myScript(){return 100;}\n", mode: "javascript"
+value: "function myScript(){return 100;}\n", lineNumbers: true, mode: "text/x-java"
 });
 
 }
@@ -46,7 +46,7 @@ window.onload = onLoadPage;
 	<div class="box"><textarea id="codearea" autofocus="true" placeholder="Start your code here!" rows="4" cols="50"></textarea>
 	
 	<a id="runcode" class="button is-primary">Run Code</a>
-
+	
 	</div>
 	
 </div>
