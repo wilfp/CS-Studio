@@ -2,11 +2,18 @@ body {
     background-color: #000000;
 }
 
-h1{
+h1 {
 	color: white;
 }
 
-h2{
+h2 {
 	
 }
 
+div.container{
+	padding: 10px;
+}
+
+div.margintop{
+	margin-top: 20px;
+}

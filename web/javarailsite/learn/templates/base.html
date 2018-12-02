@@ -3,6 +3,8 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="{% static "css/bulma.css" %}">
 	<link rel="stylesheet" type="text/css" href="{% static "css/site.css" %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
     <title>{% block title %}{% endblock %}</title>
 	
 	{% block head %}
@@ -10,7 +12,12 @@
 	
 </head>
 <body>
+	
 	<div align="center"><img src="{% static "images/sitelogoalt2.png" %}" alt="Logo"></div>
-    {% block content %}{% endblock %}
+    
+	<div class="container">
+	{% block content %}{% endblock %}
+	</div>
+	
 </body>
 </html>

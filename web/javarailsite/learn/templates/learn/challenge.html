@@ -2,10 +2,12 @@
 {% load static %}
 
 {% block head %}
+<script src="{% static "javascript/codeoutput.js" %}"></script>
+
 <script src="{% static "javascript/codemirror.js" %}"></script>
 <link rel="stylesheet" href="{% static "css/codemirror.css" %}">
 
-<script src="{% static "javascript/mode/javascript/javascript.js" %}"></script>
+<script src="{% static "javascript/mode/clike/clike.js" %}"></script>
 
 <script type="text/javascript">
 
@@ -17,7 +19,7 @@ var myCodeMirror = CodeMirror(function(elt) {
  myTextArea.parentNode.replaceChild(elt, myTextArea);
 }, 
 {
-value: "function myScript(){return 100;}\n", mode: "javascript"
+value: "function myScript(){return 100;}\n", lineNumbers: true, mode: "text/x-java"
 });
 
 }
@@ -30,11 +32,11 @@ window.onload = onLoadPage;
 
 {% block content %}
 
-<h1 class="title">{{ challenge.name }}</h1>
-
 <div class="columns">
 
 <div class="column">
+
+	<h1 class="title">> {{ challenge.name }}</h1>
 
 	<div class="box">
 	{% for desc in challenge_desc %}
@@ -45,16 +47,25 @@ window.onload = onLoadPage;
 	
 	<div class="box"><textarea id="codearea" autofocus="true" placeholder="Start your code here!" rows="4" cols="50"></textarea>
 	
-	<a id="runcode" class="button is-primary">Run Code</a>
-
+	<div class="margintop"><a id="runcode" class="button is-primary">Run Code</a></div>
+	
 	</div>
 	
 </div>
 
 <div class="column">
 
-<div class="box">Code output here</div>
+	<h1 class="title">> Code output here</h1>
 
+	<div id="codeoutput" class="box has-background-grey-dark">
+		
+		Test1<br>
+		Test2<br>
+		
+		</div>
+
+	</div>
+	
 </div>
 
 </div>
