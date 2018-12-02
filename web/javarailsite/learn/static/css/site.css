@@ -17,3 +17,7 @@ div.container{
 div.margintop{
 	margin-top: 20px;
 }
+
+#codeoutput{
+	min-height: 250px;
+}
