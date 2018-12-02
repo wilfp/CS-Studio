@@ -58,7 +58,16 @@ function runCodeFunction() {
 	var result = sendPost(codeArea);
 }
 
+function setProgress(progress){
+	$("#codeProgress").html(function(){
+		return progress;
+	});
+}
+
 function sendPost(code) {
+	
+	setProgress('<progress class="progress is-small is-primary" max="100">15%</progress>');
+	
     $.ajax({
         type: "POST",
         url: '/learn/runJavaCode',
@@ -69,8 +78,11 @@ function sendPost(code) {
 }
 
 function success(msg, status, jqXHR) {
+		
 	json = JSON.parse(msg);
 	addOutput(json["text"], json["status"]);
+	
+	setProgress('');
 }
 
 $(document).ready(function(){
