@@ -1,4 +1,34 @@
 
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
 function getNotification(output, style){
 	return "<div class=\"" + style + "\">" + output + "</div>";
 }
@@ -24,24 +54,23 @@ function addOutput(output, type="none"){
 function runCodeFunction() {
 	
 	var codeArea = $("#codeArea").html();
-	
-	var data = '{ \"code\": \"${codeArea}\" }';
-	
-	var result = sendPost(data);
+		
+	var result = sendPost(codeArea);
 }
 
-function sendPost(data) {
+function sendPost(code) {
     $.ajax({
         type: "POST",
         url: '/learn/runJavaCode',
-        json: data,
+		dataType: 'text',
+        data: code,
         success: success
     });
 }
 
-function success(result) {
-    alert('Process achieved!');
-	addOutput(result["text"], result["status"]);
+function success(msg, status, jqXHR) {
+	json = JSON.parse(msg);
+	addOutput(json["text"], json["status"]);
 }
 
 $(document).ready(function(){

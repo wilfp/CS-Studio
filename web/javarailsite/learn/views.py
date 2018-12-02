@@ -36,13 +36,13 @@ def runJavaCode(request):
 	if(request.method != "POST"):
 		return HttpResponse("ERROR")
 	
-	code = request.POST["code"]
+	code = request.body
 	
 	# TODO: compile and call Java
 	
-	text = "Not implemented"
-	status = "error"
+	text = "Code run successfully!"
+	status = "success"
 	
-	response = "{ \"text\": \"%(text)\", \"status\": \"%(status)\" }" % locals()
+	response = "{ \"text\": \"" + text + "\", \"status\": \"" + status + "\" }"
 
-	return HttpResponse(text)
+	return HttpResponse(response)
