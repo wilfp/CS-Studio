@@ -30,3 +30,19 @@ def challenge(request, challenge_id):
     template = loader.get_template("learn/challenge.html")
 
     return HttpResponse(template.render(context, request))
+
+def runJavaCode(request):
+
+	if(request.method != "POST"):
+		return HttpResponse("ERROR")
+	
+	code = request.POST["code"]
+	
+	# TODO: compile and call Java
+	
+	text = "Not implemented"
+	status = "error"
+	
+	response = "{ \"text\": \"%(text)\", \"status\": \"%(status)\" }" % locals()
+
+	return HttpResponse(text)

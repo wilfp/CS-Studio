@@ -23,9 +23,25 @@ function addOutput(output, type="none"){
 
 function runCodeFunction() {
 	
-	addOutput("Testing<br>Testing1");
-	addOutput("Testing<br>Testing1", "error");
-	addOutput("Testing<br>Testing1", "success");
+	var codeArea = $("#codeArea").html();
+	
+	var data = '{ \"code\": \"${codeArea}\" }';
+	
+	var result = sendPost(data);
+}
+
+function sendPost(data) {
+    $.ajax({
+        type: "POST",
+        url: '/learn/runJavaCode',
+        json: data,
+        success: success
+    });
+}
+
+function success(result) {
+    alert('Process achieved!');
+	addOutput(result["text"], result["status"]);
 }
 
 $(document).ready(function(){
