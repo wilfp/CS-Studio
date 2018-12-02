@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block head %}
+<script src="{% static "javascript/codeoutput.js" %}"></script>
+
 <script src="{% static "javascript/codemirror.js" %}"></script>
 <link rel="stylesheet" href="{% static "css/codemirror.css" %}">
 
@@ -55,8 +57,8 @@ window.onload = onLoadPage;
 
 	<h1 class="title">> Code output here</h1>
 
-	<div id="codeoutput" class="box has-background-danger">
-				
+	<div id="codeoutput" class="box has-background-grey-dark">
+		
 		Test1<br>
 		Test2<br>
 		
