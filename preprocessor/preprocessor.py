@@ -1,15 +1,13 @@
-
-
-if __name__ == "__main__":
-    test_mapping()
-
+import json
 
 def test_mapping():
+
+    code = "print(\"Test123\")"
 
     mappings = get_mappings()
     challenge = get_challenge()
 
-    print(get_code(code, mappings, challenge)
+    print(get_code(code, mappings, challenge))
 
     return
 
@@ -22,7 +20,7 @@ def get_code(code, mappings, challenge):
     for replacement in level["direct-replacements"]:
         code_mod = code_mod.replace(replacement["old"], replacement["new"])
 
-    if not level["semicolons"]:
+    if not level["semi-colons"]:
         code_mod = code_mod.replace("\r\n", "\r\n;")
 
     if not level["main-context"]:
@@ -33,7 +31,7 @@ def get_code(code, mappings, challenge):
 def get_main_context(code):
 
     with open('MainContext.java') as f:
-        return f.replace("%CODEPOINT%", code)
+        return f.read().replace("%CODEPOINT%", code)
 
     return null
 
@@ -62,3 +60,5 @@ def get_mappings():
 
     return null  # TODO implement processing
 
+if __name__ == "__main__":
+    test_mapping()
