@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 from learn.models import Challenge
+import learn.preprocessor
 import json
 import time
 
@@ -38,9 +39,10 @@ def runJavaCode(request):
         return HttpResponse("ERROR")
 
     code = request.body
+    challenge_name = request.challenge
 
     # TODO: compile and call Java
-    # PreProcessor goes here
+    get_code(code, challenge_name)
 
     text = "Code run successfully!"
     status = "success"
