@@ -6,7 +6,7 @@ def get_code(code, challenge, mappings, context):
 
     code_mod = code
 
-    level = mappings["levels"][challenge["level"]]
+    level = mappings["levels"][challenge.level]
 
     for replacement in level["direct-replacements"]:
         code_mod = code_mod.replace(replacement["old"], replacement["new"])
