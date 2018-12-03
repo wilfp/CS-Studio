@@ -2,31 +2,13 @@
 {% load static %}
 
 {% block head %}
-<script src="{% static "javascript/codeoutput.js" %}"></script>
 
 <script src="{% static "javascript/codemirror.js" %}"></script>
 <link rel="stylesheet" href="{% static "css/codemirror.css" %}">
 
 <script src="{% static "javascript/mode/clike/clike.js" %}"></script>
 
-<script type="text/javascript">
-
-function onLoadPage(){
-
-var myTextArea = document.getElementById("codearea");
-
-var myCodeMirror = CodeMirror(function(elt) {
- myTextArea.parentNode.replaceChild(elt, myTextArea);
-}, 
-{
-value: "function myScript(){return 100;}\n", lineNumbers: true, mode: "text/x-java"
-});
-
-}
-
-window.onload = onLoadPage;
-
-</script>
+<script src="{% static "javascript/codeoutput.js" %}"></script>
 
 {% endblock %}
 

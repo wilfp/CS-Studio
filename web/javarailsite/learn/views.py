@@ -37,19 +37,21 @@ def runJavaCode(request):
     if request.method != "POST":
         return HttpResponse("ERROR")
 
-    jsonData = json.loads(request.body)
+    print(request.body)
 
-    challenge_id = jsonData['challenge_id']
+    json_data = json.loads(request.body)
+
+    challenge_id = json_data['challenge_id']
     challenge_obj = Challenge.objects.get(id=challenge_id)
 
-    code_submitted = jsonData['code']
+    code_submitted = json_data['code']
 
     mappings_file = FileUpload.objects.get(name="mappings.json").file
     mappings_text = mappings_file.read()
     mappings = json.loads(mappings_text)
 
     context_file = FileUpload.objects.get(name="MainContext.java").file
-    main_context = context_file.read()
+    main_context = context_file.read().decode()
 
     # TODO: compile and call Java
     ready_code = preprocessor.get_code(code_submitted, challenge_obj, mappings, main_context)

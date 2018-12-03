@@ -21,6 +21,16 @@ function csrfSafeMethod(method) {
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
 
+var codeMirror;
+
+function onLoad(){
+	codeMirror = CodeMirror.fromTextArea(document.getElementById("codearea"), {
+    lineNumbers: true,
+    matchBrackets: true,
+    mode: "text/x-java"
+  });
+}
+
 $.ajaxSetup({
     beforeSend: function(xhr, settings) {
         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
@@ -53,8 +63,8 @@ function addOutput(output, type="none"){
 
 function runCodeFunction() {
 	
-	var codeArea = $("#codeArea").html();
-		
+	var codeArea = codeMirror.getValue();
+	
 	var result = sendPost(codeArea);
 }
 
@@ -80,18 +90,21 @@ function sendPost(code) {
         url: '/learn/runJavaCode',
 		dataType: 'text/json',
         data: jsonData,
-        success: success
+        success: response
     });
 }
 
-function success(msg, status, jqXHR) {
-		
+function response(msg, status, jqXHR) {
+
+	alert("response");
+	
 	json = JSON.parse(msg);
-	addOutput(json["text"], json["status"]);
+	addOutput("Output: " + json["text"], json["status"]);
 	
 	setProgress('');
 }
 
 $(document).ready(function(){
     $("#runcode").click(runCodeFunction);
+	onLoad();
 });
