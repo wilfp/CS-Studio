@@ -1,8 +1,6 @@
 import json
 import re
 
-loaded_mappings = get_mappings()
-
 def get_code(code, challenge_name):
 
     challenge = get_challenge(challenge_name)
@@ -58,6 +56,4 @@ def get_mappings():
 
     return null
 
-
-if __name__ == "__main__":
-    test_mapping()
+loaded_mappings = get_mappings()

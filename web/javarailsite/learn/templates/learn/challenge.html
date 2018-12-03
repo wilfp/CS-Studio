@@ -32,12 +32,14 @@ window.onload = onLoadPage;
 
 {% block content %}
 
+<div id="challengeID" class="hide">{{ challenge.id }}</div>
+
 <div class="columns">
 
 <div class="column">
 
 	<h1 class="title">> {{ challenge.name }}</h1>
-
+	
 	<div class="box">
 	{% for desc in challenge_desc %}
 		{{ desc }}<br>

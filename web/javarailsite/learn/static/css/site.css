@@ -18,6 +18,10 @@ div.margintop{
 	margin-top: 20px;
 }
 
+div.hide{
+	display:none;
+}
+
 #codeoutput{
 	min-height: 250px;
 }

@@ -35,14 +35,14 @@ def challenge(request, challenge_id):
 
 def runJavaCode(request):
 
-    if(request.method != "POST"):
+    if request.method != "POST":
         return HttpResponse("ERROR")
 
     code = request.body
-    challenge_name = request.challenge
+    challenge_id = request.challengeID
 
     # TODO: compile and call Java
-    get_code(code, challenge_name)
+    get_code(code, challenge_id)
 
     text = "Code run successfully!"
     status = "success"

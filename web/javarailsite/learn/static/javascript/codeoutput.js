@@ -58,6 +58,10 @@ function runCodeFunction() {
 	var result = sendPost(codeArea);
 }
 
+function getChallengeID(){
+	return $("#challengeID").html();
+}
+
 function setProgress(progress){
 	$("#codeProgress").html(function(){
 		return progress;
@@ -73,6 +77,7 @@ function sendPost(code) {
         url: '/learn/runJavaCode',
 		dataType: 'text',
         data: code,
+		challengeID: getChallengeID(),
         success: success
     });
 }
