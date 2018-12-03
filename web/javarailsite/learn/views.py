@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
 from learn.models import Challenge
-import learn.preprocessor
+#import learn.preprocessor
 import json
 import time
 
@@ -24,10 +24,7 @@ def challenge(request, challenge_id):
 
     challenge_obj = Challenge.objects.get(id=challenge_id)
 
-    f = challenge_obj.file.open()
-    data = json.load(f)
-
-    context = {"challenge": challenge_obj, "challenge_desc": data["desc"]}
+    context = {"challenge": challenge_obj}
     template = loader.get_template("learn/challenge.html")
 
     return HttpResponse(template.render(context, request))
@@ -40,9 +37,10 @@ def runJavaCode(request):
 
     code = request.body
     challenge_id = request.challengeID
+    challenge_obj = Challenge.objects.get(id=challenge_id)
 
     # TODO: compile and call Java
-    get_code(code, challenge_id)
+    #get_code(code, challenge_obj)
 
     text = "Code run successfully!"
     status = "success"

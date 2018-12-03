@@ -1,9 +1,7 @@
 import json
 import re
 
-def get_code(code, challenge_name):
-
-    challenge = get_challenge(challenge_name)
+def get_code(code, challenge):
 
     code_mod = code
 
@@ -38,22 +36,13 @@ def get_main_context(code):
 
     return null
 
-
-def get_challenge(name):
-
-    with open("/challenges/"+name+".json") as f:
-        data = json.load(f)
-        return data
-
-    return null
-
-
 def get_mappings():
 
-    with open('preprocessormappings.json') as f:
+    with open("preprocessormappings.json") as f:
         data = json.load(f)
         return data
 
     return null
+
 
 loaded_mappings = get_mappings()

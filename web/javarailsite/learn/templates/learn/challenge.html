@@ -41,10 +41,7 @@ window.onload = onLoadPage;
 	<h1 class="title">> {{ challenge.name }}</h1>
 	
 	<div class="box">
-	{% for desc in challenge_desc %}
-		{{ desc }}<br>
-	{% endfor %}
-	
+	{{ challenge.desc }}	
 	</div>
 	
 	<div class="box"><textarea id="codearea" autofocus="true" placeholder="Start your code here!" rows="4" cols="50"></textarea>
