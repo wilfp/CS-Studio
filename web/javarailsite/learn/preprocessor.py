@@ -1,11 +1,12 @@
 import json
 import re
 
-def get_code(code, challenge):
+
+def get_code(code, challenge, mappings, context):
 
     code_mod = code
 
-    level = loaded_mappings["levels"][challenge["level"]]
+    level = mappings["levels"][challenge["level"]]
 
     for replacement in level["direct-replacements"]:
         code_mod = code_mod.replace(replacement["old"], replacement["new"])
@@ -24,25 +25,6 @@ def get_code(code, challenge):
         code_mod = code_mod_replace
 
     if not level["main-context"]:
-        code_mod = get_main_context(code_mod)
+        code_mod = context.replace("%CODEPOINT%", code_mod)
 
     return code_mod
-
-
-def get_main_context(code):
-
-    with open('PreProcessorContext.java') as f:
-        return f.read().replace("%CODEPOINT%", code)
-
-    return null
-
-def get_mappings():
-
-    with open("preprocessormappings.json") as f:
-        data = json.load(f)
-        return data
-
-    return null
-
-
-loaded_mappings = get_mappings()

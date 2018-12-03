@@ -72,12 +72,14 @@ function sendPost(code) {
 	
 	setProgress('<progress class="progress is-small is-primary" max="100">15%</progress>');
 	
+	var challengeID = getChallengeID();
+	var jsonData = '{ \"challenge_id\": \"' + challengeID  + '\", \"code\": \"' + code + '\" }';
+	
     $.ajax({
         type: "POST",
         url: '/learn/runJavaCode',
-		dataType: 'text',
-        data: code,
-		challengeID: getChallengeID(),
+		dataType: 'text/json',
+        data: jsonData,
         success: success
     });
 }

@@ -1,9 +1,11 @@
 from django.http import HttpResponse
 from django.template import loader
 from learn.models import Challenge
-#import learn.preprocessor
+from learn.models import FileUpload
+from learn import preprocessor
 import json
 import time
+
 
 def index(request):
     return HttpResponse("Hello, world. This is the learn app index.")
@@ -35,12 +37,22 @@ def runJavaCode(request):
     if request.method != "POST":
         return HttpResponse("ERROR")
 
-    code = request.body
-    challenge_id = request.challengeID
+    jsonData = json.loads(request.body)
+
+    challenge_id = jsonData['challenge_id']
     challenge_obj = Challenge.objects.get(id=challenge_id)
 
+    code_submitted = jsonData['code']
+
+    mappings_file = FileUpload.objects.get(name="mappings.json").file
+    mappings_text = mappings_file.read()
+    mappings = json.loads(mappings_text)
+
+    context_file = FileUpload.objects.get(name="MainContext.java").file
+    main_context = context_file.read()
+
     # TODO: compile and call Java
-    #get_code(code, challenge_obj)
+    ready_code = preprocessor.get_code(code_submitted, challenge_obj, mappings, main_context)
 
     text = "Code run successfully!"
     status = "success"
