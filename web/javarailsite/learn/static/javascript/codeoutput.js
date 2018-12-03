@@ -64,6 +64,7 @@ function addOutput(output, type="none"){
 function runCodeFunction() {
 	
 	var codeArea = codeMirror.getValue();
+	codeArea = encodeURI(codeArea);
 	
 	var result = sendPost(codeArea);
 }
@@ -95,8 +96,6 @@ function sendPost(code) {
 }
 
 function response(msg, status, jqXHR) {
-
-	alert("response");
 	
 	json = JSON.parse(msg);
 	addOutput("Output: " + json["text"], json["status"]);
