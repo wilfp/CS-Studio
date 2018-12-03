@@ -31,19 +31,20 @@ def challenge(request, challenge_id):
 
     return HttpResponse(template.render(context, request))
 
+
 def runJavaCode(request):
 
-	if(request.method != "POST"):
-		return HttpResponse("ERROR")
-	
-	code = request.body
-	
-	# TODO: compile and call Java
-	time.sleep(3) # Simulate processing
-	
-	text = "Code run successfully!"
-	status = "success"
-	
-	response = "{ \"text\": \"" + text + "\", \"status\": \"" + status + "\" }"
-	
-	return HttpResponse(response)
+    if(request.method != "POST"):
+        return HttpResponse("ERROR")
+
+    code = request.body
+
+    # TODO: compile and call Java
+    # PreProcessor goes here
+
+    text = "Code run successfully!"
+    status = "success"
+
+    response = "{ \"text\": \"" + text + "\", \"status\": \"" + status + "\" }"
+
+    return HttpResponse(response)
