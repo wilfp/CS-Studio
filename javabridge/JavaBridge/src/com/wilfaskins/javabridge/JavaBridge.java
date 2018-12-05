@@ -35,13 +35,37 @@ public class JavaBridge {
 			}
 		}
 		
-		System.out.println("Exiting...");
+		log("Exit");
 		sc.close();
 	}
 	
-	private void runFile(String fileName) {
+	private ProgramResult runFile(String fileName) {
+		
+		ProgramResult result = new ProgramResult();
 		
 		File target = new File(directory, fileName);
+		File classFile = null;
 		
+		try {
+			classFile = compile(target);
+		}catch(Exception e) {
+			result.setError(e.getLocalizedMessage());
+			result.setState(ProgramResult.State.COMPILE_ERROR);
+			return result;
+		}
+		
+		
+	}
+	
+	private File compile(File file) {
+		return null;
+	}
+	
+	private boolean runClass(File file) {
+		return null;
+	}
+	
+	private static void log(String text) {
+		System.out.println(text);
 	}
 }
