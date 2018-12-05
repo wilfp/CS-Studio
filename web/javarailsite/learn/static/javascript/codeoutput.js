@@ -64,7 +64,7 @@ function addOutput(output, type="none"){
 function runCodeFunction() {
 		
 	var codeArea = codeMirror.getValue();
-	codeArea = encodeURI(codeArea);
+	codeArea = window.btoa(codeArea);
 	
 	var result = sendPost(codeArea);
 }
@@ -97,7 +97,7 @@ function sendPost(code) {
 }
 
 function response(msg, status, jqXHR) {
-		
+	
 	addOutput("Output: " + msg["text"], msg["status"]);
 	
 	setProgress('');

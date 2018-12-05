@@ -3,7 +3,7 @@ from django.template import loader
 from learn.models import Challenge
 from learn.models import FileUpload
 from learn import preprocessor
-import urllib.parse
+import base64
 import json
 import time
 
@@ -45,9 +45,7 @@ def run_java_code(request):
     challenge_id = json_data['challenge_id']
     challenge_obj = Challenge.objects.get(id=challenge_id)
 
-    code_submitted = urllib.parse.unquote(json_data['code'])
-
-    print(code_submitted)
+    code_submitted = base64.b64decode(json_data['code']).decode()
 
     mappings_file = FileUpload.objects.get(name="mappings.json").file
     mappings_text = mappings_file.read()
