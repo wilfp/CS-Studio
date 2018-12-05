@@ -4,15 +4,11 @@ public class ProgramResult {
 
 	private State state;
 	private String error;
+	private int lineNumber;
+	private String output;
 	
 	public ProgramResult() {
 		super();
-	}
-	
-	public ProgramResult(State state, String error) {
-		super();
-		this.state = state;
-		this.error = error;
 	}
 	
 	public State getState() {
@@ -29,6 +25,22 @@ public class ProgramResult {
 
 	public void setError(String error) {
 		this.error = error;
+	}
+
+	public int getLineNumber() {
+		return lineNumber;
+	}
+
+	public void setLineNumber(int lineNumber) {
+		this.lineNumber = lineNumber;
+	}
+	
+	public String getOutput() {
+		return output;
+	}
+
+	public void setOutput(String output) {
+		this.output = output;
 	}
 
 	public enum State{

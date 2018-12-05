@@ -11,6 +11,8 @@ public class JavaBridgeTest {
 		
 		JavaBridge bridge = new JavaBridge(temp);
 		
+		// TODO: run here
+		
 		temp.delete();
 	}
 

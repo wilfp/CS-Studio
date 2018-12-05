@@ -40,29 +40,33 @@ public class JavaBridge {
 	}
 	
 	private ProgramResult runFile(String fileName) {
-		
+
 		ProgramResult result = new ProgramResult();
-		
+
 		File target = new File(directory, fileName);
-		File classFile = null;
-		
-		try {
-			classFile = compile(target);
-		}catch(Exception e) {
-			result.setError(e.getLocalizedMessage());
+		CompileResult compileResult = compile(target);
+
+		if(compileResult /* .getState() == CompileResult.State.FAIL */){
+			result.setError(compileResult /* .getErrorMessage() */);
+			result.setLineNumber(compileResult /* .getLineNumber() */);
 			result.setState(ProgramResult.State.COMPILE_ERROR);
 			return result;
 		}
 		
+		RunResult runResult = runClass(compileResult /* .getFileGenerated */);
 		
+		result.setOutput(runResult /* .getOutput() */);
+		result.setState(ProgramResult.State.SUCCESS);
+		return result;
 	}
 	
-	private File compile(File file) {
+	private CompileResult compile(File file) {
 		return null;
 	}
 	
-	private boolean runClass(File file) {
-		return null;
+	private RunResult runClass(File file) {
+		// https://stackoverflow.com/questions/502218/sandbox-against-malicious-code-in-a-java-application
+		return false;
 	}
 	
 	private static void log(String text) {
