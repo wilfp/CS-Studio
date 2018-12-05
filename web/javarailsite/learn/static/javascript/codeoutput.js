@@ -62,7 +62,7 @@ function addOutput(output, type="none"){
 }
 
 function runCodeFunction() {
-	
+		
 	var codeArea = codeMirror.getValue();
 	codeArea = encodeURI(codeArea);
 	
@@ -89,21 +89,22 @@ function sendPost(code) {
     $.ajax({
         type: "POST",
         url: '/learn/runJavaCode',
-		dataType: 'text/json',
+		dataType: 'json',
         data: jsonData,
         success: response
     });
+
 }
 
 function response(msg, status, jqXHR) {
-	
-	json = JSON.parse(msg);
-	addOutput("Output: " + json["text"], json["status"]);
+		
+	addOutput("Output: " + msg["text"], msg["status"]);
 	
 	setProgress('');
 }
 
 $(document).ready(function(){
+		
     $("#runcode").click(runCodeFunction);
 	onLoad();
 });

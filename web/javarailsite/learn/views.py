@@ -14,6 +14,8 @@ def index(request):
 
 def profile(request):
 
+    print("Test")
+
     context = {
         "challenge_list": Challenge.objects.all(),
     }
