@@ -1,19 +1,15 @@
 package com.wilfaskins.javabridge;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class JavaBridgeTest {
 
 	public static void main(String[] args) {
-		
-		File temp = new File("/temp/");
-		temp.mkdir();
-		
-		JavaBridge bridge = new JavaBridge(temp);
-		
-		// TODO: run here
-		
-		temp.delete();
+
+		JavaBridge bridge = new JavaBridge(new File("temp/"));
+		bridge.runFile("test");
 	}
 
 }
