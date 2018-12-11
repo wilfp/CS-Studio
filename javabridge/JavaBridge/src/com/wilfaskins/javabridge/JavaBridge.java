@@ -16,18 +16,20 @@ import java.util.Scanner;
 public class JavaBridge {
 
 	private File directory;
-	
-	public JavaBridge(File directory) {
-		
-		// init
-		this.directory = directory;
-		
+	private URLClassLoader loader;
+
+	public JavaBridge() {
+
 		startCLI();
 	}
 
 	public void startCLI() {
 		
 		Scanner sc = new Scanner(System.in);
+
+		while(!sc.hasNext()){}
+		String filePath = sc.next();
+		this.setDirectory(filePath);
 		
 		while(true) {
 
@@ -101,7 +103,6 @@ public class JavaBridge {
 	private RunResult runClass(String className){
 
 		try {
-			URLClassLoader loader = new URLClassLoader(new URL[]{ directory.toURI().toURL() });
 			Class c = loader.loadClass(className);
 
 			// Capture System.out data
@@ -124,6 +125,17 @@ public class JavaBridge {
 		}catch (Exception e){
 			e.printStackTrace();
 			return new RunResult(RunResult.State.FAIL, e.getMessage(), 0, "");
+		}
+	}
+
+	private void setDirectory(String filePath){
+
+		this.directory = new File(filePath);
+
+		try {
+			this.loader = new URLClassLoader(new URL[]{ directory.toURI().toURL() });
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
 		}
 	}
 	

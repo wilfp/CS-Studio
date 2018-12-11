@@ -57,7 +57,8 @@ def run_java_code(request):
     # TODO: compile and call Java
     ready_code = preprocessor.get_code(code_submitted, challenge_obj, mappings, main_context)
 
-
+    # Call javabridge
+	# set text to output
 
     text = "Code run successfully!"
     status = "success"
