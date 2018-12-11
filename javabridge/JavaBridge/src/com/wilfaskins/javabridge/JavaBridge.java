@@ -5,14 +5,16 @@ import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 import java.io.*;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class JavaBridge {
-	
-	private static final String FILE_START = "file:";
-	
+
 	private File directory;
 	
 	public JavaBridge(File directory) {
@@ -20,7 +22,7 @@ public class JavaBridge {
 		// init
 		this.directory = directory;
 		
-		//startCLI();
+		startCLI();
 	}
 
 	public void startCLI() {
@@ -28,21 +30,20 @@ public class JavaBridge {
 		Scanner sc = new Scanner(System.in);
 		
 		while(true) {
-			
+
+			if(!sc.hasNext()) continue;
+
 			String next = sc.next();
-			
-			if(next.startsWith(FILE_START)) {
-				
-				String fileName = next.split(FILE_START)[1].trim();
-				runFile(fileName);
-				
-			}else {
-				break;
-			}
+
+			if(next.equals(".exit")) break;
+
+			ProgramResult result = runFile(next);
+			log("Run output: " + result.getOutput());
+			sc.reset();
 		}
-		
-		log("Exit");
+
 		sc.close();
+		log("Exiting...");
 	}
 	
 	public ProgramResult runFile(String serialName) {
@@ -59,7 +60,7 @@ public class JavaBridge {
 			return result;
 		}
 		
-		RunResult runResult = runClass(compileResult.getFileGenerated());
+		RunResult runResult = runClass(serialName);
 		
 		result.setOutput(runResult.getOutput());
 		result.setState(ProgramResult.State.SUCCESS);
@@ -96,10 +97,34 @@ public class JavaBridge {
 
 		return null;
 	}
-	
-	private RunResult runClass(File file) {
-		// https://stackoverflow.com/questions/502218/sandbox-against-malicious-code-in-a-java-application
-		return null;
+
+	private RunResult runClass(String className){
+
+		try {
+			URLClassLoader loader = new URLClassLoader(new URL[]{ directory.toURI().toURL() });
+			Class c = loader.loadClass(className);
+
+			// Capture System.out data
+			ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+			PrintStream ps = new PrintStream(bytes);
+			PrintStream systemOut = System.out;
+			System.setOut(ps);
+
+			// Run main method
+			Method main = c.getMethod("main", String[].class);
+			String[] params = new String[]{ null };
+			main.invoke(null, new Object[]{ params });
+
+			// Reset to default
+			System.out.flush();
+			System.setOut(systemOut);
+
+			return new RunResult(RunResult.State.SUCCESS, "", 0, bytes.toString());
+
+		}catch (Exception e){
+			e.printStackTrace();
+			return new RunResult(RunResult.State.FAIL, e.getMessage(), 0, "");
+		}
 	}
 	
 	private static void log(String text) {
