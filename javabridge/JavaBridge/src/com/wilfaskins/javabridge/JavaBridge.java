@@ -14,9 +14,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class JavaBridge {
-	
-	private static final String FILE_START = "file:";
-	
+
 	private File directory;
 	
 	public JavaBridge(File directory) {
@@ -24,7 +22,7 @@ public class JavaBridge {
 		// init
 		this.directory = directory;
 		
-		//startCLI();
+		startCLI();
 	}
 
 	public void startCLI() {
@@ -32,21 +30,20 @@ public class JavaBridge {
 		Scanner sc = new Scanner(System.in);
 		
 		while(true) {
-			
+
+			if(!sc.hasNext()) continue;
+
 			String next = sc.next();
-			
-			if(next.startsWith(FILE_START)) {
-				
-				String fileName = next.split(FILE_START)[1].trim();
-				runFile(fileName);
-				
-			}else {
-				break;
-			}
+
+			if(next.equals(".exit")) break;
+
+			ProgramResult result = runFile(next);
+			log("Run output: " + result.getOutput());
+			sc.reset();
 		}
-		
-		log("Exit");
+
 		sc.close();
+		log("Exiting...");
 	}
 	
 	public ProgramResult runFile(String serialName) {
@@ -63,7 +60,7 @@ public class JavaBridge {
 			return result;
 		}
 		
-		RunResult runResult = runClass("test"); // TODO: change this
+		RunResult runResult = runClass(serialName);
 		
 		result.setOutput(runResult.getOutput());
 		result.setState(ProgramResult.State.SUCCESS);
