@@ -29,6 +29,14 @@ function onLoad(){
     matchBrackets: true,
     mode: "text/x-java"
   });
+  
+  var app = new Vue({
+	  delimiters: ['[[', ']]'],
+	  el: '#app',
+	  data: {
+		  message: 'Hello Vue!'
+		  }
+	});
 }
 
 $.ajaxSetup({
