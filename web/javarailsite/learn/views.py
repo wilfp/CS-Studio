@@ -9,12 +9,13 @@ import time
 
 
 def index(request):
-    return HttpResponse("Hello, world. This is the learn app index.")
+
+    template = loader.get_template("learn/index.html")
+
+    return HttpResponse(template.render(None, request))
 
 
 def profile(request):
-
-    print("Test")
 
     context = {
         "challenge_list": Challenge.objects.all(),
