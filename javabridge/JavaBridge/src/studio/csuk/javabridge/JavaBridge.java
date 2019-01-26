@@ -16,12 +16,15 @@ import java.util.Scanner;
 public class JavaBridge {
 
 	private File directory;
+	private File processedDir;
 
 	public JavaBridge(File directory) {
 		
 		// init
 		this.directory = directory;
-		
+		this.processedDir = new File(directory, "/processed/");
+		this.processedDir.mkdir();
+
 		startCLI();
 	}
 
@@ -39,7 +42,7 @@ public class JavaBridge {
 
 			ProgramResult result = runFile(next);
 			log("Run output: " + result.getOutput());
-			log("Run state: " + result.getState());
+			log("Run lines: " + result.getLines().toString());
 			sc.reset();
 		}
 
@@ -57,7 +60,7 @@ public class JavaBridge {
 
 			File target = new File(directory, serialName + ".java");
 
-			File processed = new File(directory, serialName + "_processed.java");
+			File processed = new File(processedDir, serialName + ".java");
 			processed.createNewFile();
 
 			boolean startedCode = false;
@@ -135,10 +138,10 @@ public class JavaBridge {
 			fileManager.close();
 
 			if(called){
-				File outputFile = new File(directory, serialName + ".class");
+				File outputFile = new File(processedDir, serialName + ".class");
 				return new CompileResult(CompileResult.State.SUCCESS, "", 0, sw.toString(), outputFile);
 			}else{
-				return new CompileResult(CompileResult.State.FAIL, "", 0, sw.toString(), null);
+				return new CompileResult(CompileResult.State.FAIL, sw.toString(), 0, null, null);
 			}
 
 		} catch (IOException e) {
@@ -151,7 +154,7 @@ public class JavaBridge {
 	private RunResult runClass(String className){
 
 		try {
-			URLClassLoader loader = new URLClassLoader(new URL[]{ directory.toURI().toURL() });
+			URLClassLoader loader = new URLClassLoader(new URL[]{ processedDir.toURI().toURL() });
 			Class c = loader.loadClass(className);
 
 			// Capture System.out data
