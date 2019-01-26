@@ -16,6 +16,10 @@ public class InjectionLogger {
         lines.put(serialName, new LinkedList<>());
     }
 
+    public void remove(String serialName){
+        lines.remove(serialName);
+    }
+
     public LinkedList<Integer> getLines(String serialName){
         return lines.get(serialName);
     }

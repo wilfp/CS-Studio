@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class JavaBridge {
@@ -46,6 +47,8 @@ public class JavaBridge {
 	
 	public ProgramResult runFile(String serialName) {
 
+		InjectionLogger.get().register(serialName);
+
 		ProgramResult result = new ProgramResult();
 
 		File target = new File(directory, serialName  + ".java");
@@ -62,6 +65,11 @@ public class JavaBridge {
 		
 		result.setOutput(runResult.getOutput());
 		result.setState(ProgramResult.State.SUCCESS);
+
+		LinkedList<Integer> lines = InjectionLogger.get().getLines(serialName);
+		// TODO: add lines to ProgramResult
+		InjectionLogger.get().remove(serialName);
+
 		return result;
 	}
 	
