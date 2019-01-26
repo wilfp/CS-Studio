@@ -34,9 +34,10 @@ class CommandExecution:
 
                 json_data = json.loads(line.rstrip())
 
-                # TODO: base64 decode output and error
-                self.result_buffer.append(Result(json_data['name'], json_data['state'], json_data['output'],
-                                                 json_data['error'], json_data['lines']))
+                # Put json into data structure
+
+                self.result_buffer.append(Result(json_data['name'], json_data['state'], base64.decode(json_data['output']),
+                                                 base64.decode(json_data['error']), json_data['lines']))
 
             self.read_time = time.time()
 
