@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78d9b60a-f5dd-4105-b433-f27bd227ed31" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/studio/csuk/javabridge/InjectionLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/studio/csuk/javabridge/InjectionLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/studio/csuk/javabridge/JavaBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/studio/csuk/javabridge/JavaBridge.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,23 +13,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/studio/csuk/javabridge/JavaBridge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="63" column="32" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
+            <state relative-caret-position="185">
+              <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
               <folding>
-                <element signature="e#4386#4387#0" expanded="true" />
+                <element signature="e#4429#4430#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/studio/csuk/javabridge/InjectionLogger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="31" column="70" selection-start-line="31" selection-start-column="70" selection-end-line="31" selection-end-column="70" />
+            <state relative-caret-position="102">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#164#165#0" expanded="true" />
@@ -120,9 +120,9 @@
         <option value="$PROJECT_DIR$/src/studio/csuk/javabridge/InjectiveLogger.java" />
         <option value="$PROJECT_DIR$/src/studio/csuk/javabridge/JavaBridgeRun.java" />
         <option value="$PROJECT_DIR$/src/studio/csuk/javabridge/ProgramResult.java" />
-        <option value="$PROJECT_DIR$/src/studio/csuk/javabridge/JavaBridge.java" />
         <option value="$PROJECT_DIR$/temp/test.java" />
         <option value="$PROJECT_DIR$/src/studio/csuk/javabridge/InjectionLogger.java" />
+        <option value="$PROJECT_DIR$/src/studio/csuk/javabridge/JavaBridge.java" />
       </list>
     </option>
   </component>
@@ -172,7 +172,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548536539443" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548536631633" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -199,39 +199,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.JavaBridgeRun (1)">
-    <configuration name="JavaBridgeRun (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="studio.csuk.javabridge.JavaBridgeRun" />
-      <module name="JavaBridge" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="studio.csuk.javabridge.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.JavaBridgeTest">
     <configuration name="JavaBridgeRun" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.wilfaskins.javabridge.JavaBridgeRun" />
       <module name="JavaBridge" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.wilfaskins.javabridge.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JavaBridgeTest (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="studio.csuk.javabridge.JavaBridgeTest" />
-      <module name="JavaBridge" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="studio.csuk.javabridge.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -252,9 +226,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="JavaBridgeTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="studio.csuk.javabridge.JavaBridgeTest" />
+      <module name="JavaBridge" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="studio.csuk.javabridge.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JavaBridgeTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="studio.csuk.javabridge.JavaBridgeTest" />
+      <module name="JavaBridge" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="studio.csuk.javabridge.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.JavaBridgeRun (1)" />
+        <item itemvalue="Application.JavaBridgeTest" />
         <item itemvalue="Application.JavaBridgeRun" />
         <item itemvalue="Application.JavaBridgeTest (1)" />
         <item itemvalue="Application.JavaBridgeTest" />
@@ -272,12 +272,12 @@
       <option name="presentableId" value="Default" />
       <updated>1544480020935</updated>
       <workItem from="1544480030965" duration="4797000" />
-      <workItem from="1548531797323" duration="3508000" />
+      <workItem from="1548531797323" duration="3600000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11189000" />
+    <option name="totallyTimeSpent" value="11281000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -456,16 +456,6 @@
     <entry file="file://$PROJECT_DIR$/temp/tets_processed.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/studio/csuk/javabridge/JavaBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="63" column="32" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
-          <folding>
-            <element signature="e#4386#4387#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/temp/test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="257">
@@ -480,17 +470,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/studio/csuk/javabridge/JavaBridgeRun.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/studio/csuk/javabridge/InjectionLogger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="31" column="70" selection-start-line="31" selection-start-column="70" selection-end-line="31" selection-end-column="70" />
+        <state relative-caret-position="102">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#164#165#0" expanded="true" />
@@ -505,6 +488,23 @@
             <element signature="e#403#404#0" expanded="true" />
             <element signature="e#634#635#0" expanded="true" />
             <element signature="e#665#666#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/studio/csuk/javabridge/JavaBridgeRun.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/studio/csuk/javabridge/JavaBridge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+          <folding>
+            <element signature="e#4429#4430#0" expanded="true" />
           </folding>
         </state>
       </provider>

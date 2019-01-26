@@ -39,6 +39,7 @@ public class JavaBridge {
 
 			ProgramResult result = runFile(next);
 			log("Run output: " + result.getOutput());
+			log("Run state: " + result.getState());
 			sc.reset();
 		}
 
