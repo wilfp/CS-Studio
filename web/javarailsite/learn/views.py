@@ -3,9 +3,12 @@ from django.template import loader
 from learn.models import Challenge
 from learn.models import FileUpload
 from learn import preprocessor
+from learn import javabridge
 import base64
 import json
 import time
+
+cmd = javabridge.CommandExecution()
 
 
 def index(request):

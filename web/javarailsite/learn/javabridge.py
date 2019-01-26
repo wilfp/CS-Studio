@@ -1,15 +1,32 @@
-
+import subprocess
+import json
+import base64
 
 class CommandExecution:
 
-    result_buffer = null
-    read_interval = 100
-    read_time = 0
+    def __init__(self):
+
+        self.result_buffer = []
+        self.read_interval = 100
+        self.read_time = 0
+
+        self.process = subprocess.Popen(["java", "JavaBridge.jar"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+
+        return
 
     def poll_result(self, code_id):
 
-        # if current_time-read_time > read_interval:
-        # read results
+        if current_time - self.read_time > self.read_interval:
+
+            for line in iter(self.process.stdout.readline, ''):
+
+                # Process line as json
+
+                json_data = json.loads(line.rstrip())
+
+                self.result_buffer.append(Result())
+
+            self.read_time = current_time
 
         # if result_buffer contains code_id
         # return result
@@ -19,10 +36,21 @@ class CommandExecution:
     def submit(self, code):
 
         # TODO: run code here
+        msg = None
+
+        # Process code into readable format
+
+        self.process.stdin.write(msg)
 
         code_id = "0"  # Assign id
 
         return code_id
+
+    def close(self):
+
+        self.process.stdin.close()
+
+        return
 
 
 class Result:
