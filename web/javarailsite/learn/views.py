@@ -49,6 +49,8 @@ def run_java_code(request):
     challenge_id = json_data['challenge_id']
     challenge_obj = Challenge.objects.get(id=challenge_id)
 
+    # get the code which was submitted
+
     code_submitted = base64.b64decode(json_data['code']).decode()
 
     mappings_file = FileUpload.objects.get(name="mappings.json").file
@@ -58,15 +60,21 @@ def run_java_code(request):
     context_file = FileUpload.objects.get(name="MainContext.java").file
     main_context = context_file.read().decode()
 
-    # TODO: compile and call Java
+    # pre-process the submitted code
+
     ready_code = preprocessor.get_code(code_submitted, challenge_obj, mappings, main_context)
 
-    # Call javabridge
-    # set text to output
+    # run the code with JavaBridge
 
-    text = "Code run successfully!"
-    status = "success"
+    code_id = cmd.submit(ready_code)
+    result = cmd.poll_result(code_id)
 
-    response = "{ \"text\": \"" + text + "\", \"status\": \"" + status + "\" }"
+    # return the result as a HttpResponse
+
+    text = result.output
+    status = result.state
+    lines = result.lines
+
+    response = "{ \"text\": \"" + text + "\", \"status\": \"" + status + "\", \"lines\": " + lines + " }"
 
     return HttpResponse(response)

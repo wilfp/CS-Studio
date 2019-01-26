@@ -15,6 +15,7 @@ class CommandExecution:
         self.read_time = 0
         self.counter = 0
         self.alphabet = "ABCDEFGHIJKLMNOP"
+        self.timeout = 50000
 
         # call JavaBridge subprocess
 
@@ -43,9 +44,20 @@ class CommandExecution:
 
         # check incoming results
 
-        for result in self.result_buffer:
-            if result.name == code_id:
-                return result
+        result_pointer = 0
+        start_time = time.time()
+
+        # check for result till timeout
+
+        while start_time-time.time() > self.timeout:
+            while result_pointer < len(self.result_buffer)-1:
+
+                result = self.result_buffer[result_pointer]
+
+                if result.name == code_id:
+                    return result
+
+                result_pointer += 1
 
         # if no result was found
 
