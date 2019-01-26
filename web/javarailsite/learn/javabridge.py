@@ -53,13 +53,21 @@ class CommandExecution:
 
     def submit(self, code):
 
+        # get id for code
+
         code_id = self.get_code_id()
 
-        # TODO create new file in temp folder called code_id.java
-        # TODO write code to file
+        # write code to file
+
+        f = open('/temp/' + code_id + '.java', 'w+')
+        f.write(code)
+        f.close()
 
         # call process
+
         self.process.stdin.write(code_id)
+
+        # return the code id for later
 
         return code_id
 
