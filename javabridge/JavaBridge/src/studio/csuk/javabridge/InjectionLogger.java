@@ -16,12 +16,16 @@ public class InjectionLogger {
         lines.put(serialName, new LinkedList<>());
     }
 
+    public LinkedList<Integer> getLines(String serialName){
+        return lines.get(serialName);
+    }
+
     public void onLine(String serialName, int line){
         this.lines.get(serialName).add(line);
     }
 
     public String getLineCode(String serialName, int line){
-        return "onLine(" + serialName + ", " + line + ");";
+        return "InjectionLogger.get().onLine(" + serialName + ", " + line + ");";
     }
 
     private static final InjectionLogger instance = new InjectionLogger();
