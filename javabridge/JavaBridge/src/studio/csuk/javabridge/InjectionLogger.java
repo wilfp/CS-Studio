@@ -25,7 +25,7 @@ public class InjectionLogger {
     }
 
     public String getLineCode(String serialName, int line){
-        return "InjectionLogger.get().onLine(" + serialName + ", " + line + ");";
+        return "studio.csuk.javabridge.InjectionLogger.get().onLine(" + serialName + ", " + line + ");";
     }
 
     private static final InjectionLogger instance = new InjectionLogger();
