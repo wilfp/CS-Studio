@@ -1,7 +1,5 @@
 public class test {
-studio.csuk.javabridge.InjectionLogger.get().onLine(test, 0);
 
-studio.csuk.javabridge.InjectionLogger.get().onLine(test, 1);
     public static void main(String[] args) {
 studio.csuk.javabridge.InjectionLogger.get().onLine(test, 2);
 
@@ -25,8 +23,17 @@ studio.csuk.javabridge.InjectionLogger.get().onLine(test, 11);
         System.out.println("Test");
 studio.csuk.javabridge.InjectionLogger.get().onLine(test, 12);
     }
-studio.csuk.javabridge.InjectionLogger.get().onLine(test, 13);
 
-studio.csuk.javabridge.InjectionLogger.get().onLine(test, 14);
-}
+    private static void secondMethodTest(){
 studio.csuk.javabridge.InjectionLogger.get().onLine(test, 15);
+
+studio.csuk.javabridge.InjectionLogger.get().onLine(test, 16);
+        System.out.println("2nd");
+studio.csuk.javabridge.InjectionLogger.get().onLine(test, 17);
+        System.out.println("method");
+studio.csuk.javabridge.InjectionLogger.get().onLine(test, 18);
+        System.out.println("here");
+studio.csuk.javabridge.InjectionLogger.get().onLine(test, 19);
+    }
+
+}

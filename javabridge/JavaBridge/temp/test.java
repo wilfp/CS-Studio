@@ -14,4 +14,11 @@ public class test {
         System.out.println("Test");
     }
 
+    private static void secondMethodTest(){
+
+        System.out.println("2nd");
+        System.out.println("method");
+        System.out.println("here");
+    }
+
 }

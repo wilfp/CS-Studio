@@ -61,6 +61,7 @@ public class JavaBridge {
 
 			boolean startedCode = false;
 			int lineNumber = 0;
+			int bracketCount = 0;
 
 			FileWriter fw = new FileWriter(processed);
 			FileReader reader = new FileReader(target);
@@ -74,7 +75,15 @@ public class JavaBridge {
 
 				startedCode = true;
 
-				fw.write(line + "\r\n" + InjectionLogger.get().getLineCode(serialName, lineNumber) + "\r\n");
+				if(line.contains("{")) bracketCount++;
+
+				if(line.contains("}")) bracketCount--;
+
+				if(bracketCount > 1) {
+					fw.write(line + "\r\n" + InjectionLogger.get().getLineCode(serialName, lineNumber) + "\r\n");
+				}else{
+					fw.write(line + "\r\n");
+				}
 
 				lineNumber++;
 			}
