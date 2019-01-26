@@ -1,5 +1,7 @@
 package studio.csuk.javabridge;
 
+import org.json.JSONObject;
+
 import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
@@ -10,6 +12,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -45,9 +48,7 @@ public class JavaBridge {
 			if(next.equals(".exit")) break;
 
 			ProgramResult result = runFile(next);
-			log("Run output: " + result.getOutput());
-			log("Run error: " + result.getError());
-			log("Run lines: " + result.getLines().toString());
+			printResult(next, result);
 			sc.reset();
 		}
 
@@ -193,4 +194,26 @@ public class JavaBridge {
 	private static void log(String text) {
 		System.out.println(text);
 	}
+
+	private static String base64(String text){
+
+		if(text == null || text.isEmpty()){
+			return "";
+		}
+
+		return Base64.getEncoder().encodeToString(text.getBytes());
+	}
+
+	private static void printResult(String serialName, ProgramResult result){
+
+		String json = new JSONObject()
+				.put("name", serialName)
+				.put("state", result.getState().toString())
+				.put("output", base64(result.getOutput()))
+				.put("error", base64(result.getError()))
+				.put("lines", result.getLines())
+				.toString();
+
+		log(json);
+    }
 }
