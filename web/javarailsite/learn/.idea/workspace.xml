@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7e1ce60-ea38-4b2d-8f02-06b88dc55bbc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../javabridge/JavaBridge/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../javabridge/JavaBridge/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/javabridge.py" beforeDir="false" afterPath="$PROJECT_DIR$/javabridge.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,12 +32,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1050" />
+          <entry key="py" value="1506" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1050" />
+          <entry key="Python" value="1506" />
         </counts>
       </usages-collector>
     </session>
@@ -48,8 +47,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/javabridge.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+            <state relative-caret-position="85">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -171,8 +170,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/javabridge.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
