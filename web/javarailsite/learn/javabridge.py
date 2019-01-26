@@ -1,4 +1,6 @@
 import subprocess
+import json
+import base64
 
 class CommandExecution:
 
@@ -20,7 +22,9 @@ class CommandExecution:
 
                 # Process line as json
 
-                self.result_buffer.append(line.rstrip())
+                json_data = json.loads(line.rstrip())
+
+                self.result_buffer.append(Result())
 
             self.read_time = current_time
 
