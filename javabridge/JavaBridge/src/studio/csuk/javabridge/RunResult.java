@@ -1,4 +1,4 @@
-package com.wilfaskins.javabridge;
+package studio.csuk.javabridge;
 
 public class RunResult extends AbstractResult{
 

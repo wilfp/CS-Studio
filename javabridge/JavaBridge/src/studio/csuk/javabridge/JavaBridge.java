@@ -1,4 +1,4 @@
-package com.wilfaskins.javabridge;
+package studio.csuk.javabridge;
 
 import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
@@ -6,31 +6,36 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 import java.io.*;
 import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class JavaBridge {
 
 	private File directory;
-	private URLClassLoader loader;
+	private File processedDir;
 
-	public JavaBridge() {
+	public JavaBridge(File directory) {
+
+		// init
+		this.directory = directory;
+		this.processedDir = new File(directory, "/processed/");
+		this.processedDir.mkdir();
 
 		startCLI();
 	}
 
 	public void startCLI() {
-		
+
 		Scanner sc = new Scanner(System.in);
 
 		while(!sc.hasNext()){}
 		String filePath = sc.next();
 		this.setDirectory(filePath);
-		
+
 		while(true) {
 
 			if(!sc.hasNext()) continue;
@@ -41,34 +46,79 @@ public class JavaBridge {
 
 			ProgramResult result = runFile(next);
 			log("Run output: " + result.getOutput());
+			log("Run error: " + result.getError());
+			log("Run lines: " + result.getLines().toString());
 			sc.reset();
 		}
 
 		sc.close();
 		log("Exiting...");
 	}
-	
+
 	public ProgramResult runFile(String serialName) {
+
+		InjectionLogger.get().register(serialName);
 
 		ProgramResult result = new ProgramResult();
 
-		File target = new File(directory, serialName  + ".java");
-		CompileResult compileResult = compile(serialName, target);
+		try {
 
-		if(compileResult.getState() == CompileResult.State.FAIL){
-			result.setError(compileResult.getError());
-			result.setLineNumber(compileResult.getLineNumber());
-			result.setState(ProgramResult.State.COMPILE_ERROR);
-			return result;
+			File target = new File(directory, serialName + ".java");
+
+			File processed = new File(processedDir, serialName + ".java");
+			processed.createNewFile();
+
+			int lineNumber = 1;
+			int bracketCount = 0;
+
+			FileWriter fw = new FileWriter(processed);
+			FileReader reader = new FileReader(target);
+			BufferedReader bufferedReader = new BufferedReader(reader);
+			String line = null;
+
+			while((line = bufferedReader.readLine()) != null){
+
+				if(line.contains("{")) bracketCount++;
+
+				if(line.contains("}")) bracketCount--;
+
+				if(bracketCount > 1) {
+					fw.write(line + "\r\n" + InjectionLogger.get().getLineCode(serialName, lineNumber) + "\r\n");
+				}else{
+					fw.write(line + "\r\n");
+				}
+
+				lineNumber++;
+			}
+
+			fw.close();
+
+			CompileResult compileResult = compile(serialName, processed);
+
+			if (compileResult.getState() == CompileResult.State.FAIL) {
+				result.setError(compileResult.getError());
+				result.setLineNumber(compileResult.getLineNumber());
+				result.setState(ProgramResult.State.COMPILE_ERROR);
+				return result;
+			}
+
+			RunResult runResult = runClass(serialName);
+
+			result.setOutput(runResult.getOutput());
+			result.setState(ProgramResult.State.SUCCESS);
+
+			LinkedList<Integer> lines = InjectionLogger.get().getLines(serialName);
+			result.setLines(lines);
+
+		}catch(IOException e){
+			e.printStackTrace();
 		}
-		
-		RunResult runResult = runClass(serialName);
-		
-		result.setOutput(runResult.getOutput());
-		result.setState(ProgramResult.State.SUCCESS);
+
+		InjectionLogger.get().remove(serialName);
+
 		return result;
 	}
-	
+
 	private CompileResult compile(String serialName, File file) {
 
 		try {
@@ -87,10 +137,10 @@ public class JavaBridge {
 			fileManager.close();
 
 			if(called){
-				File outputFile = new File(directory, serialName + ".class");
+				File outputFile = new File(processedDir, serialName + ".class");
 				return new CompileResult(CompileResult.State.SUCCESS, "", 0, sw.toString(), outputFile);
 			}else{
-				return new CompileResult(CompileResult.State.FAIL, "", 0, sw.toString(), null);
+				return new CompileResult(CompileResult.State.FAIL, sw.toString(), 0, null, null);
 			}
 
 		} catch (IOException e) {
@@ -103,6 +153,7 @@ public class JavaBridge {
 	private RunResult runClass(String className){
 
 		try {
+			URLClassLoader loader = new URLClassLoader(new URL[]{ processedDir.toURI().toURL() });
 			Class c = loader.loadClass(className);
 
 			// Capture System.out data
@@ -138,7 +189,7 @@ public class JavaBridge {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private static void log(String text) {
 		System.out.println(text);
 	}
