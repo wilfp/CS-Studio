@@ -1,8 +1,6 @@
-package com.wilfaskins.javabridge;
+package studio.csuk.javabridge;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class JavaBridgeTest {
 
