@@ -8,6 +8,7 @@ import java.io.*;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -15,7 +16,7 @@ import java.util.Scanner;
 public class JavaBridge {
 
 	private File directory;
-	
+
 	public JavaBridge(File directory) {
 		
 		// init
@@ -51,23 +52,55 @@ public class JavaBridge {
 
 		ProgramResult result = new ProgramResult();
 
-		File target = new File(directory, serialName  + ".java");
-		CompileResult compileResult = compile(serialName, target);
+		try {
 
-		if(compileResult.getState() == CompileResult.State.FAIL){
-			result.setError(compileResult.getError());
-			result.setLineNumber(compileResult.getLineNumber());
-			result.setState(ProgramResult.State.COMPILE_ERROR);
-			return result;
+			File target = new File(directory, serialName + ".java");
+
+			File processed = new File(directory, serialName + "_processed.java");
+			processed.createNewFile();
+
+			boolean startedCode = false;
+			int lineNumber = 0;
+
+			FileWriter fw = new FileWriter(processed);
+			FileReader reader = new FileReader(target);
+			BufferedReader bufferedReader = new BufferedReader(reader);
+			String line = null;
+
+			while((line = bufferedReader.readLine()) != null){
+
+				if(!startedCode && !line.contains("{"))
+					continue;
+
+				startedCode = true;
+
+				fw.write(line + "\r\n" + InjectionLogger.get().getLineCode(serialName, lineNumber) + "\r\n");
+
+				lineNumber++;
+			}
+
+			fw.close();
+
+			CompileResult compileResult = compile(serialName, processed);
+
+			if (compileResult.getState() == CompileResult.State.FAIL) {
+				result.setError(compileResult.getError());
+				result.setLineNumber(compileResult.getLineNumber());
+				result.setState(ProgramResult.State.COMPILE_ERROR);
+				return result;
+			}
+
+			RunResult runResult = runClass(serialName);
+
+			result.setOutput(runResult.getOutput());
+			result.setState(ProgramResult.State.SUCCESS);
+
+			LinkedList<Integer> lines = InjectionLogger.get().getLines(serialName);
+			result.setLines(lines);
+
+		}catch(IOException e){
+			e.printStackTrace();
 		}
-		
-		RunResult runResult = runClass(serialName);
-		
-		result.setOutput(runResult.getOutput());
-		result.setState(ProgramResult.State.SUCCESS);
-
-		LinkedList<Integer> lines = InjectionLogger.get().getLines(serialName);
-		result.setLines(lines);
 
 		InjectionLogger.get().remove(serialName);
 
