@@ -9,6 +9,8 @@ class CommandExecution:
         self.result_buffer = []
         self.read_interval = 100
         self.read_time = 0
+        self.counter = 0
+        self.alphabet = "ABCDEFGHIJKLMNOP"
 
         self.process = subprocess.Popen(["java", "JavaBridge.jar"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
@@ -24,25 +26,41 @@ class CommandExecution:
 
                 json_data = json.loads(line.rstrip())
 
-                self.result_buffer.append(Result())
+                self.result_buffer.append(Result(json_data['name'], json_data['state'], json_data['output'],
+                                                 json_data['error'], json_data['lines']))
 
             self.read_time = current_time
 
         # if result_buffer contains code_id
         # return result
 
+        if result
+
         return None
 
     def submit(self, code):
 
-        # TODO: run code here
-        msg = None
+        code_id = self.get_code_id()
 
-        # Process code into readable format
+        # create new file in temp folder called code_id.java
+        # write code to file
 
-        self.process.stdin.write(msg)
+        self.process.stdin.write(code_id)
 
-        code_id = "0"  # Assign id
+        return code_id
+
+    def get_code_id(self):
+
+        self.counter += 1
+
+        code_id = ""
+        temp_counter = self.counter
+
+        while temp_counter > 16:
+            code_id += self.alphabet[temp_counter % 16]
+            temp_counter /= 16
+
+        code_id += self.alphabet[temp_counter]
 
         return code_id
 
@@ -55,6 +73,10 @@ class CommandExecution:
 
 class Result:
 
-    def __init__(self, ):
-
+    def __init__(self, name, state, output, error, lines):
+        self.name = name
+        self.state = state
+        self.output = output
+        self.error = error
+        self.lines = lines
         return
