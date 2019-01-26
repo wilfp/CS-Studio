@@ -67,7 +67,8 @@ public class JavaBridge {
 		result.setState(ProgramResult.State.SUCCESS);
 
 		LinkedList<Integer> lines = InjectionLogger.get().getLines(serialName);
-		// TODO: add lines to ProgramResult
+		result.setLines(lines);
+
 		InjectionLogger.get().remove(serialName);
 
 		return result;
