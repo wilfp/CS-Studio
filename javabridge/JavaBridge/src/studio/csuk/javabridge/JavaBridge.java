@@ -1,4 +1,4 @@
-package com.wilfaskins.javabridge;
+package studio.csuk.javabridge;
 
 import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
@@ -6,10 +6,8 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 import java.io.*;
 import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Scanner;
 
