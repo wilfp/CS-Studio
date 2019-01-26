@@ -42,6 +42,7 @@ public class JavaBridge {
 
 			ProgramResult result = runFile(next);
 			log("Run output: " + result.getOutput());
+			log("Run error: " + result.getError());
 			log("Run lines: " + result.getLines().toString());
 			sc.reset();
 		}
@@ -63,8 +64,7 @@ public class JavaBridge {
 			File processed = new File(processedDir, serialName + ".java");
 			processed.createNewFile();
 
-			boolean startedCode = false;
-			int lineNumber = 0;
+			int lineNumber = 1;
 			int bracketCount = 0;
 
 			FileWriter fw = new FileWriter(processed);
@@ -73,11 +73,6 @@ public class JavaBridge {
 			String line = null;
 
 			while((line = bufferedReader.readLine()) != null){
-
-				if(!startedCode && !line.contains("{"))
-					continue;
-
-				startedCode = true;
 
 				if(line.contains("{")) bracketCount++;
 
