@@ -4,7 +4,7 @@ class CommandExecution:
 
     def __init__(self):
 
-        self.result_buffer = null
+        self.result_buffer = []
         self.read_interval = 100
         self.read_time = 0
 
@@ -14,8 +14,15 @@ class CommandExecution:
 
     def poll_result(self, code_id):
 
-        # if current_time-read_time > read_interval:
-        # read results
+        if current_time - self.read_time > self.read_interval:
+
+            for line in iter(self.process.stdout.readline, ''):
+
+                # Process line as json
+
+                self.result_buffer.append(line.rstrip())
+
+            self.read_time = current_time
 
         # if result_buffer contains code_id
         # return result
