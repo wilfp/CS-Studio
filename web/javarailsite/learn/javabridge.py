@@ -6,50 +6,36 @@ import time
 
 class CommandExecution:
 
-    def __init__(self):
+    def __init__(self, java_bridge_jar):
+
+        self.java_bridge_jar = java_bridge_jar
 
         # init starting data
 
         self.result_buffer = []
-        self.read_interval = 10000
+        self.read_interval = 2
         self.read_time = 0
         self.counter = 0
         self.alphabet = "ABCDEFGHIJKLMNOP"
-        self.timeout = 50000
+        self.timeout = 15
 
         # call JavaBridge subprocess
 
-        self.process = subprocess.Popen(["java", "JavaBridge.jar"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        self.process = subprocess.Popen(["java", "-cp", self.java_bridge_jar.path, "studio.csuk.javabridge.JavaBridgeTest"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
         return
 
     def poll_result(self, code_id):
-
-        # Update list of incoming results
-
-        if time.time() - self.read_time > self.read_interval:
-
-            for line in iter(self.process.stdout.readline, ''):
-
-                # Process line as json
-
-                json_data = json.loads(line.rstrip())
-
-                # Put json into data structure
-
-                self.result_buffer.append(Result(json_data['name'], json_data['state'], base64.decode(json_data['output']),
-                                                 base64.decode(json_data['error']), json_data['lines']))
-
-            self.read_time = time.time()
-
-        # check incoming results
 
         result_pointer = 0
         start_time = time.time()
 
         # check for result till timeout
 
-        while start_time-time.time() > self.timeout:
+        while time.time()-start_time < self.timeout:
+
+            self.update_result_list()
+
             while result_pointer < len(self.result_buffer)-1:
 
                 result = self.result_buffer[result_pointer]
@@ -62,6 +48,28 @@ class CommandExecution:
         # if no result was found
 
         return None
+
+    def update_result_list(self):
+
+        if time.time() - self.read_time > self.read_interval:
+
+            for line in iter(self.process.stdout.readline, ''):
+                # Process line as json
+
+                line = line.rstrip()
+                line = line.decode("UTF-8")
+
+                json_data = json.loads(line)
+
+                # Put json into data structure
+
+                self.result_buffer.append(
+                    Result(json_data['name'], json_data['state'], base64.decode(json_data['output']),
+                           base64.decode(json_data['error']), json_data['lines']))
+
+            self.read_time = time.time()
+
+        return
 
     def submit(self, code):
 
@@ -77,7 +85,7 @@ class CommandExecution:
 
         # call process
 
-        self.process.stdin.write(code_id)
+        self.process.stdin.write(code_id.encode("UTF-8"))
 
         # return the code id for later
 

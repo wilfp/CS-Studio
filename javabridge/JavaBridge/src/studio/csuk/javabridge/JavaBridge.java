@@ -181,14 +181,7 @@ public class JavaBridge {
 	}
 
 	private void setDirectory(String filePath){
-
 		this.directory = new File(filePath);
-
-		try {
-			this.loader = new URLClassLoader(new URL[]{ directory.toURI().toURL() });
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
 	}
 
 	private static void log(String text) {

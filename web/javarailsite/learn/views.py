@@ -6,10 +6,11 @@ from learn import preprocessor
 from learn import javabridge
 import base64
 import json
-import time
 
-cmd = javabridge.CommandExecution()
+# create CommandExecution singleton
 
+java_bridge_jar = FileUpload.objects.get(name="JavaBridge.jar").file
+cmd = javabridge.CommandExecution(java_bridge_jar)
 
 def index(request):
 
