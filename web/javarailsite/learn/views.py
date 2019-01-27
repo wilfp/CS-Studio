@@ -6,11 +6,12 @@ from learn import preprocessor
 from learn import javabridge
 import base64
 import json
+import tempfile
 
 # create CommandExecution singleton
 
 java_bridge_jar = FileUpload.objects.get(name="JavaBridge.jar").file
-cmd = javabridge.CommandExecution(java_bridge_jar)
+cmd = javabridge.CommandExecution(java_bridge_jar, tempfile.gettempdir())
 
 def index(request):
 

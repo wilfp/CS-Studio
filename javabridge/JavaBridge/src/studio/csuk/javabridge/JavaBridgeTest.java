@@ -6,7 +6,7 @@ public class JavaBridgeTest {
 
     public static void main(String[] args) {
 
-        JavaBridge bridge = new JavaBridge(new File("temp/"));
+        JavaBridge bridge = new JavaBridge(new File(args[0]));
         bridge.startCLI();
     }
 

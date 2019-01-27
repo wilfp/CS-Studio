@@ -25,6 +25,10 @@ public class JavaBridge {
 
 		// init
 		this.directory = directory;
+
+
+		if(!directory.exitsts)
+
 		this.processedDir = new File(directory, "/processed/");
 		this.processedDir.mkdir();
 

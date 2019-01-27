@@ -6,9 +6,10 @@ import time
 
 class CommandExecution:
 
-    def __init__(self, java_bridge_jar):
+    def __init__(self, java_bridge_jar, directory):
 
         self.java_bridge_jar = java_bridge_jar
+        self.temp_path = directory + "/javabridge/"
 
         # init starting data
 
@@ -21,7 +22,7 @@ class CommandExecution:
 
         # call JavaBridge subprocess
 
-        self.process = subprocess.Popen(["java", "-cp", self.java_bridge_jar.path, "studio.csuk.javabridge.JavaBridgeTest"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        self.process = subprocess.Popen(["java", "-cp", self.java_bridge_jar.path, "studio.csuk.javabridge.JavaBridgeTest", self.temp_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
         return
 
@@ -51,7 +52,7 @@ class CommandExecution:
 
     def update_result_list(self):
 
-        if time.time() - self.read_time > self.read_interval:
+        if time.time()-self.read_time > self.read_interval:
 
             for line in iter(self.process.stdout.readline, ''):
                 # Process line as json
@@ -59,7 +60,7 @@ class CommandExecution:
                 line = line.rstrip()
                 line = line.decode("UTF-8")
 
-                json_data = json.loads(line)
+                json_data = json.loads("line: " + line)
 
                 # Put json into data structure
 
@@ -79,7 +80,7 @@ class CommandExecution:
 
         # write code to file
 
-        f = open('/temp/' + code_id + '.java', 'w+')
+        f = open(self.temp_path + code_id + '.java', 'w+')
         f.write(code)
         f.close()
 
