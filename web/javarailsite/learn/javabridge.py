@@ -2,14 +2,19 @@ import subprocess
 import json
 import base64
 import time
-
+import os
 
 class CommandExecution:
 
     def __init__(self, java_bridge_jar, directory):
 
+        # handle file system
+
         self.java_bridge_jar = java_bridge_jar
         self.temp_path = directory + "/javabridge/"
+
+        if not os.path.exists(self.temp_path):
+            os.mkdir(self.temp_path)
 
         # init starting data
 
