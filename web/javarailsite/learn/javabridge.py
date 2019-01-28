@@ -60,10 +60,17 @@ class CommandExecution:
         if time.time()-self.read_time > self.read_interval:
 
             for line in iter(self.process.stdout.readline, ''):
+
                 # Process line as json
 
                 line = line.rstrip()
+
+                if len(line) < 2:
+                    continue
+
                 line = line.decode("UTF-8")
+                
+                print("line: " + line)
 
                 json_data = json.loads("line: " + line)
 
