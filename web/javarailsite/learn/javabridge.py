@@ -126,6 +126,7 @@ class CommandExecution:
 
     def close(self):
 
+        self.process.stdin.write(".exit".encode("UTF-8"))
         self.process.stdin.close()
 
         return

@@ -26,11 +26,10 @@ public class JavaBridge {
 		// init
 		this.directory = directory;
 
-
-		if(!directory.exitsts)
-
-		this.processedDir = new File(directory, "/processed/");
-		this.processedDir.mkdir();
+		if(!directory.exists()) {
+		    this.processedDir = new File(directory, "/processed/");
+            this.processedDir.mkdir();
+        }
 
 		startCLI();
 	}
@@ -38,10 +37,6 @@ public class JavaBridge {
 	public void startCLI() {
 
 		Scanner sc = new Scanner(System.in);
-
-		while(!sc.hasNext()){}
-		String filePath = sc.next();
-		this.setDirectory(filePath);
 
 		while(true) {
 
