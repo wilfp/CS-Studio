@@ -11,6 +11,7 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Files;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.LinkedList;
@@ -20,6 +21,7 @@ public class JavaBridge {
 
 	private File directory;
 	private File processedDir;
+	private File currentLog;
 
 	public JavaBridge(File directory) {
 
@@ -29,7 +31,17 @@ public class JavaBridge {
 		if(!directory.exists()) {
 		    this.processedDir = new File(directory, "/processed/");
             this.processedDir.mkdir();
-        }
+
+			this.currentLog = new File(directory, "javabridge-out-log.txt");
+
+			if(!this.currentLog.exists()) {
+				try {
+					this.currentLog.createNewFile();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
 		startCLI();
 	}
@@ -183,8 +195,17 @@ public class JavaBridge {
 		this.directory = new File(filePath);
 	}
 
-	private static void log(String text) {
+	private void log(String text) {
 		System.out.println(text);
+
+		try
+		{
+			FileWriter writer = new FileWriter(this.currentLog, true);
+			writer.write(text + "\r\n");
+			writer.close();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private static String base64(String text){
@@ -196,7 +217,7 @@ public class JavaBridge {
 		return Base64.getEncoder().encodeToString(text.getBytes());
 	}
 
-	private static void printResult(String serialName, ProgramResult result){
+	private void printResult(String serialName, ProgramResult result){
 
 		String json = new JSONObject()
 				.put("name", serialName)
