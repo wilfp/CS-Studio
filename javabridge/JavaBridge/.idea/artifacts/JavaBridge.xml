@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="JavaBridge">
-    <output-path>$PROJECT_DIR$/../../web/javarailsite/learn</output-path>
-    <root id="archive" name="JavaBridge.jar">
-      <element id="module-output" name="JavaBridge" />
-    </root>
-  </artifact>
-</component>
