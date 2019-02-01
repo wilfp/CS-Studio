@@ -67,10 +67,10 @@ def run_java_code(request):
     ready_code = preprocessor.get_code(code_submitted, challenge_obj, mappings, main_context)
 
     # run the code with JavaBridge
-
+	
     code_id = cmd.submit(ready_code)
     result = cmd.poll_result(code_id)
-
+	
     # return the result as a HttpResponse
 
     text = result.output

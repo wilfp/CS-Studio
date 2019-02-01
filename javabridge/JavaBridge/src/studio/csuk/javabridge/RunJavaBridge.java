@@ -2,7 +2,7 @@ package studio.csuk.javabridge;
 
 import java.io.File;
 
-public class JavaBridgeTest {
+public class RunJavaBridge {
 
     public static void main(String[] args) {
 

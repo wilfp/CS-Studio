@@ -27,19 +27,19 @@ class CommandExecution:
 
         # call JavaBridge subprocess
 
-        self.process = subprocess.Popen(["java", "-cp", self.java_bridge_jar.path, "studio.csuk.javabridge.JavaBridgeTest", self.temp_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        self.process = subprocess.Popen(["java", "-cp", self.java_bridge_jar.path, "studio.csuk.javabridge.RunJavaBridge", self.temp_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
         return
 
     def poll_result(self, code_id):
-
+    
         result_pointer = 0
         start_time = time.time()
 
         # check for result till timeout
 
         while time.time()-start_time < self.timeout:
-
+        
             self.update_result_list()
 
             while result_pointer < len(self.result_buffer)-1:
@@ -56,7 +56,7 @@ class CommandExecution:
         return None
 
     def update_result_list(self):
-
+    
         if time.time()-self.read_time > self.read_interval:
 
             for line in iter(self.process.stdout.readline, ''):
