@@ -28,18 +28,16 @@ public class JavaBridge {
 		// init
 		this.directory = directory;
 
-		if(!directory.exists()) {
-		    this.processedDir = new File(directory, "/processed/");
-            this.processedDir.mkdir();
+		this.processedDir = new File(directory, "/processed/");
+		this.processedDir.mkdir();
 
-			this.currentLog = new File(directory, "javabridge-out-log.txt");
+		this.currentLog = new File(directory, "javabridge-out-log.txt");
 
-			if(!this.currentLog.exists()) {
-				try {
-					this.currentLog.createNewFile();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+		if(!this.currentLog.exists()) {
+			try {
+				this.currentLog.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 
