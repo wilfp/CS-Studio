@@ -21,7 +21,6 @@ public class JavaBridge {
 
 	private File directory;
 	private File processedDir;
-	private File currentLog;
 
 	public JavaBridge(File directory) {
 
@@ -30,18 +29,6 @@ public class JavaBridge {
 
 		this.processedDir = new File(directory, "/processed/");
 		this.processedDir.mkdir();
-
-		/*
-		this.currentLog = new File(directory, "javabridge-out-log.txt");
-
-		if(!this.currentLog.exists()) {
-			try {
-				this.currentLog.createNewFile();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		*/
 
 		startCLI();
 	}
@@ -61,7 +48,6 @@ public class JavaBridge {
 			ProgramResult result = runFile(next);
 			printResult(next, result);
 			sc.reset();
-			break; // used for debugging
 		}
 
 		sc.close();
@@ -198,15 +184,6 @@ public class JavaBridge {
 
 	private void log(String text) {
 		System.out.println(text);
-
-		try
-		{
-			FileWriter writer = new FileWriter(this.currentLog, true);
-			writer.write(text + "\r\n");
-			writer.close();
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	private static String base64(String text){
