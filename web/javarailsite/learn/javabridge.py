@@ -26,7 +26,7 @@ class CommandExecution:
         self.timeout = 15
 
         # call JavaBridge subprocess
-
+        
         self.process = subprocess.Popen(["java", "-cp", self.java_bridge_jar.path, "studio.csuk.javabridge.RunJavaBridge", self.temp_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
         return

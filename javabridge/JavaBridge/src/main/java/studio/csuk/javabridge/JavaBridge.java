@@ -21,8 +21,12 @@ public class JavaBridge {
 
 	private File directory;
 	private File processedDir;
+	private File temp;
 
 	public JavaBridge(File temp) {
+
+		// The root directory file
+		this.temp = temp;
 
 		// get directory location
 		this.directory = new File(temp, "/javabridge/");
@@ -74,7 +78,7 @@ public class JavaBridge {
 
 		try {
 
-			File target = new File(directory, serialName + ".java");
+			File target = new File(temp, serialName + ".java");
 
 			File processed = new File(processedDir, serialName + ".java");
 			processed.createNewFile();
