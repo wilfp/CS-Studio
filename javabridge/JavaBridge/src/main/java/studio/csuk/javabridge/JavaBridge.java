@@ -22,14 +22,26 @@ public class JavaBridge {
 	private File directory;
 	private File processedDir;
 
-	public JavaBridge(File directory) {
+	public JavaBridge(File temp) {
 
-		// init
-		this.directory = directory;
+		// get directory location
+		this.directory = new File(temp, "/javabridge/");
 
+		// create folder if doesn't exist
+		if(!directory.exists()){
+			directory.mkdir();
+		}
+
+		// Clear working directory
+		for(File file : directory.listFiles()){
+			file.delete();
+		}
+
+		// folder for processed files
 		this.processedDir = new File(directory, "/processed/");
 		this.processedDir.mkdir();
 
+		// start listening for input
 		startCLI();
 	}
 

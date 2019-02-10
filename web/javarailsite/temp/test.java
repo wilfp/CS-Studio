@@ -16,7 +16,7 @@
  *
  ******************************************************************************/
 
-public class Test {
+public class test {
 
     public static void main(String[] args) {
         // Prints "Hello, World" to the terminal window.
