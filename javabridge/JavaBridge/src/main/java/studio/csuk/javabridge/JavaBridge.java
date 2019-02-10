@@ -31,6 +31,7 @@ public class JavaBridge {
 		this.processedDir = new File(directory, "/processed/");
 		this.processedDir.mkdir();
 
+		/*
 		this.currentLog = new File(directory, "javabridge-out-log.txt");
 
 		if(!this.currentLog.exists()) {
@@ -40,6 +41,7 @@ public class JavaBridge {
 				e.printStackTrace();
 			}
 		}
+		*/
 
 		startCLI();
 	}
@@ -59,6 +61,7 @@ public class JavaBridge {
 			ProgramResult result = runFile(next);
 			printResult(next, result);
 			sc.reset();
+			break; // used for debugging
 		}
 
 		sc.close();

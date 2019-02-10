@@ -6,6 +6,7 @@ public class RunJavaBridge {
 
     public static void main(String[] args) {
 
+        /*
         File errorLog = new File("javabridge-error-log.txt");
 
         if(!errorLog.exists()) {
@@ -20,7 +21,8 @@ public class RunJavaBridge {
             System.setErr(errorStream);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
+        }*/
+
 
         JavaBridge bridge = new JavaBridge(new File(args[0]));
         bridge.startCLI();
