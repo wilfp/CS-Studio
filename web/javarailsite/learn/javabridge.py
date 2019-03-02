@@ -25,7 +25,7 @@ class CommandExecution:
         self.read_time = 0
         self.counter = 0
         self.alphabet = "ABCDEFGHIJKLMNOP"
-        self.timeout = 15
+        self.timeout = 8
 
         # call JavaBridge subprocess
         
@@ -58,17 +58,22 @@ class CommandExecution:
         return None
 
     def update_result_list(self):
+    
+        print("update")
         
         # doesn't work for some reason
         if (time.time()-self.read_time) > self.read_interval:
         
+            print("read")
+        
             # doesn't read anything for some reason
             while True:
             
-                if self.process.poll() is not None:
-                    break
-                
                 line = self.process.stdout.readline()
+                
+                if line == '' and self.process.poll() != None:
+                    print("end read")
+                    break
                 
                 # Process line as json
 
@@ -76,9 +81,12 @@ class CommandExecution:
                 
                 line = line.decode("UTF-8")
                 
+                if(len(line) < 2):
+                    continue
+                
                 print("line: " + line)
 
-                json_data = json.loads("line: " + line)
+                json_data = json.loads(line)
 
                 # Put json into data structure
 
