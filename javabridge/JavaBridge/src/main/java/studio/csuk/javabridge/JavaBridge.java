@@ -19,7 +19,6 @@ import java.util.Scanner;
 
 public class JavaBridge {
 
-	private File directory;
 	private File processedDir;
 	private File temp;
 
@@ -28,21 +27,13 @@ public class JavaBridge {
 		// The root directory file
 		this.temp = temp;
 
-		// get directory location
-		this.directory = new File(temp, "/javabridge/");
-
-		// create folder if doesn't exist
-		if(!directory.exists()){
-			directory.mkdir();
-		}
-
-		// Clear working directory
-		for(File file : directory.listFiles()){
+		// Clear directory
+		for(File file : temp.listFiles()){
 			file.delete();
 		}
 
 		// folder for processed files
-		this.processedDir = new File(directory, "/processed/");
+		this.processedDir = new File(this.temp, "/processed/");
 		this.processedDir.mkdir();
 
 		// start listening for input
@@ -92,6 +83,10 @@ public class JavaBridge {
 			String line = null;
 
 			while((line = bufferedReader.readLine()) != null){
+
+				if(line.contains("%NAMEPOINT%")){
+					line = line.replace("%NAMEPOINT%", serialName);
+				}
 
 				if(line.contains("{")) bracketCount++;
 
@@ -192,10 +187,6 @@ public class JavaBridge {
 			e.printStackTrace();
 			return new RunResult(RunResult.State.FAIL, e.getMessage(), 0, "");
 		}
-	}
-
-	private void setDirectory(String filePath){
-		this.directory = new File(filePath);
 	}
 
 	private void log(String text) {

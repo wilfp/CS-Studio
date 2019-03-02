@@ -15,11 +15,13 @@ class CommandExecution:
 
         if not os.path.exists(self.temp_path):
             os.mkdir(self.temp_path)
+        
+        print(self.temp_path)
 
         # init starting data
 
         self.result_buffer = []
-        self.read_interval = 2
+        self.read_interval = 1
         self.read_time = 0
         self.counter = 0
         self.alphabet = "ABCDEFGHIJKLMNOP"
@@ -42,7 +44,7 @@ class CommandExecution:
         
             self.update_result_list()
 
-            while result_pointer < len(self.result_buffer)-1:
+            while result_pointer < len(self.result_buffer):
 
                 result = self.result_buffer[result_pointer]
 
@@ -56,18 +58,22 @@ class CommandExecution:
         return None
 
     def update_result_list(self):
-    
-        if time.time()-self.read_time > self.read_interval:
-
-            for line in iter(self.process.stdout.readline, ''):
-
+        
+        # doesn't work for some reason
+        if (time.time()-self.read_time) > self.read_interval:
+        
+            # doesn't read anything for some reason
+            while True:
+            
+                if self.process.poll() is not None:
+                    break
+                
+                line = self.process.stdout.readline()
+                
                 # Process line as json
 
                 line = line.rstrip()
-
-                if len(line) < 2:
-                    continue
-
+                
                 line = line.decode("UTF-8")
                 
                 print("line: " + line)
@@ -80,7 +86,7 @@ class CommandExecution:
                     Result(json_data['name'], json_data['state'], base64.decode(json_data['output']),
                            base64.decode(json_data['error']), json_data['lines']))
 
-            self.read_time = time.time()
+                self.read_time = time.time()
 
         return
 

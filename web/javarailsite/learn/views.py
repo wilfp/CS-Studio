@@ -68,14 +68,22 @@ def run_java_code(request):
 
     # run the code with JavaBridge
 	
+    print("submit")
     code_id = cmd.submit(ready_code)
+    print("poll")
     result = cmd.poll_result(code_id)
-	
+    print("result")
+
     # return the result as a HttpResponse
 
-    text = result.output
-    status = result.state
-    lines = result.lines
+    if(result != None):
+        text = result.output
+        status = result.state
+        lines = result.lines
+    else:
+        text = "Internal Error"
+        status = "Unknown"
+        lines = "0"
 
     response = "{ \"text\": \"" + text + "\", \"status\": \"" + status + "\", \"lines\": " + lines + " }"
 
