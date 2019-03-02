@@ -29,7 +29,7 @@ class CommandExecution:
 
         # call JavaBridge subprocess
         
-        self.process = subprocess.Popen(["java", "-cp", self.java_bridge_jar.path, "studio.csuk.javabridge.RunJavaBridge", self.temp_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        self.process = subprocess.Popen(["java", "-cp", self.java_bridge_jar.path, "studio.csuk.javabridge.RunJavaBridge", self.temp_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         return
 
@@ -61,40 +61,21 @@ class CommandExecution:
     
         print("update")
         
-        # doesn't work for some reason
-        if (time.time()-self.read_time) > self.read_interval:
-        
-            print("read")
-        
-            # doesn't read anything for some reason
-            while True:
+        while True:
+            #line = self.process.stderr.readline()
             
-                line = self.process.stdout.readline()
-                
-                if line == '' and self.process.poll() != None:
-                    print("end read")
-                    break
-                
-                # Process line as json
+            # Process line as json
 
-                line = line.rstrip()
-                
-                line = line.decode("UTF-8")
-                
-                if(len(line) < 2):
-                    continue
-                
-                print("line: " + line)
+            #line = line.rstrip()
+            
+            #line = line.decode("UTF-8")
+            
+            #if(len(line) < 2):
+            #    continue
+            
+            #print("line: " + line)
 
-                json_data = json.loads(line)
-
-                # Put json into data structure
-
-                self.result_buffer.append(
-                    Result(json_data['name'], json_data['state'], base64.decode(json_data['output']),
-                           base64.decode(json_data['error']), json_data['lines']))
-
-                self.read_time = time.time()
+            print(self.process.stderr.readline().decode())
 
         return
 
