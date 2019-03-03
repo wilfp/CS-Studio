@@ -40,11 +40,11 @@
 
 	<h1 class="title"> > Output</h1>
 	
-	<div id="codeoutput" class="box has-background-grey-dark"></div>
-	
-	<div id="app">
-	[[ message ]]
-	</div>
+	<div id="codeoutput" class="box has-background-grey-dark">
+    
+        <output-panel v-for="output in outputs" :output="output"/>
+    
+    </div>
 	
 </div>
 	

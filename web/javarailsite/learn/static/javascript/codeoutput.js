@@ -21,24 +21,6 @@ function csrfSafeMethod(method) {
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
 
-var codeMirror;
-
-function onLoad(){
-	codeMirror = CodeMirror.fromTextArea(document.getElementById("codearea"), {
-    lineNumbers: true,
-    matchBrackets: true,
-    mode: "text/x-java"
-  });
-  
-  var app = new Vue({
-	  delimiters: ['[[', ']]'],
-	  el: '#app',
-	  data: {
-		  message: 'Hello Vue!'
-		  }
-	});
-}
-
 $.ajaxSetup({
     beforeSend: function(xhr, settings) {
         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
@@ -47,26 +29,41 @@ $.ajaxSetup({
     }
 });
 
-function getNotification(output, style){
-	return "<div class=\"" + style + "\">" + output + "</div>";
-}
+var codeMirror;
+var app;
 
-function addOutput(output, type="none"){
-	
-	$("#codeoutput").html(function(i, orginHtml){
-		
-		var style = null;
-		
-		if(type == "error"){
-			style = "notification is-danger";
-		}else if(type == "success"){
-			style = "notification is-success";
-		}else{
-			style = "notification is-link";
-		}
-		
-        return orginHtml + getNotification(output, style);
-    });
+function onLoad(){
+    
+    codeMirror = CodeMirror.fromTextArea(document.getElementById("codearea"), {
+    lineNumbers: true,
+    matchBrackets: true,
+    mode: "text/x-java"
+  });
+  
+  Vue.component('output-panel', {
+  data: function () {
+    return {
+      style: "notification is-link",
+      data: "none"
+    }
+  },
+  template: '<div class="[[ style ]]"> [[ data ]] </div>',
+  
+  props: {
+      output: Object
+  }
+  
+})
+  
+   app = new Vue({
+	  delimiters: ['[[', ']]'],
+	  el: '#codeoutput',
+      data: {
+          outputs: []
+      }
+	});
+    
+
 }
 
 function runCodeFunction() {
@@ -106,7 +103,7 @@ function sendPost(code) {
 
 function response(msg, status, jqXHR) {
 	
-	addOutput("Output: " + msg["text"], msg["status"]);
+	app.$data.outputs.add(msg["text"], msg["status"]);
 	
 	setProgress('');
 }

@@ -11,7 +11,7 @@ class CommandExecution:
         # handle file system
 
         self.java_bridge_jar = java_bridge_jar
-        self.temp_path = directory + "/javabridge/"
+        self.temp_path = directory + "\\javabridge\\"
 
         if not os.path.exists(self.temp_path):
             os.mkdir(self.temp_path)
@@ -20,7 +20,6 @@ class CommandExecution:
 
         self.counter = 0
         self.alphabet = "ABCDEFGHIJKLMNOP"
-        
         
         return
 
@@ -31,7 +30,7 @@ class CommandExecution:
         code_id = self.get_code_id()
 
         # write code to file
-
+        
         f = open(self.temp_path + code_id + '.java', 'w+')
         f.write(code)
         f.close()
@@ -48,7 +47,8 @@ class CommandExecution:
         out = p.stdout.readline().decode()
         p.kill()
         
-        print("line: " + out)
+        if(out == ""):
+            return None
         
         # parse output as JSON
         
@@ -83,14 +83,6 @@ class CommandExecution:
         # return generated id
 
         return code_id
-
-    def close(self):
-
-        self.process.stdin.write(".exit".encode("UTF-8"))
-        self.process.stdin.close()
-
-        return
-
 
 class Result:
 
