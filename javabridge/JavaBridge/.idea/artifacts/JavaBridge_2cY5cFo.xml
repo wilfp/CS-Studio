@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JavaBridge_2cY5cFo">
+    <output-path>$PROJECT_DIR$/../../web/javarailsite</output-path>
+    <root id="archive" name="JavaBridge_2cY5cFo.jar">
+      <element id="module-output" name="JavaBridge" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
