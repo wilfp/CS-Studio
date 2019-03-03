@@ -27,11 +27,6 @@ public class JavaBridge {
 		// The root directory file
 		this.temp = temp;
 
-		// Clear directory
-		for(File file : temp.listFiles()){
-			file.delete();
-		}
-
 		// folder for processed files
 		this.processedDir = new File(this.temp, "/processed/");
 		this.processedDir.mkdir();
