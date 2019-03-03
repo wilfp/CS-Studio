@@ -69,9 +69,7 @@ def run_java_code(request):
     # run the code with JavaBridge
 	
     print("submit")
-    code_id = cmd.submit(ready_code)
-    print("poll")
-    result = cmd.poll_result(code_id)
+    result = cmd.submit(ready_code)
     print("result")
 
     # return the result as a HttpResponse
@@ -84,7 +82,11 @@ def run_java_code(request):
         text = "Internal Error"
         status = "Unknown"
         lines = "0"
+        
+    data = {}
+    data["text"] = text
+    data["status"] = status
+    data["lines"] = lines
+    response = json.dumps(data)
 
-    response = "{ \"text\": \"" + text + "\", \"status\": \"" + status + "\", \"lines\": " + lines + " }"
-
-    return HttpResponse(response)
+    return HttpResponse(response, "application/json")

@@ -16,67 +16,12 @@ class CommandExecution:
         if not os.path.exists(self.temp_path):
             os.mkdir(self.temp_path)
         
-        print(self.temp_path)
-
         # init starting data
 
-        self.result_buffer = []
-        self.read_interval = 1
-        self.read_time = 0
         self.counter = 0
         self.alphabet = "ABCDEFGHIJKLMNOP"
-        self.timeout = 8
-
-        # call JavaBridge subprocess
         
-        self.process = subprocess.Popen(["java", "-cp", self.java_bridge_jar.path, "studio.csuk.javabridge.RunJavaBridge", self.temp_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-        return
-
-    def poll_result(self, code_id):
-    
-        result_pointer = 0
-        start_time = time.time()
-
-        # check for result till timeout
-
-        while time.time()-start_time < self.timeout:
         
-            self.update_result_list()
-
-            while result_pointer < len(self.result_buffer):
-
-                result = self.result_buffer[result_pointer]
-
-                if result.name == code_id:
-                    return result
-
-                result_pointer += 1
-
-        # if no result was found
-
-        return None
-
-    def update_result_list(self):
-    
-        print("update")
-        
-        while True:
-            #line = self.process.stderr.readline()
-            
-            # Process line as json
-
-            #line = line.rstrip()
-            
-            #line = line.decode("UTF-8")
-            
-            #if(len(line) < 2):
-            #    continue
-            
-            #print("line: " + line)
-
-            print(self.process.stderr.readline().decode())
-
         return
 
     def submit(self, code):
@@ -92,12 +37,32 @@ class CommandExecution:
         f.close()
 
         # call process
-
-        self.process.stdin.write(code_id.encode("UTF-8"))
-
+        
+        p = subprocess.Popen(["java", "-jar", "JavaBridge_2cY5cFo.jar", "C:\\Users\\fab\\AppData\\Local\\Temp\\javabridge\\"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        
+        p.stdin.write(code_id.encode())
+        p.stdin.close()
+        
+        # read process output
+        
+        out = p.stdout.readline().decode()
+        p.kill()
+        
+        print("line: " + out)
+        
+        # parse output as JSON
+        
+        json_data = json.loads(out)
+        
+        name = json_data['name']
+        state = json_data['state']
+        output = base64.b64decode(json_data['output']).decode()
+        error = base64.b64decode(json_data['error']).decode()
+        lines = json_data['lines']
+        
         # return the code id for later
 
-        return code_id
+        return Result(name, state, output, error, lines)
 
     def get_code_id(self):
 
