@@ -39,22 +39,7 @@ function onLoad(){
     matchBrackets: true,
     mode: "text/x-java"
   });
-  
-  Vue.component('output-panel', {
-  data: function () {
-    return {
-      style: "notification is-link",
-      data: "none"
-    }
-  },
-  template: '<div class="[[ style ]]"> [[ data ]] </div>',
-  
-  props: {
-      output: Object
-  }
-  
-})
-  
+    
    app = new Vue({
 	  delimiters: ['[[', ']]'],
 	  el: '#codeoutput',
@@ -63,6 +48,16 @@ function onLoad(){
       }
 	});
     
+  Vue.component('output-panel', {
+      
+      template: '<div :class="className"> {{ content }} </div>',
+  
+  props: {
+      content: String,
+      className: String
+  }
+  
+})
 
 }
 
@@ -103,7 +98,7 @@ function sendPost(code) {
 
 function response(msg, status, jqXHR) {
 	
-	app.$data.outputs.add(msg["text"], msg["status"]);
+	app.$data.outputs.push([ { content: msg["text"], className: msg["status"] } ]);
 	
 	setProgress('');
 }

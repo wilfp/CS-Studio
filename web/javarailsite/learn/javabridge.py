@@ -74,7 +74,7 @@ class CommandExecution:
         code_id = ""
         temp_counter = self.counter
 
-        while temp_counter > 16:
+        while temp_counter >= 16:
             code_id += self.alphabet[temp_counter % 16]
             temp_counter /= 16
 

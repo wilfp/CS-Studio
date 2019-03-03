@@ -42,7 +42,8 @@
 	
 	<div id="codeoutput" class="box has-background-grey-dark">
     
-        <output-panel v-for="output in outputs" :output="output"/>
+        <output-panel v-for="(content,className) in outputs" :content="content" :class-name="className">
+        </output-panel>
     
     </div>
 	
