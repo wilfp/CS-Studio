@@ -78,7 +78,7 @@ function setProgress(progress){
 
 function sendPost(code) {
 	
-	setProgress('<progress class="progress is-small is-primary" max="100">15%</progress>');
+	setProgress('<progress class="progress is-small is-info" max="25"></progress>');
 	
 	var challengeID = getChallengeID();
 	var jsonData = '{ \"challenge_id\": \"' + challengeID  + '\", \"code\": \"' + code + '\" }';
