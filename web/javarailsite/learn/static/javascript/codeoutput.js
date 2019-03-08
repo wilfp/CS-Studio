@@ -39,6 +39,14 @@ function onLoad(){
     matchBrackets: true,
     mode: "text/x-java"
   });
+  
+    Vue.component('output-panel', {
+      
+      props: [ "className", "content" ],
+      
+      template: '<div :class="className"> {{ content }} </div>'
+          
+    })
     
    app = new Vue({
 	  delimiters: ['[[', ']]'],
@@ -48,17 +56,6 @@ function onLoad(){
       }
 	});
     
-  Vue.component('output-panel', {
-      
-      template: '<div :class="className"> {{ content }} </div>',
-  
-  props: {
-      content: String,
-      className: String
-  }
-  
-})
-
 }
 
 function runCodeFunction() {
