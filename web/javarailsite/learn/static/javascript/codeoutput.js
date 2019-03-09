@@ -49,7 +49,7 @@ function onLoad(){
       
       template: '<div :class="className"> {{ content }} </div>'
       
-    })
+    });
     
    app = new Vue({
 	  delimiters: ['[[', ']]'],
@@ -99,7 +99,10 @@ function sendPost(code) {
 function response(msg, status, jqXHR) {    
 	
 	app.$data.outputs.push( { content: msg["text"], className: getStatus(msg["status"]) } );
-	
+    
+    // TODO highlight lines here
+    highlightLine(1);
+    
 	setProgress('');
 }
 
@@ -110,6 +113,10 @@ function getStatus(status){
     }
     
     return "notification is-danger";
+}
+
+function highlightLine(x){
+    codeMirror.markText({line: x, ch: 0}, {line: x+1, ch: 0}, {className: "highlight"});
 }
 
 $(document).ready(function(){

@@ -33,3 +33,7 @@ div.hide{
 #output-column{
 	min-height: 485px;
 }
+
+.highlight{
+    background-color: #00CC0A;
+}
