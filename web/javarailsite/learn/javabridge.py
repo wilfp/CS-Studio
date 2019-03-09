@@ -33,12 +33,10 @@ class CommandExecution:
             code_id = code_search.group(1)
         else:
             code_id = self.get_code_id()
-        
-        # TODO search for class name tag
-        # TODO replace user's main class name with fake one
-        # TODO write to file with new name
 
         # write code to file
+        
+        # TODO give each user their own javabridge area
         
         f = open(self.temp_path + code_id + '.java', 'w+')
         f.write(code)
