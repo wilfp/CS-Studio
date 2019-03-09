@@ -151,7 +151,7 @@ function highlightNextLine(){
     // If lines left and not stopped
     if(currentLine < lines.length && shouldRun){
         // Schedule next line
-        setTimeout(highlightNextLine, 350);
+        setTimeout(highlightNextLine, 250);
     }else{
         // Clear last line
         lastMarker.clear();
