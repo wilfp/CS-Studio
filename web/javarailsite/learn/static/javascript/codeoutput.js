@@ -63,12 +63,18 @@ function onLoad(){
     
 }
 
+// Called when the run button is clicked
 function runCodeFunction() {
 		
 	var codeArea = codeMirror.getValue();
 	codeArea = window.btoa(codeArea);
 	
 	var result = sendPost(codeArea);
+}
+
+// Called when the stop button is clicked
+function stopCodeFunction() {
+    shouldRun = false;
 }
 
 function getChallengeID(){
@@ -103,8 +109,7 @@ function response(msg, status, jqXHR) {
 	app.$data.outputs.push( { content: msg["text"], className: getStatus(msg["status"]) } );
     
     lines = msg["lines"];
-    currentLine = 0;
-    highlightNextLine();
+    startLineAnimation();
     
 	setProgress('');
 }
@@ -112,6 +117,14 @@ function response(msg, status, jqXHR) {
 // The current lines being displayed
 var lines = [];
 var currentLine = 0;
+var shouldRun = false;
+
+// Goes through all lines, highlighting each in turn
+function startLineAnimation(){
+    shouldRun = true;
+    currentLine = 0;
+    highlightNextLine();
+}
 
 // Called recursively to highlight each line in turn
 function highlightNextLine(){
@@ -121,8 +134,8 @@ function highlightNextLine(){
     // Get next line
     currentLine++;
     
-    // If lines left
-    if(currentLine < lines.length){
+    // If lines left and not stopped
+    if(currentLine < lines.length && shouldRun){
         // Schedule next line
         setTimeout(highlightNextLine, 350);
     }else{
@@ -154,7 +167,10 @@ function highlightLine(x){
 }
 
 $(document).ready(function(){
-		
-    $("#runcode").click(runCodeFunction);
+    
+    $("#button-run-code").click(runCodeFunction);
+    $("#button-play-code").click(startLineAnimation);
+    $("#button-stop-code").click(stopCodeFunction);
+    
 	onLoad();
 });
