@@ -28,6 +28,10 @@ class CommandExecution:
         # get id for code
 
         code_id = self.get_code_id()
+        
+        # TODO search for class name tag
+        # TODO replace user's main class name with fake one
+        # TODO write to file with new name
 
         # write code to file
         

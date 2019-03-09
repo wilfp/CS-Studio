@@ -14,7 +14,9 @@
     
     "Pure Java": {
       "main-context" : true,
-	  "semi-colons" : false
+	  "semi-colons" : true,
+      
+      "direct-replacements" : []
     }
   }
 }
