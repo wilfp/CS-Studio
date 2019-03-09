@@ -46,7 +46,7 @@ function onLoad(){
   
   codeMirror.setSize(null, 400);
   
-  codeMirror.on("changed", function(){ codeChanged = true; });
+  codeMirror.on("change", function(){ codeChanged = true; });
   
     Vue.component('output-panel', {
       
@@ -90,15 +90,18 @@ function getChallengeID(){
 	return $("#challengeID").html();
 }
 
-function setProgress(progress){
-	$("#code-progress").html(function(){
-		return progress;
-	});
+function setLoading(status){
+    
+    if(status){
+        $("#button-play-code").addClass("is-loading");
+    }else{
+        $("#button-play-code").removeClass("is-loading");
+    }
 }
 
 function sendPost(code) {
 	
-	setProgress('<progress class="progress is-small is-info" max="25"></progress>');
+	setLoading(true);
 	
 	var challengeID = getChallengeID();
 	var jsonData = '{ \"challenge_id\": \"' + challengeID  + '\", \"code\": \"' + code + '\" }';
@@ -121,7 +124,7 @@ function response(msg, status, jqXHR) {
     codeChanged = false;
     startLineAnimation();
     
-	setProgress('');
+	setLoading(false);
 }
 
 // The current lines being displayed
