@@ -18,13 +18,19 @@
 
 <div class="columns">
 
-<div class="column">
+<div class="column" id="challenge-column">
 
 	<h1 class="title">> {{ challenge.name }}</h1>
 	
 	<div class="box">
 	{{ challenge.desc }}	
 	</div>
+
+</div>
+
+<div class="column" id="code-column">
+
+	<h1 class="title">> Code</h1>
 	
 	<div class="box"><textarea id="codearea" autofocus="true" placeholder="Start your code here!" rows="4" cols="50"></textarea>
 	
@@ -36,7 +42,7 @@
 	
 </div>
 
-<div class="column">
+<div class="column" id="output-column">
 
 	<h1 class="title"> > Output</h1>
 	
