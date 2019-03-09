@@ -22,7 +22,14 @@ div.hide{
 	display:none;
 }
 
-#code-output{
+#challenge-column{
 	min-height: 485px;
 }
 
+#code-column{
+	min-height: 485px;
+}
+
+#output-column{
+	min-height: 485px;
+}
