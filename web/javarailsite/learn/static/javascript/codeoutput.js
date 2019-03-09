@@ -117,7 +117,7 @@ var currentLine = 0;
 function highlightNextLine(){
     
     // Highlight current line
-    highlightLine(lines[currentLine] - 1);
+    highlightLine(lines[currentLine]);
     // Get next line
     currentLine++;
     
