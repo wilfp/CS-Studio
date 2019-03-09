@@ -42,8 +42,13 @@
 	
 	<div id="codeoutput" class="box has-background-grey-dark">
     
-        <output-panel v-for="out in outputs" v-bind:key="out.id" v-bind:content="out.content" v-bind:class-name="out.className">
-        </output-panel>
+    <ul>
+    <output-panel
+    v-for="out in outputs"
+    v-bind:key="out.content"
+    v-bind:content="out.content"
+    ></output-panel>
+    </ul>
     
     </div>
 	

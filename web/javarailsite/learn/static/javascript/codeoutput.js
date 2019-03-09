@@ -44,14 +44,14 @@ function onLoad(){
       
       props: [ "className", "content" ],
       
-      template: '<div :class="className"> {{ content }} </div>'
+      template: '<div> {{ content }} </div>'
           
     })
     
    app = new Vue({
 	  delimiters: ['[[', ']]'],
 	  el: '#codeoutput',
-      data: {
+      data:{
           outputs: []
       }
 	});
@@ -95,7 +95,7 @@ function sendPost(code) {
 
 function response(msg, status, jqXHR) {
 	
-	app.$data.outputs.push([ { content: msg["text"], className: msg["status"] } ]);
+	app.$data.outputs.push( { content: msg["text"], className: msg["status"] } );
 	
 	setProgress('');
 }
