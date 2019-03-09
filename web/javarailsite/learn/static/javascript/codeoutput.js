@@ -46,6 +46,8 @@ function onLoad(){
   
   codeMirror.setSize(null, 400);
   
+  codeMirror.on("changed", function(){ codeChanged = true; });
+  
     Vue.component('output-panel', {
       
       props: [ "className", "content" ],
@@ -66,7 +68,13 @@ function onLoad(){
 
 // Called when the run button is clicked
 function runCodeFunction() {
-		
+    
+    // If no changes
+    if(!codeChanged){
+        startLineAnimation();
+        return;
+    }
+    
 	var codeArea = codeMirror.getValue();
 	codeArea = window.btoa(codeArea);
 	
@@ -110,6 +118,7 @@ function response(msg, status, jqXHR) {
 	app.$data.outputs.push( { content: msg["text"], className: getStatus(msg["status"]) } );
     
     lines = msg["lines"];
+    codeChanged = false;
     startLineAnimation();
     
 	setProgress('');
@@ -119,6 +128,7 @@ function response(msg, status, jqXHR) {
 var lines = [];
 var currentLine = 0;
 var shouldRun = false;
+var codeChanged = true;
 
 // Goes through all lines, highlighting each in turn
 function startLineAnimation(){
@@ -169,8 +179,7 @@ function highlightLine(x){
 
 $(document).ready(function(){
     
-    $("#button-run-code").click(runCodeFunction);
-    $("#button-play-code").click(startLineAnimation);
+    $("#button-play-code").click(runCodeFunction);
     $("#button-stop-code").click(stopCodeFunction);
     
 	onLoad();
