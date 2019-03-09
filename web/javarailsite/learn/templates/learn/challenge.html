@@ -46,6 +46,7 @@
     <output-panel
     v-for="out in outputs"
     v-bind:key="out.content"
+    v-bind:class="out.className"
     v-bind:content="out.content"
     ></output-panel>
     </ul>

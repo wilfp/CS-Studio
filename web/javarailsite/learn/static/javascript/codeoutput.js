@@ -44,8 +44,8 @@ function onLoad(){
       
       props: [ "className", "content" ],
       
-      template: '<div> {{ content }} </div>'
-          
+      template: '<div :class="className"> {{ content }} </div>'
+      
     })
     
    app = new Vue({
@@ -94,10 +94,30 @@ function sendPost(code) {
 }
 
 function response(msg, status, jqXHR) {
+    
+    var text = "";
+    var status = msg["status"];
+    var statusClass = getStatus(status);
+    
+    if(status == "SUCCESS"){
+        text = msg["text"];
+    }else{
+        text = msg["error"]
+    }
+    
 	
-	app.$data.outputs.push( { content: msg["text"], className: msg["status"] } );
+	app.$data.outputs.push( { content: text, className: statusClass } );
 	
 	setProgress('');
+}
+
+function getStatus(status){
+    
+    if(status == "SUCCESS"){
+        return "notification is-info";
+    }
+    
+    return "notification is-danger";
 }
 
 $(document).ready(function(){
