@@ -40,6 +40,7 @@ function onLoad(){
     lineNumbers: true,
     matchBrackets: true,
     mode: "text/x-java",
+    theme: "eclipse",
     smartIndent: has_indent
   });
   
