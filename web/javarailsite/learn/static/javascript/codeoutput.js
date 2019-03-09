@@ -100,10 +100,33 @@ function response(msg, status, jqXHR) {
 	
 	app.$data.outputs.push( { content: msg["text"], className: getStatus(msg["status"]) } );
     
-    // TODO highlight lines here
-    highlightLine(1);
+    lines = msg["lines"];
+    currentLine = 0;
+    highlightNextLine();
     
 	setProgress('');
+}
+
+// The current lines being displayed
+var lines = [];
+var currentLine = 0;
+
+// Called recursively to highlight each line in turn
+function highlightNextLine(){
+    
+    // Highlight current line
+    highlightLine(lines[currentLine] - 1);
+    // Get next line
+    currentLine++;
+    
+    // If lines left
+    if(currentLine < lines.length){
+        // Schedule next line
+        setTimeout(highlightNextLine, 350);
+    }else{
+        // Clear last line
+        lastMarker.clear();
+    }
 }
 
 function getStatus(status){
@@ -115,8 +138,17 @@ function getStatus(status){
     return "notification is-danger";
 }
 
+// The last line marked, used to clear the marked area
+var lastMarker = null;
+
+// Highlights one line of the code area
 function highlightLine(x){
-    codeMirror.markText({line: x, ch: 0}, {line: x+1, ch: 0}, {className: "highlight"});
+    
+    if(lastMarker != null){
+        lastMarker.clear();
+    }
+    
+    lastMarker = codeMirror.markText({line: x, ch: 0}, {line: x+1, ch: 0}, {className: "highlight"});
 }
 
 $(document).ready(function(){
