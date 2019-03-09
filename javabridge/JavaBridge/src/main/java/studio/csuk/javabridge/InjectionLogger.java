@@ -24,11 +24,15 @@ public class InjectionLogger {
         return lines.get(serialName);
     }
 
+    @SuppressWarnings("unused")
     public void onLine(String serialName, int line){
         this.lines.get(serialName).add(line);
     }
 
-    public String getLineCode(String serialName, int line){
+    public String getLineCode(String serialName, int line, boolean offset){
+
+        if(offset) line -= 1;
+
         return "studio.csuk.javabridge.InjectionLogger.get().onLine(\"" + serialName + "\", " + line + ");";
     }
 
