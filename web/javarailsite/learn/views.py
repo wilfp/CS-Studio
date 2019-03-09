@@ -67,11 +67,12 @@ def run_java_code(request):
     ready_code = preprocessor.get_code(code_submitted, challenge_obj, mappings, main_context)
 
     # run the code with JavaBridge
-	
-    print("submit")
-    result = cmd.submit(ready_code)
-    print("result")
-
+    
+    # TODO get whether challenge's level has main_context
+    main_context = True
+    
+    result = cmd.submit(ready_code, main_context)
+    
     # return the result as a HttpResponse
 
     if result != None:

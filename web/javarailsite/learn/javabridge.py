@@ -3,6 +3,7 @@ import json
 import base64
 import time
 import os
+import re
 
 class CommandExecution:
 
@@ -23,11 +24,15 @@ class CommandExecution:
         
         return
 
-    def submit(self, code):
+    def submit(self, code, main_context):
 
         # get id for code
-
-        code_id = self.get_code_id()
+        
+        if main_context:
+            code_search = re.search("public class (\w{1,30})(\s)?(\r)?(\n)?{", code)
+            code_id = code_search.group(1)
+        else:
+            code_id = self.get_code_id()
         
         # TODO search for class name tag
         # TODO replace user's main class name with fake one
@@ -41,7 +46,7 @@ class CommandExecution:
 
         # call process
         
-        p = subprocess.Popen(["java", "-jar", "JavaBridge_2cY5cFo.jar", "C:\\Users\\fab\\AppData\\Local\\Temp\\javabridge\\"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        p = subprocess.Popen(["java", "-jar", "JavaBridge_2cY5cFo.jar", self.temp_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
         
         p.stdin.write(code_id.encode())
         p.stdin.close()
