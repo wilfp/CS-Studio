@@ -22,6 +22,7 @@ div.hide{
 	display:none;
 }
 
-#codeoutput{
+#code-output{
 	min-height: 485px;
 }
+

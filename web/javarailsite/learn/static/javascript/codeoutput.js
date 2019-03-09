@@ -34,7 +34,7 @@ var app;
 
 function onLoad(){
     
-    codeMirror = CodeMirror.fromTextArea(document.getElementById("codearea"), {
+    codeMirror = CodeMirror.fromTextArea(document.getElementById("code-area"), {
     lineNumbers: true,
     matchBrackets: true,
     mode: "text/x-java"
@@ -50,7 +50,7 @@ function onLoad(){
     
    app = new Vue({
 	  delimiters: ['[[', ']]'],
-	  el: '#codeoutput',
+	  el: '#code-output',
       data:{
           outputs: []
       }
@@ -71,7 +71,7 @@ function getChallengeID(){
 }
 
 function setProgress(progress){
-	$("#codeProgress").html(function(){
+	$("#code-progress").html(function(){
 		return progress;
 	});
 }
