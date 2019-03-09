@@ -43,6 +43,8 @@ function onLoad(){
     smartIndent: has_indent
   });
   
+  codeMirror.setSize(null, 400);
+  
     Vue.component('output-panel', {
       
       props: [ "className", "content" ],
