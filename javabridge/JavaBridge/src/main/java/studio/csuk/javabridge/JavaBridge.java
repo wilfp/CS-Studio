@@ -76,6 +76,7 @@ public class JavaBridge {
 			FileReader reader = new FileReader(target);
 			BufferedReader bufferedReader = new BufferedReader(reader);
 			String line = null;
+			boolean nextLineOffsetFlag = false;
 
 			while((line = bufferedReader.readLine()) != null){
 
@@ -83,17 +84,32 @@ public class JavaBridge {
 					line = line.replace("%NAMEPOINT%", serialName);
 				}
 
-				if(line.contains("{")) bracketCount++;
+				if(line.contains("{")) {
+                    bracketCount++;
+                    nextLineOffsetFlag = true;
+                }
 
-				if(line.contains("}")) bracketCount--;
+				if(line.contains("}")) {
+				    bracketCount--;
+				}
 
 				if(bracketCount > 1) {
-					fw.write(line + "\r\n" + InjectionLogger.get().getLineCode(serialName, lineNumber) + "\r\n");
+
+				    String all = line + "\r\n";
+
+				    if(nextLineOffsetFlag){
+                        all += InjectionLogger.get().getLineCode(serialName, lineNumber, true) + "\r\n";
+                    }
+
+				    all += InjectionLogger.get().getLineCode(serialName, lineNumber, false) + "\r\n";
+
+					fw.write(all);
 				}else{
 					fw.write(line + "\r\n");
 				}
 
 				lineNumber++;
+                nextLineOffsetFlag = false;
 			}
 
 			fw.close();
