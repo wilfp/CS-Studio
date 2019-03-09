@@ -93,20 +93,9 @@ function sendPost(code) {
 
 }
 
-function response(msg, status, jqXHR) {
-    
-    var text = "";
-    var status = msg["status"];
-    var statusClass = getStatus(status);
-    
-    if(status == "SUCCESS"){
-        text = msg["text"];
-    }else{
-        text = msg["error"]
-    }
-    
+function response(msg, status, jqXHR) {    
 	
-	app.$data.outputs.push( { content: text, className: statusClass } );
+	app.$data.outputs.push( { content: msg["text"], className: getStatus(msg["status"]) } );
 	
 	setProgress('');
 }

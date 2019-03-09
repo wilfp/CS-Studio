@@ -74,14 +74,14 @@ def run_java_code(request):
 
     # return the result as a HttpResponse
 
-    if(result != None):
-        text = result.output
+    if result != None:
         status = result.state
-        lines = result.lines
+        lines = result.lines            
+        text = result.output if status == "SUCCESS" else result.error
     else:
-        text = "Internal Error"
         status = "Unknown"
         lines = "0"
+        text = "Internal Error"
         
     data = {}
     data["text"] = text
