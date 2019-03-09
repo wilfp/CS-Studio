@@ -34,10 +34,13 @@ var app;
 
 function onLoad(){
     
+    var has_indent = document.getElementById("has-indent") == "true";
+    
     codeMirror = CodeMirror.fromTextArea(document.getElementById("code-area"), {
     lineNumbers: true,
     matchBrackets: true,
-    mode: "text/x-java"
+    mode: "text/x-java",
+    smartIndent: has_indent
   });
   
     Vue.component('output-panel', {
