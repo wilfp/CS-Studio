@@ -44,7 +44,7 @@ function onLoad(){
     smartIndent: has_indent
   });
   
-  codeMirror.setSize(null, 400);
+  codeMirror.setSize(null, 500);
   
   codeMirror.on("change", function(){ codeChanged = true; });
   

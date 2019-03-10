@@ -18,6 +18,10 @@ div.margin-top{
 	margin-top: 20px;
 }
 
+div.margin-bottom{
+	margin-bottom: 20px;
+}
+
 div.hide{
 	display:none;
 }

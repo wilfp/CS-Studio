@@ -21,10 +21,7 @@
 <div id="has-indent">{{ challenge.has_indent }}</div>
 </div>
 
-<div class="columns">
-
-<div class="column" id="challenge-column">
-
+<div class="margin-bottom">
     <div id="challenge-desc">
 	    <h1 class="title">{{ challenge.name }}</h1>
 	
@@ -32,8 +29,9 @@
 	    {{ challenge.desc }}	
 	    </div>
     </div>
-    
 </div>
+
+<div class="columns">
 
 <div class="column is-half" id="code-column">
 
@@ -43,8 +41,8 @@
     
     <span id="code-player">
    
-    <a class="button is-success" id="button-play-code"><i class="fas fa-play"></i></a>
-    <a class="button is-danger" id="button-stop-code"><i class="fas fa-stop"></i></a>
+    <a class="button is-success is-rounded" id="button-play-code"><i class="fas fa-play"></i></a>
+    <a class="button is-danger is-rounded" id="button-stop-code"><i class="fas fa-stop"></i></a>
             
     </span>
     
@@ -55,6 +53,14 @@
 		
 	</div>
 	
+</div>
+
+<div class="column" id="variables-column">
+    	    <h1 class="title">Variables</h1>
+	
+	    <div class="box has-background-grey-dark">
+	    Variables go here
+	    </div>
 </div>
 
 <div class="column" id="output-column">
