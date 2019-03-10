@@ -15,8 +15,8 @@ public class InjectionLogger {
 
     /** Map of serialName to time */
     private Map<String, Integer> currentRunTimeMap;
-    /** Map of variable to line + value */
-    private Map<Variable, Map<Integer,Object>> assignmentMap;
+    /** Map of variableID to line + value */
+    private Map<Integer, Map<Integer,Object>> assignmentMap;
     /** Map of variableID to variable */
     private Map<Integer,Variable> variableMap;
 
@@ -42,18 +42,31 @@ public class InjectionLogger {
 
     @SuppressWarnings("unused")
     public void onLine(String serialName, int line){
+        // add this line to the history of all lines
         lines.get(serialName).add(line);
+        // increment the current line by one
         currentRunTimeMap.compute(serialName, (s, i) -> i+1);
     }
 
     public void onVariableInit(String serialName, String variableName, int scope, Object value){
-        // register the variable with the system
-        
+
+        // create a new variable instance
         var variable = Variable.of(0, serialName, variableName, scope);
+
+        // register the variable with the system
+        variableMap.put(variable.getVariableID(), variable);
+        assignmentMap.put(variable.getVariableID(), new HashMap<>());
     }
 
     public void onVariableAssign(String serialName, int variableID, Object value){
+
         // add an entry for the variable at this time with this value
+        // get the assignments map
+        var map = assignmentMap.get(variableID);
+        // get the current time (in lines) of the program
+        var currentTime = currentRunTimeMap.get(serialName);
+        // add the new value at the specified time
+        map.put(currentTime, value);
     }
 
     public String getLineCode(String serialName, int line, boolean offset){
