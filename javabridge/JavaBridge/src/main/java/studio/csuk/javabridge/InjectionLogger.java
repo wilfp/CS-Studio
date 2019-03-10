@@ -1,8 +1,12 @@
 package studio.csuk.javabridge;
 
+import lombok.AllArgsConstructor;
+import lombok.Value;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Objects;
 
 public class InjectionLogger {
 
@@ -44,6 +48,8 @@ public class InjectionLogger {
 
     public void onVariableInit(String serialName, String variableName, int scope, Object value){
         // register the variable with the system
+        
+        var variable = Variable.of(0, serialName, variableName, scope);
     }
 
     public void onVariableAssign(String serialName, int variableID, Object value){
@@ -66,9 +72,12 @@ public class InjectionLogger {
         return String.format("studio.csuk.javabridge.InjectionLogger.get().onVariableAssign(%s,%s,%s)", serialName, variableID, value);
     }
 
+    @Value(staticConstructor="of")
     class Variable{
+
         private int variableID;
         private String serialName;
+        private String variableName;
         private int scope;
     }
 
