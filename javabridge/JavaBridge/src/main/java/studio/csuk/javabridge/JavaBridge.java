@@ -93,6 +93,8 @@ public class JavaBridge {
 				    bracketCount--;
 				}
 
+				// TODO work out how to include fields in variable tracking
+
 				if(bracketCount > 1) {
 
 				    String all = line + "\r\n";
@@ -101,9 +103,19 @@ public class JavaBridge {
                         all += InjectionLogger.get().getLineCode(serialName, lineNumber, true) + "\r\n";
                     }
 
+				    // TODO if line includes variable
+					// TODO regex parsing for declaration, for loop, while loop
+					// TODO register here
+
+					// TODO if line includes assignment
+					// TODO regex parsing for new value, plus, minus, increment, decrement
+					// TODO or alternatively just log new value afterwards
+					// TODO log here
+
 				    all += InjectionLogger.get().getLineCode(serialName, lineNumber, false) + "\r\n";
 
 					fw.write(all);
+
 				}else{
 					fw.write(line + "\r\n");
 				}
@@ -130,6 +142,9 @@ public class JavaBridge {
 
 			LinkedList<Integer> lines = InjectionLogger.get().getLines(serialName);
 			result.setLines(lines);
+
+			// TODO get variable log here
+			// TODO set variable log here
 
 		}catch(IOException e){
 			e.printStackTrace();
