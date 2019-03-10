@@ -76,12 +76,17 @@ public class InjectionLogger {
         return "studio.csuk.javabridge.InjectionLogger.get().onLine(\"" + serialName + "\", " + line + ");";
     }
 
-    public String getVariableInitCode(String serialName, String variableName, int scope, Object value) {
+    public String getVariableInitCode(String serialName, int line, String variableName, int scope, Object value, boolean offset) {
+
+        if(offset) line -= 1;
 
         return String.format("studio.csuk.javabridge.InjectionLogger.get().onVariableInit(%s,%s,%s,%s)", serialName, variableName, scope, value);
     }
 
-    public String getVariableAssignCode(String serialName, int variableID, Object value) {
+    public String getVariableAssignCode(String serialName, int line, int variableID, Object value, boolean offset) {
+
+        if(offset) line -= 1;
+
         return String.format("studio.csuk.javabridge.InjectionLogger.get().onVariableAssign(%s,%s,%s)", serialName, variableID, value);
     }
 
