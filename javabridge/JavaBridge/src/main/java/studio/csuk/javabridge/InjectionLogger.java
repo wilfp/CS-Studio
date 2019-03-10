@@ -11,8 +11,8 @@ public class InjectionLogger {
 
     /** Map of serialName to time */
     private Map<String, Integer> currentRunTimeMap;
-    /** Map of serialName + line count to assignment */
-    private Map<String, Map<Integer,Assignment>> assignmentMap;
+    /** Map of variable to line + value */
+    private Map<Variable, Map<Integer,Object>> assignmentMap;
     /** Map of variableID to variable */
     private Map<Integer,Variable> variableMap;
 
@@ -66,13 +66,9 @@ public class InjectionLogger {
         return String.format("studio.csuk.javabridge.InjectionLogger.get().onVariableAssign(%s,%s,%s)", serialName, variableID, value);
     }
 
-    class Assignment{
-        private int variableID;
-        private Object value;
-    }
-
     class Variable{
         private int variableID;
+        private String serialName;
         private int scope;
     }
 
