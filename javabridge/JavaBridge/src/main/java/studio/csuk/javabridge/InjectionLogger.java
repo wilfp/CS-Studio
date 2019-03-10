@@ -10,24 +10,26 @@ public class InjectionLogger {
     private Map<String, LinkedList<Integer>> lines;
 
     /** Map of serialName to time */
-    private Map<String, Integer> runTiming;
+    private Map<String, Integer> currentRunTimeMap;
     /** Map of serialName + line count to assignment */
-    private Map<String, Map<Integer,Assignment>> assignments;
+    private Map<String, Map<Integer,Assignment>> assignmentMap;
+    /** Map of variableID to variable */
+    private Map<Integer,Variable> variableMap;
 
     public InjectionLogger(){
         this.lines = new HashMap<>();
-        this.runTiming = new HashMap<>();
+        this.currentRunTimeMap = new HashMap<>();
     }
 
     public void register(String serialName) {
         lines.put(serialName, new LinkedList<>());
-        runTiming.put(serialName, 0);
+        currentRunTimeMap.put(serialName, 0);
     }
 
     public void remove(String serialName){
         lines.remove(serialName);
-        runTiming.remove(serialName);
-        assignments.remove(serialName);
+        currentRunTimeMap.remove(serialName);
+        assignmentMap.remove(serialName);
     }
 
     public LinkedList<Integer> getLines(String serialName){
@@ -37,7 +39,7 @@ public class InjectionLogger {
     @SuppressWarnings("unused")
     public void onLine(String serialName, int line){
         lines.get(serialName).add(line);
-        runTiming.compute(serialName, (s,i) -> i+1);
+        currentRunTimeMap.compute(serialName, (s, i) -> i+1);
     }
 
     public void onVariableInit(String serialName, String variableName, int scope, Object value){
@@ -67,6 +69,11 @@ public class InjectionLogger {
     class Assignment{
         private int variableID;
         private Object value;
+    }
+
+    class Variable{
+        private int variableID;
+        private int scope;
     }
 
     private static final InjectionLogger instance = new InjectionLogger();
