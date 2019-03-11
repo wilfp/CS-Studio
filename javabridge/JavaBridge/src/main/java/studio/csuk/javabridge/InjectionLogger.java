@@ -3,15 +3,12 @@ package studio.csuk.javabridge;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class InjectionLogger {
 
     /** Map of serialName to list of lines executed */
-    private Map<String, LinkedList<Integer>> lines;
+    private Map<String, List<Integer>> lines;
 
     /** Map of serialName to time */
     private Map<String, Integer> currentRunTimeMap;
@@ -19,25 +16,29 @@ public class InjectionLogger {
     private Map<Integer, Map<Integer,Object>> assignmentMap;
     /** Map of variableID to variable */
     private Map<Integer,Variable> variableMap;
+    /** Map of serialName to variableIDs */
+    private Map<String, List<Integer>> serialVariableMap;
 
     public InjectionLogger(){
         this.lines = new HashMap<>();
         this.currentRunTimeMap = new HashMap<>();
+        this.assignmentMap = new HashMap<>();
+        this.serialVariableMap = new HashMap<>();
     }
 
     public void register(String serialName) {
         lines.put(serialName, new LinkedList<>());
         currentRunTimeMap.put(serialName, 0);
+        serialVariableMap.put(serialName, new LinkedList<>());
     }
 
     public void remove(String serialName){
+
         lines.remove(serialName);
         currentRunTimeMap.remove(serialName);
-        assignmentMap.remove(serialName);
-    }
 
-    public LinkedList<Integer> getLines(String serialName){
-        return lines.get(serialName);
+        serialVariableMap.get(serialName).stream().forEach(id -> assignmentMap.remove(id));
+        serialVariableMap.remove(serialName);
     }
 
     @SuppressWarnings("unused")
@@ -51,6 +52,7 @@ public class InjectionLogger {
     public void onVariableInit(String serialName, String variableName, int scope, Object value){
 
         // create a new variable instance
+        // TODO allocate variable IDs
         var variable = Variable.of(0, serialName, variableName, scope);
 
         // register the variable with the system
@@ -89,6 +91,15 @@ public class InjectionLogger {
 
         return String.format("studio.csuk.javabridge.InjectionLogger.get().onVariableAssign(%s,%s,%s)", serialName, variableID, value);
     }
+
+    public List<Integer> getLines(String serialName){
+        return lines.get(serialName);
+    }
+
+    public Map<Integer, Map<Integer,Object>> getAssignments(String serialName){
+        // TODO return assignments of this serial
+    }
+
 
     @Value(staticConstructor="of")
     class Variable{
