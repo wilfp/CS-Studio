@@ -38,6 +38,10 @@ button.flat{
     font-size: 12pt;
 }
 
+button.is-loading{
+    color: green;
+}
+
 #footer{
     margin-top: 15px;
     margin-bottom: 10px;
