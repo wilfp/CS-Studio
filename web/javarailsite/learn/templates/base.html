@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static "css/site.css" %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	
+    <script src="{% static "javascript/base.js" %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	
@@ -18,9 +19,12 @@
 
 	<div id="body-container">
     
-    <div class="margin">
+    <button id="toggle-header" class="flat" onclick="onToggleHeader()"></button>
+    
+    <span id="header">
     <img src="{% static "images/site_logo.png" %}" alt="Logo" width="60px" height="60px">
-    </div>
+    Header links here
+    </span>
     
 	{% block content %}{% endblock %}
     
