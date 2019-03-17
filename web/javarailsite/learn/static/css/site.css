@@ -30,6 +30,13 @@ div.code-panel{
     background-color: #F4F4F4;
 }
 
+button.flat{
+    background-color: #CE0000;
+    border-width: 0px;
+    color: white;
+    padding: 12px;
+}
+
 #footer{
     margin-top: 15px;
     margin-bottom: 10px;
