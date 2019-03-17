@@ -32,28 +32,17 @@
     </div>
 </div>
 
-<div class="columns is-gapless">
-
-<div class="column is-half">
 
 	<div class="code-panel">
     
     <div id="code-column">
-    
     <textarea id="code-area" autofocus="true" placeholder="Start your code here!" rows="4" cols="50">    
     </textarea>
-    
-    <div id="code-player">
-    <button class="flat" id="button-play-code"><i class="fas fa-play"></i></button>
-    </div>
-    
     </div>
 		
 	</div>
-	
-</div>
 
-<div class="column">
+<div id="variables-panel">
 	
 	    <div class="box">
         <div id="variables-column">
@@ -61,11 +50,9 @@
         </div>
 	    </div>
 </div>
-
-<div class="column">
 	
 	<div id="code-output" class="box has-background-black">
-    
+        
     <div id="output-column">
     <ul>
     <output-panel
@@ -79,10 +66,11 @@
     
     </div>
 	
+<div id="code-player">
+<button class="flat" id="button-play-code"><i class="fas fa-play"></i></button>
 </div>
 	
-</div>
 
-</div>
+
 
 {% endblock %}
