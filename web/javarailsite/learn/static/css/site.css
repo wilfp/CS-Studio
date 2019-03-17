@@ -10,8 +10,8 @@ h2 {
 	
 }
 
-div.container{
-	padding: 10px;
+div.margin{
+	margin: 10px;
 }
 
 div.margin-top{
@@ -26,16 +26,26 @@ div.hide{
 	display:none;
 }
 
-#challenge-column{
-	min-height: 485px;
+div.code-panel{
+    background-color: #C4C4C4;
+}
+
+#footer{
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 #code-column{
-	min-height: 485px;
+	min-height: 600px;
+}
+
+#variables-column{
+	min-height: 600px;
 }
 
 #output-column{
-	min-height: 485px;
+	min-height: 600px;
 }
 
 .highlight{

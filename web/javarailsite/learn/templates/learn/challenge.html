@@ -23,21 +23,22 @@
 
 <div class="margin-bottom">
     <div id="challenge-desc">
-	    <h1 class="title">{{ challenge.name }}</h1>
 	
-	    <div class="box has-background-grey-dark">
+	    <!--<div class="box has-background-grey-dark">
 	    {{ challenge.desc }}	
 	    </div>
+        !-->
+        
     </div>
 </div>
 
-<div class="columns">
+<div class="columns is-gapless">
 
-<div class="column is-half" id="code-column">
+<div class="column is-half">
 
-	<h1 class="title">Code</h1>
-    	
-	<div class="box">
+	<div class="code-panel">
+    
+    <div id="code-column">
     
     <span id="code-player">
    
@@ -50,25 +51,27 @@
     <textarea id="code-area" autofocus="true" placeholder="Start your code here!" rows="4" cols="50">    
     </textarea>
     </div>
+    
+    </div>
 		
 	</div>
 	
 </div>
 
-<div class="column" id="variables-column">
-    	    <h1 class="title">Variables</h1>
+<div class="column">
 	
-	    <div class="box has-background-grey-dark">
-	    Variables go here
+	    <div class="box">
+        <div id="variables-column">
+        Variables go here
+        </div>
 	    </div>
 </div>
 
-<div class="column" id="output-column">
-
-	<h1 class="title">Output</h1>
+<div class="column">
 	
-	<div id="code-output" class="box has-background-grey-dark">
+	<div id="code-output" class="box has-background-black">
     
+    <div id="output-column">
     <ul>
     <output-panel
     v-for="out in outputs"
@@ -77,6 +80,7 @@
     v-bind:content="out.content"
     ></output-panel>
     </ul>
+    </div>
     
     </div>
 	

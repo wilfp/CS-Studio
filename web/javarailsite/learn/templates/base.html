@@ -15,19 +15,21 @@
 	
 </head>
 <body>
-	    
-	<div class="container">
+
+	<div id="body-container">
     
-    <div class="margin-bottom">
-    <img src="{% static "images/site_logo.svg" %}" alt="Logo" width="180px" height="75px">
+    <div class="margin">
+    <img src="{% static "images/site_logo.png" %}" alt="Logo" width="60px" height="60px">
     </div>
     
 	{% block content %}{% endblock %}
-	</div>
-        	
-	<div class="container" align="center" id="footer">
+    
+    <div id="footer">
     <p><a href="https://github.com/wilfp/CS-Studio">GitHub</a> | <a href="https://www.linkedin.com/company/csukltd">Company</a> | <a href="https://www.linkedin.com/in/wilf/">Creator</a></p>
 	<p>© 2019 CSUK LIMITED</p>
 	</div>
-</body>
+    
+	</div>
+    
+    </body>
 </html>
