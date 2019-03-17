@@ -50,10 +50,7 @@ button.is-loading{
 
 #header-outside{
     background-color: white;
-}
-
-#body-container{
-    margin: 30px;    
+    margin-bottom: 30px;
 }
 
 #header{
