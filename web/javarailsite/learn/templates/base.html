@@ -16,10 +16,8 @@
 	
 </head>
 <body>
-
-	<div id="body-container">
     
-    <div id="header-outside">
+    <div class="container" id="header-outside">
     <button id="toggle-header" class="flat" onclick="onToggleHeader()"></button>
     
     <span id="header" style="display: none;">
@@ -28,14 +26,14 @@
     </span>
     </div>
     
+    <div class="container" id="body-container">
 	{% block content %}{% endblock %}
+    </div>
     
     <div id="footer">
     <p><a href="https://github.com/wilfp/CS-Studio">GitHub</a> | <a href="https://www.linkedin.com/company/csukltd">Company</a> | <a href="https://www.linkedin.com/in/wilf/">Creator</a></p>
 	<p>© 2019 CSUK LIMITED</p>
 	</div>
-    
-	</div>
-    
+        
     </body>
 </html>

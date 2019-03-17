@@ -44,7 +44,10 @@ button.is-loading{
 
 #header-outside{
     background-color: white;
-    margin: 30px;
+}
+
+#body-container{
+    margin: 30px;    
 }
 
 #header{
@@ -65,7 +68,7 @@ button.is-loading{
 	min-height: 400px;
 }
 
-#output-column{
+#code-output{
 	min-height: 400px;
 }
 
