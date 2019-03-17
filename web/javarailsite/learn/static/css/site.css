@@ -1,5 +1,5 @@
 body {
-    background-color: white;
+    background-color: #F4F4F4;
 }
 
 h1 {
@@ -30,6 +30,12 @@ div.code-panel{
     background-color: #F4F4F4;
 }
 
+span.center{
+    text-align: center;
+    margin: auto;
+    display: table;
+}
+
 button.flat{
     background-color: #CE0000;
     border-width: 0px;
@@ -42,6 +48,15 @@ button.is-loading{
     color: green;
 }
 
+#header-outside{
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+#header{
+    /* Nothing */
+}
+
 #footer{
     margin-top: 15px;
     margin-bottom: 10px;
@@ -52,19 +67,17 @@ button.is-loading{
 	min-height: 600px;
 }
 
-#variables-column{
-	min-height: 600px;
+#variables-panel{
+	min-height: 400px;
 }
 
-#output-column{
-	min-height: 600px;
+#code-output{
+	min-height: 400px;
 }
 
 #code-player{
-    float: right;
-    position: relative;
-    top: -60px;
-    right: 20px;
+    min-height: 100px;
+    /*background-color: black;*/
 }
 
 .highlight{

@@ -21,52 +21,46 @@
 <div id="has-indent">{{ challenge.has_indent }}</div>
 </div>
 
+<!--
 <div class="margin-bottom">
     <div id="challenge-desc">
 	
-	    <!--<div class="box has-background-grey-dark">
+	    <div class="box has-background-grey-dark">
 	    {{ challenge.desc }}	
 	    </div>
-        !-->
+        
         
     </div>
 </div>
+!-->
 
-<div class="columns is-gapless">
+<div class="tile is-ancestor" id="tile-root">
 
-<div class="column is-half">
-
-	<div class="code-panel">
-    
-    <div id="code-column">
-    
+<div class="tile is-parent is-8" id="tile-code-panel">
     <textarea id="code-area" autofocus="true" placeholder="Start your code here!" rows="4" cols="50">    
     </textarea>
-    
-    <div id="code-player">
-    <button class="flat" id="button-play-code"><i class="fas fa-play"></i></button>
-    </div>
-    
-    </div>
-		
-	</div>
-	
 </div>
 
-<div class="column">
+<div class="tile is-parent is-vertical is-4" id="tile-parent-1">
+
+<div class="tile is-parent" id="tile-parent-2">
+
+<div class="tile is-child is-4" id="tile-blank-1"></div>
+
+<div class="tile is-child is-4" id="tile-variables">
 	
-	    <div class="box">
-        <div id="variables-column">
-        Variables go here
-        </div>
+	    <div class="box" id="variables-panel">
+        
+            <span class="center">Variables</span>
+        
 	    </div>
 </div>
 
-<div class="column">
-	
+<div class="tile is-child is-4" id="tile-output">
 	<div id="code-output" class="box has-background-black">
     
-    <div id="output-column">
+    <span class="center">Output</span>
+    
     <ul>
     <output-panel
     v-for="out in outputs"
@@ -75,14 +69,29 @@
     v-bind:content="out.content"
     ></output-panel>
     </ul>
-    </div>
     
     </div>
-	
-</div>
-	
 </div>
 
 </div>
+
+<div class="tile is-parent" id="tile-parent-3">
+
+<div class="tile is-child is-4" id="tile-blank-2"></div>
+
+<div class="tile is-child is-8" id="tile-code-player">
+<div id="code-player">
+<button class="flat" id="button-play-code"><i class="fas fa-play"></i></button>
+<button class="flat" id="button-save-code"><i class="fas fa-download"></i></button>
+<button class="flat" id="button-reddit"><i class="fas fa-question-circle"></i></button>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 
 {% endblock %}
