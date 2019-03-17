@@ -81,11 +81,6 @@ function runCodeFunction() {
 	var result = sendPost(codeArea);
 }
 
-// Called when the stop button is clicked
-function stopCodeFunction() {
-    shouldRun = false;
-}
-
 function getChallengeID(){
 	return $("#challengeID").html();
 }
@@ -183,7 +178,6 @@ function highlightLine(x){
 $(document).ready(function(){
     
     $("#button-play-code").click(runCodeFunction);
-    $("#button-stop-code").click(stopCodeFunction);
     
 	onLoad();
 });
