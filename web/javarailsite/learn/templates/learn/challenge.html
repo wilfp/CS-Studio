@@ -36,26 +36,49 @@
 
 <div class="tile is-ancestor" id="tile-root">
 
-<div class="tile is-parent" id="tile-code-panel">
-Code Panel
+<div class="tile is-parent is-6" id="tile-code-panel">
+    <textarea id="code-area" autofocus="true" placeholder="Start your code here!" rows="4" cols="50">    
+    </textarea>
 </div>
 
-<div class="tile is-parent is-vertical" id="tile-parent-2">
+<div class="tile is-parent is-vertical is-6" id="tile-parent-2">
 
 <div class="tile is-parent">
 
 <div class="tile is-child" id="tile-variables">
-Variables
+<div id="variables-panel">
+	
+	    <div class="box">
+        <div id="variables-column">
+        Variables go here
+        </div>
+	    </div>
+</div>
 </div>
 
 <div class="tile is-child"id="tile-output">
-Output
+	<div id="code-output" class="box has-background-black">
+        Output here
+    <div id="output-column">
+    <ul>
+    <output-panel
+    v-for="out in outputs"
+    v-bind:key="out.content"
+    v-bind:class="out.className"
+    v-bind:content="out.content"
+    ></output-panel>
+    </ul>
+    </div>
+    
+    </div>
 </div>
 
 </div>
 
 <div class="tile is-child" id="tile-code-player">
-Code Player
+<div id="code-player">
+<button class="flat" id="button-play-code"><i class="fas fa-play"></i></button>
+</div>
 </div>
 
 </div>
