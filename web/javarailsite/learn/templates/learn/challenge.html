@@ -21,56 +21,24 @@
 <div id="has-indent">{{ challenge.has_indent }}</div>
 </div>
 
+<!--
 <div class="margin-bottom">
     <div id="challenge-desc">
 	
-	    <!--<div class="box has-background-grey-dark">
+	    <div class="box has-background-grey-dark">
 	    {{ challenge.desc }}	
 	    </div>
-        !-->
+        
         
     </div>
 </div>
+!-->
+
+<div class="tile is-ancestor">
 
 
-	<div class="code-panel">
-    
-    <div id="code-column">
-    <textarea id="code-area" autofocus="true" placeholder="Start your code here!" rows="4" cols="50">    
-    </textarea>
-    </div>
-		
-	</div>
 
-<div id="variables-panel">
-	
-	    <div class="box">
-        <div id="variables-column">
-        Variables go here
-        </div>
-	    </div>
 </div>
-	
-	<div id="code-output" class="box has-background-black">
-        
-    <div id="output-column">
-    <ul>
-    <output-panel
-    v-for="out in outputs"
-    v-bind:key="out.content"
-    v-bind:class="out.className"
-    v-bind:content="out.content"
-    ></output-panel>
-    </ul>
-    </div>
-    
-    </div>
-	
-<div id="code-player">
-<button class="flat" id="button-play-code"><i class="fas fa-play"></i></button>
-</div>
-	
-
 
 
 {% endblock %}
