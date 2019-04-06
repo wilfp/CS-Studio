@@ -30,7 +30,7 @@ div.code-panel{
     background-color: #F4F4F4;
 }
 
-span.center{
+.center{
     text-align: center;
     margin: auto;
     display: table;
@@ -48,9 +48,10 @@ button.is-loading{
     color: green;
 }
 
-#header-outside{
+div.header{
+    margin-top: 10px;
+    margin-bottom: 50px;
     background-color: white;
-    margin-bottom: 30px;
 }
 
 #header{
