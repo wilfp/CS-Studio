@@ -36,12 +36,11 @@ div.code-panel{
     display: table;
 }
 
-button.flat{
-    background-color: #CE0000;
+a.player-button{
     border-width: 0px;
     color: white;
-    padding: 12px;
-    font-size: 12pt;
+    padding: 20px;
+    font-size: 15pt;
 }
 
 button.is-loading{
@@ -72,12 +71,17 @@ div.header{
 	min-height: 400px;
 }
 
-#code-output{
+#info-panel{
 	min-height: 400px;
+    background-color: #282828;
 }
 
 #code-player{
-    background-color: black;
+    background-color: #B72123;
+}
+
+span.white{
+    color: white;
 }
 
 .highlight{
