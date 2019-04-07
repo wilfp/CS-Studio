@@ -77,8 +77,7 @@ div.header{
 }
 
 #code-player{
-    min-height: 100px;
-    /*background-color: black;*/
+    background-color: black;
 }
 
 .highlight{
