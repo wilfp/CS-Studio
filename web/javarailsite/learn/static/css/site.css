@@ -36,6 +36,15 @@ div.code-panel{
     display: table;
 }
 
+.white{
+    color: white;
+}
+
+.margin-v{
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
 a.player-button{
     border-width: 0px;
     color: white;
@@ -74,14 +83,12 @@ div.header{
 #info-panel{
 	min-height: 400px;
     background-color: #282828;
+    font-size: 12pt; 
+    font-family: 'Open Sans'; 
 }
 
 #code-player{
     background-color: #B72123;
-}
-
-span.white{
-    color: white;
 }
 
 .highlight{
