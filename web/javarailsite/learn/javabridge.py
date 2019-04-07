@@ -4,7 +4,7 @@ import base64
 import time
 import os
 import re
-import codematcher
+from learn import codematcher
 
 class CommandExecution:
 
@@ -25,12 +25,13 @@ class CommandExecution:
         
         return
 
-    def submit(self, code, main_context):
+    def submit(self, code):
 
         # get id for code
         
-        if main_context:
-            code_search = re.search(codematcher.class_name, code)
+        code_search = re.search(codematcher.class_name, code)
+        
+        if code_search != None:
             code_id = code_search.group(1)
         else:
             code_id = self.get_code_id()
