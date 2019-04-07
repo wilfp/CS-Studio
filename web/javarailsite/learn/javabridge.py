@@ -4,6 +4,7 @@ import base64
 import time
 import os
 import re
+import codematcher
 
 class CommandExecution:
 
@@ -29,7 +30,7 @@ class CommandExecution:
         # get id for code
         
         if main_context:
-            code_search = re.search("public class (\w{1,30})(\s)?(\r)?(\n)?{", code)
+            code_search = re.search(codematcher.class_name, code)
             code_id = code_search.group(1)
         else:
             code_id = self.get_code_id()
