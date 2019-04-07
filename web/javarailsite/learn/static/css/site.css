@@ -40,9 +40,14 @@ div.code-panel{
     color: white;
 }
 
-.margin-v{
-    margin-top: 12px;
-    margin-bottom: 12px;
+.padding-v{
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.margin-text{
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 a.player-button{

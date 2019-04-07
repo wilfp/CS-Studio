@@ -1,108 +1,44 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block head %}
-
 <script src="{% static "javascript/codemirror.js" %}"></script>
 <link rel="stylesheet" href="{% static "css/codemirror.css" %}">
-
 <script src="{% static "javascript/mode/clike/clike.js" %}"></script>
 <link rel="stylesheet" href="{% static "javascript/theme/eclipse.css" %}">
-
-
 <script src="{% static "javascript/codeoutput.js" %}"></script>
-
 {% endblock %}
-
 {% block content %}
-
 <div id="challenge" class="hide">
-<div id="challengeID">{{ challenge.id }}</div>
-<div id="has-indent">{{ challenge.has_indent }}</div>
+   <div id="challengeID">{{ challenge.id }}</div>
+   <div id="has-indent">{{ challenge.has_indent }}</div>
 </div>
-
-<!--
-<div class="margin-bottom">
-    <div id="challenge-desc">
-	
-	    <div class="box has-background-grey-dark">
-	    {{ challenge.desc }}	
-	    </div>
-        
-        
-    </div>
-</div>
-!-->
 
 <div class="tile is-ancestor" id="tile-root">
 
-<div class="tile is-parent is-8" id="tile-code-panel">
-    <textarea id="code-area" autofocus="true" placeholder="Start your code here!" rows="4" cols="50">    
-    </textarea>
+   <div class="tile is-parent is-8" id="tile-code-panel">
+      <textarea id="code-area" autofocus="true" placeholder="Loading..." rows="4" cols="50">    
+      </textarea>
+   </div>
+   
+   <div class="tile is-parent is-vertical is-4" id="tile-parent-1">
+   
+      <div class="tile is-parent" id="tile-parent-2">
+         <div class="tile is-child is-12" id="tile-output">
+            <div id="info-panel">
+               <div class="center white padding-v">{{ challenge.name }}</div>
+               <div class="center white padding-v margin-text">{{ challenge.desc }}</div>
+            </div>
+         </div>
+      </div>
+      
+      <div class="tile is-parent" id="tile-parent-3">
+         <div class="tile is-child is-12" id="tile-code-player">
+            <div id="code-player">
+               <a class="player-button" id="button-play-code"><i class="fas fa-play"></i></a>
+            </div>
+         </div>
+      </div>
+      
+   </div>
 </div>
-
-<div class="tile is-parent is-vertical is-4" id="tile-parent-1">
-
-<div class="tile is-parent" id="tile-parent-2">
-
-<!--
-<div class="tile is-child is-2" id="tile-blank-1"></div>
--->
-
-<!--
-<div class="tile is-child is-4" id="tile-variables">
-	
-	    <div class="box" id="variables-panel">
-        
-            <span class="center">Variables</span>
-        
-	    </div>
-</div>
--->
-
-<!--
-    <ul>
-    <output-panel
-    v-for="out in outputs"
-    v-bind:key="out.content"
-    v-bind:class="out.className"
-    v-bind:content="out.content"
-    ></output-panel>
-    </ul>
-
--->
-
-<div class="tile is-child is-12" id="tile-output">
-	<div id="info-panel">
-    
-    <div class="center white">{{ challenge.name }}</div>
-    
-    <div class="center white margin-v">{{ challenge.desc }}</div>
-        
-    </div>
-</div>
-
-</div>
-
-<div class="tile is-parent" id="tile-parent-3">
-
-<div class="tile is-child is-12" id="tile-code-player">
-<div id="code-player">
-<a class="player-button" id="button-play-code"><i class="fas fa-play"></i></a>
-
-<!--
-<a class="player-button" id="button-save-code"><i class="fas fa-download"></i></button>
-<a class="player-button" id="button-reddit"><i class="fas fa-question-circle"></i></button>
--->
-
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
 {% endblock %}
