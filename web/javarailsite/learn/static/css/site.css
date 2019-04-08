@@ -67,6 +67,10 @@ a.player-button{
     font-size: 15pt;
 }
 
+a.light{
+    color: #CFCFFF;
+}
+
 button.is-loading{
     color: green;
 }
