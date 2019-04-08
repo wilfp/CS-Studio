@@ -132,8 +132,17 @@ function sendPost(code) {
 }
 
 function response(msg, status, jqXHR) {    
-	
-	app.$data.outputs.push( { content: msg["text"], className: getStatus(msg["status"]) } );
+    
+    app.$data.outputs = [];
+        
+    var rawText = msg["text"];
+    var textLines = rawText.split("\n");
+    var statusClass = getStatus(msg["status"]);
+    
+    for(var i = 0; i < textLines.length; i++){
+        var line = textLines[i];
+        app.$data.outputs.push( { content: line, className: statusClass } );
+    }
     
     lines = msg["lines"];
     codeChanged = false;
