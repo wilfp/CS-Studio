@@ -76,9 +76,13 @@ button.is-loading{
 }
 
 div.header{
-    margin-top: 10px;
-    margin-bottom: 50px;
-    background-color: black;
+    margin-top: 2%;
+    margin-bottom: 6%;
+    background-color: inherit;
+}
+
+.container{
+    background-color: #1E1E1E!important;
 }
 
 #footer{
@@ -107,5 +111,5 @@ div.header{
 }
 
 .highlight{
-    background-color: #1E351E;
+    background-color: #1E1E35;
 }
