@@ -70,11 +70,7 @@ button.is-loading{
 div.header{
     margin-top: 10px;
     margin-bottom: 50px;
-    background-color: white;
-}
-
-#header{
-    /* Nothing */
+    background-color: black;
 }
 
 #footer{
