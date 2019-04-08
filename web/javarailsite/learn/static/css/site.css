@@ -30,6 +30,12 @@ div.code-panel{
     background-color: #F4F4F4;
 }
 
+div.cs-box{
+    color: white;
+    background-color: #AD4E3D;
+    padding: 2.5%;
+}
+
 .center{
     text-align: center;
     margin: auto;
