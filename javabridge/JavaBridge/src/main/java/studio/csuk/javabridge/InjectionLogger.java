@@ -7,6 +7,7 @@ import java.util.*;
 
 public class InjectionLogger {
 
+    /** The path to the methods needed to run */
     private static String PATH = "studio.csuk.javabridge.InjectionLogger.get().";
 
     /** Map of serialName to list of lines executed */
@@ -35,12 +36,20 @@ public class InjectionLogger {
         this.serialVariableMap = new HashMap<>();
     }
 
+    /**
+     * Creates the required data structures for the class specified by the serial name
+     * @param serialName the name of the class file in the working directory
+     */
     public void register(String serialName) {
         lines.put(serialName, new LinkedList<>());
         currentRunTimeMap.put(serialName, 0);
         serialVariableMap.put(serialName, new LinkedList<>());
     }
 
+    /**
+     * Removes all the data of a class file from the program
+     * @param serialName the name of the class file in the working directory
+     */
     public void remove(String serialName){
 
         lines.remove(serialName);
@@ -50,6 +59,11 @@ public class InjectionLogger {
         serialVariableMap.remove(serialName);
     }
 
+    /**
+     * Used to log the current line of a program
+     * @param serialName the name of the program
+     * @param line the line that program is currently on
+     */
     @SuppressWarnings("unused")
     public void onLine(String serialName, int line){
         // add this line to the history of all lines
@@ -58,6 +72,14 @@ public class InjectionLogger {
         currentRunTimeMap.compute(serialName, (s, i) -> i+1);
     }
 
+    /**
+     * Called when a new variable is created.
+     * @param serialName the name of the program
+     * @param variableName the name of the variable within the program
+     * @param scope the scope of the variable
+     * @param value the value it is initialised to
+     */
+    @SuppressWarnings("unused")
     public void onVariableInit(String serialName, String variableName, int scope, Object value){
 
         // create a new variable instance
@@ -69,6 +91,7 @@ public class InjectionLogger {
         assignmentMap.put(variable.getVariableID(), new HashMap<>());
     }
 
+    @SuppressWarnings("unused")
     public void onVariableAssign(String serialName, int variableID, Object value){
 
         // add an entry for the variable at this time with this value
