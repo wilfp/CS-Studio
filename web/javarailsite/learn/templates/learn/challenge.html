@@ -35,8 +35,23 @@ CSUK - {{ challenge.name }}
             </div>
          </div>
       </div>
-            
+      
       <div class="tile is-parent" id="tile-parent-3">
+         <div class="tile is-child is-12" id="tile-code-output">
+            <div id="code-output">
+                <ul>
+                <output-panel
+                v-for="out in outputs"
+                v-bind:key="out.content"
+                v-bind:class="out.className"
+                v-bind:content="out.content"
+                ></output-panel>
+                </ul>
+            </div>
+         </div>
+      </div>
+      
+      <div class="tile is-parent" id="tile-parent-4">
          <div class="tile is-child is-12" id="tile-code-player">
             <div id="code-player">
                <a class="player-button" id="button-play-code"><i class="fas fa-play"></i></a>
