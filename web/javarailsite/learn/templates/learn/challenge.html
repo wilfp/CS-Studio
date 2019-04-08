@@ -7,6 +7,11 @@
 <link rel="stylesheet" href="{% static "javascript/theme/eclipse.css" %}">
 <script src="{% static "javascript/codeoutput.js" %}"></script>
 {% endblock %}
+
+{% block title %}
+CSUK - {{ challenge.name }}
+{% endblock %}
+
 {% block content %}
 <div id="challenge" class="hide">
    <div id="challengeID">{{ challenge.id }}</div>
