@@ -1,5 +1,5 @@
 body {
-    background-color: #F4F4F4;
+    background-color: #1E1E1E;
 }
 
 h1 {
@@ -87,15 +87,15 @@ div.header{
 
 #info-panel{
 	min-height: 400px;
-    background-color: #282828;
+    background-color: #AD4E3D;
     font-size: 12pt; 
     font-family: 'Open Sans'; 
 }
 
 #code-player{
-    background-color: #B72123;
+    background-color: #AD4E3D;
 }
 
 .highlight{
-    background-color: #ccccff;
+    background-color: #1E351E;
 }
