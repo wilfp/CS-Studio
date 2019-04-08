@@ -140,7 +140,7 @@ public class JavaBridge {
 			result.setOutput(runResult.getOutput());
 			result.setState(ProgramResult.State.SUCCESS);
 
-			LinkedList<Integer> lines = InjectionLogger.get().getLines(serialName);
+			var lines = InjectionLogger.get().getLines(serialName);
 			result.setLines(lines);
 
 			// TODO get variable log here

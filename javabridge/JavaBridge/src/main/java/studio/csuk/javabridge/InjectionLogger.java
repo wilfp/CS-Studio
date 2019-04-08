@@ -129,7 +129,7 @@ public class InjectionLogger {
     }
 
     public Map<Integer, Map<Integer,Object>> getAssignments(String serialName){
-        // TODO return assignments of this serial
+        return this.assignmentMap;
     }
 
     private static String format(String text, Object... values){
