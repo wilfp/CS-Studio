@@ -76,13 +76,9 @@ button.is-loading{
 }
 
 div.header{
-    margin-top: 2%;
+    padding-top: 2%;
     margin-bottom: 6%;
     background-color: inherit;
-}
-
-.container{
-    background-color: #1E1E1E!important;
 }
 
 #footer{
