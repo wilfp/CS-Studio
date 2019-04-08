@@ -13,6 +13,9 @@ public class InjectionLogger {
     /** Map of serialName to list of lines executed */
     private Map<String, List<Integer>> lines;
 
+    /** The number of variables created */
+    private int variableCounter = 0;
+
     /**
      * In the implementation of variable watch, a program's execution time is measured
      * in "lines" aka the total number of lines that have been executed so far.
@@ -60,6 +63,14 @@ public class InjectionLogger {
     }
 
     /**
+     * Allocates the next variable id to be used
+     * @return the next variable id
+     */
+    private synchronized int getNextVariableID(){
+        return variableCounter++;
+    }
+
+    /**
      * Used to log the current line of a program
      * @param serialName the name of the program
      * @param line the line that program is currently on
@@ -83,8 +94,8 @@ public class InjectionLogger {
     public void onVariableInit(String serialName, String variableName, int scope, Object value){
 
         // create a new variable instance
-        // TODO allocate variable IDs
-        var variable = Variable.of(0, serialName, variableName, scope);
+        var variableID = getNextVariableID();
+        var variable = Variable.of(variableID, serialName, variableName, scope);
 
         // register the variable with the system
         variableMap.put(variable.getVariableID(), variable);
