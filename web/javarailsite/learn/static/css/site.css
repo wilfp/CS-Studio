@@ -1,9 +1,11 @@
 body {
     background-color: #1E1E1E;
+    font-family: 'Inconsolata';
+    color: white;
 }
 
 h1 {
-	color: #00CC0A;
+    
 }
 
 h2 {
@@ -15,11 +17,11 @@ div.margin{
 }
 
 div.margin-top{
-	margin-top: 20px;
+	margin-top: 6%;
 }
 
 div.margin-bottom{
-	margin-bottom: 20px;
+	margin-bottom: 6%;
 }
 
 div.code-panel{
@@ -27,13 +29,20 @@ div.code-panel{
 }
 
 div.cs-box{
-    color: white;
     background-color: #AD4E3D;
     padding: 2.5%;
 }
 
 .dark-blue{
     background-color: #1E1E35!important;
+}
+
+.black{
+    background-color: #000000!important;
+}
+
+.white{
+    background-color: white;
 }
 
 .center{
@@ -44,10 +53,6 @@ div.cs-box{
 
 .hidden{
     display: none;
-}
-
-.white{
-    color: white;
 }
 
 .padding-v{
@@ -62,7 +67,6 @@ div.cs-box{
 
 a.player-button{
     border-width: 0px;
-    color: white;
     padding: 20px;
     font-size: 15pt;
 }
@@ -97,7 +101,6 @@ div.header{
 #info-panel{
     background-color: inherit;
     font-size: 16pt; 
-    font-family: 'Inconsolata'; 
 }
 
 #code-player{
