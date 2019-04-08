@@ -7,15 +7,24 @@ import java.util.*;
 
 public class InjectionLogger {
 
+    private static String PATH = "studio.csuk.javabridge.InjectionLogger.get().";
+
     /** Map of serialName to list of lines executed */
     private Map<String, List<Integer>> lines;
 
+    /**
+     * In the implementation of variable watch, a program's execution time is measured
+     * in "lines" aka the total number of lines that have been executed so far.
+     */
+
     /** Map of serialName to time */
     private Map<String, Integer> currentRunTimeMap;
+    /** The history of a variable's value */
     /** Map of variableID to line + value */
     private Map<Integer, Map<Integer,Object>> assignmentMap;
     /** Map of variableID to variable */
     private Map<Integer,Variable> variableMap;
+    /** All the variables of a certain program */
     /** Map of serialName to variableIDs */
     private Map<String, List<Integer>> serialVariableMap;
 
@@ -75,21 +84,21 @@ public class InjectionLogger {
 
         if(offset) line -= 1;
 
-        return "studio.csuk.javabridge.InjectionLogger.get().onLine(\"" + serialName + "\", " + line + ");";
+        return format("onLine(\"" + serialName + "\", " + line + ");", null);
     }
 
     public String getVariableInitCode(String serialName, int line, String variableName, int scope, Object value, boolean offset) {
 
         if(offset) line -= 1;
 
-        return String.format("studio.csuk.javabridge.InjectionLogger.get().onVariableInit(%s,%s,%s,%s)", serialName, variableName, scope, value);
+        return format("onVariableInit(%s,%s,%s,%s)", serialName, variableName, scope, value);
     }
 
     public String getVariableAssignCode(String serialName, int line, int variableID, Object value, boolean offset) {
 
         if(offset) line -= 1;
 
-        return String.format("studio.csuk.javabridge.InjectionLogger.get().onVariableAssign(%s,%s,%s)", serialName, variableID, value);
+        return format("onVariableAssign(%s,%s,%s)", serialName, variableID, value);
     }
 
     public List<Integer> getLines(String serialName){
@@ -100,6 +109,9 @@ public class InjectionLogger {
         // TODO return assignments of this serial
     }
 
+    private static String format(String text, Object... values){
+        return String.format(PATH + text, values);
+    }
 
     @Value(staticConstructor="of")
     class Variable{
