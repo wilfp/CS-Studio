@@ -1,4 +1,4 @@
-package com.wilfaskins.javabridge;
+package studio.csuk.javabridge;
 
 import java.util.ArrayList;
 import java.util.HashMap;

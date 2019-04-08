@@ -3,22 +3,14 @@ public class test {
 
     public static void main(String[] args) {
 
-        System.out.println("Hello");
-        System.out.println("This is");
-        System.out.println("A more");
+        int i = 0;
 
-        for(int i = 0; i < 4; i++){
-            System.out.println("complex");
-        }
+        i += 1;
 
-        System.out.println("Test");
-    }
+        int y = 2;
 
-    private static void secondMethodTest(){
+        int z = x + y;
 
-        System.out.println("2nd");
-        System.out.println("method");
-        System.out.println("here");
     }
 
 }
