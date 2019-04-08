@@ -22,10 +22,6 @@ div.margin-bottom{
 	margin-bottom: 20px;
 }
 
-div.hide{
-	display:none;
-}
-
 div.code-panel{
     background-color: #F4F4F4;
 }
@@ -82,8 +78,7 @@ div.header{
 }
 
 #footer{
-    margin-top: 15px;
-    margin-bottom: 10px;
+    margin-top: 6%;
     text-align: center;
 }
 
