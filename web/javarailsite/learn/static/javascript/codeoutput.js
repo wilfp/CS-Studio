@@ -176,10 +176,10 @@ function highlightNextLine(){
 function getStatus(status){
     
     if(status == "SUCCESS"){
-        return "notification is-info";
+        return "cs-box dark-blue";
     }
     
-    return "notification is-danger";
+    return "cs-box";
 }
 
 // The last line marked, used to clear the marked area
