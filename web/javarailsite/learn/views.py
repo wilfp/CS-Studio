@@ -59,18 +59,18 @@ def run_java_code(request):
     mappings_text = mappings_file.read()
     mappings = json.loads(mappings_text)
 
-    context_file = FileUpload.objects.get(name="MainContext.java").file
-    main_context = context_file.read().decode()
+    class_context_file = FileUpload.objects.get(name="ClassContext.java").file
+    class_context = class_context_file.read().decode()
+    
+    method_context_file = FileUpload.objects.get(name="MethodContext.java").file
+    method_context = method_context_file.read().decode()
 
     # pre-process the submitted code
 
-    ready_code = preprocessor.get_code(code_submitted, challenge_obj, mappings, main_context)
-    
-    # get whether challenge level has a main context
-    main_context = mappings["levels"][challenge_obj.level]["main-context"]
-    
+    ready_code = preprocessor.get_code(code_submitted, challenge_obj, mappings, class_context, method_context)
+        
     # run the code with JavaBridge
-    result = cmd.submit(ready_code, main_context)
+    result = cmd.submit(ready_code)
     
     # return the result as a HttpResponse
 

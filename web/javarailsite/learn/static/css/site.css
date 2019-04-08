@@ -1,5 +1,5 @@
 body {
-    background-color: white;
+    background-color: #1E1E1E;
 }
 
 h1 {
@@ -10,8 +10,8 @@ h2 {
 	
 }
 
-div.container{
-	padding: 10px;
+div.margin{
+	margin: 5px;
 }
 
 div.margin-top{
@@ -26,18 +26,82 @@ div.hide{
 	display:none;
 }
 
-#challenge-column{
-	min-height: 485px;
+div.code-panel{
+    background-color: #F4F4F4;
+}
+
+div.cs-box{
+    color: white;
+    background-color: #AD4E3D;
+    padding: 2.5%;
+}
+
+.center{
+    text-align: center;
+    margin: auto;
+    display: table;
+}
+
+.white{
+    color: white;
+}
+
+.padding-v{
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.margin-text{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+a.player-button{
+    border-width: 0px;
+    color: white;
+    padding: 20px;
+    font-size: 15pt;
+}
+
+button.is-loading{
+    color: green;
+}
+
+div.header{
+    margin-top: 10px;
+    margin-bottom: 50px;
+    background-color: white;
+}
+
+#header{
+    /* Nothing */
+}
+
+#footer{
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 #code-column{
-	min-height: 485px;
+	min-height: 600px;
 }
 
-#output-column{
-	min-height: 485px;
+#variables-panel{
+	min-height: 400px;
+}
+
+#info-panel{
+	min-height: 400px;
+    background-color: #AD4E3D;
+    font-size: 12pt; 
+    font-family: 'Open Sans'; 
+}
+
+#code-player{
+    background-color: #AD4E3D;
 }
 
 .highlight{
-    background-color: #ccccff;
+    background-color: #1E351E;
 }

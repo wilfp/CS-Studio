@@ -4,19 +4,33 @@
   "levels": {
     
     "Beginner": {
-      "main-context" : false,
-      "semi-colons" : false,
+      "give-type": "method",
+      "semi-colons": false,
 	  
-	  "direct-replacements" : [ 
+	  "direct-replacements": [ 
 		{ "old": "print(", "new": "System.out.println(" }
 	  ]
     },
     
+    "Intermediate": {
+      "give-type": "class",
+      "semi-colons": false,
+	  
+	  "direct-replacements": []
+    },
+    
     "Pure Java": {
-      "main-context" : true,
-	  "semi-colons" : true,
+      "give-type": "none",
+	  "semi-colons": true,
       
-      "direct-replacements" : []
+      "direct-replacements": []
+    },
+    
+    "Prompt": {
+      "give-type": "infer",
+	  "semi-colons": true,
+      
+      "direct-replacements": []
     }
   }
 }

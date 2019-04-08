@@ -44,7 +44,7 @@ function onLoad(){
     smartIndent: has_indent
   });
   
-  codeMirror.setSize(null, 500);
+  codeMirror.setSize(null, 750);
   
   codeMirror.on("change", function(){ codeChanged = true; });
   
@@ -79,11 +79,6 @@ function runCodeFunction() {
 	codeArea = window.btoa(codeArea);
 	
 	var result = sendPost(codeArea);
-}
-
-// Called when the stop button is clicked
-function stopCodeFunction() {
-    shouldRun = false;
 }
 
 function getChallengeID(){
@@ -183,7 +178,6 @@ function highlightLine(x){
 $(document).ready(function(){
     
     $("#button-play-code").click(runCodeFunction);
-    $("#button-stop-code").click(stopCodeFunction);
     
 	onLoad();
 });
