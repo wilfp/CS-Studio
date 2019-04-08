@@ -132,8 +132,17 @@ function sendPost(code) {
 }
 
 function response(msg, status, jqXHR) {    
-	
-	app.$data.outputs.push( { content: msg["text"], className: getStatus(msg["status"]) } );
+    
+    app.$data.outputs = [];
+        
+    var rawText = msg["text"];
+    var textLines = rawText.split("\n");
+    var statusClass = getStatus(msg["status"]);
+    
+    for(var i = 0; i < textLines.length; i++){
+        var line = textLines[i];
+        app.$data.outputs.push( { content: line, className: statusClass } );
+    }
     
     lines = msg["lines"];
     codeChanged = false;
@@ -176,10 +185,10 @@ function highlightNextLine(){
 function getStatus(status){
     
     if(status == "SUCCESS"){
-        return "notification is-info";
+        return "cs-box dark-blue";
     }
     
-    return "notification is-danger";
+    return "cs-box";
 }
 
 // The last line marked, used to clear the marked area

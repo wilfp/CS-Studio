@@ -1,9 +1,11 @@
 body {
     background-color: #1E1E1E;
+    font-family: 'Inconsolata';
+    color: white;
 }
 
 h1 {
-	color: #00CC0A;
+    
 }
 
 h2 {
@@ -15,15 +17,11 @@ div.margin{
 }
 
 div.margin-top{
-	margin-top: 20px;
+	margin-top: 6%;
 }
 
 div.margin-bottom{
-	margin-bottom: 20px;
-}
-
-div.hide{
-	display:none;
+	margin-bottom: 6%;
 }
 
 div.code-panel{
@@ -31,9 +29,20 @@ div.code-panel{
 }
 
 div.cs-box{
-    color: white;
     background-color: #AD4E3D;
     padding: 2.5%;
+}
+
+.dark-blue{
+    background-color: #1E1E35!important;
+}
+
+.black{
+    background-color: #000000!important;
+}
+
+.white{
+    background-color: white;
 }
 
 .center{
@@ -44,10 +53,6 @@ div.cs-box{
 
 .hidden{
     display: none;
-}
-
-.white{
-    color: white;
 }
 
 .padding-v{
@@ -62,7 +67,6 @@ div.cs-box{
 
 a.player-button{
     border-width: 0px;
-    color: white;
     padding: 20px;
     font-size: 15pt;
 }
@@ -76,18 +80,13 @@ button.is-loading{
 }
 
 div.header{
-    margin-top: 2%;
+    padding-top: 2%;
     margin-bottom: 6%;
     background-color: inherit;
 }
 
-.container{
-    background-color: #1E1E1E!important;
-}
-
 #footer{
-    margin-top: 15px;
-    margin-bottom: 10px;
+    margin-top: 6%;
     text-align: center;
 }
 
@@ -100,10 +99,8 @@ div.header{
 }
 
 #info-panel{
-	min-height: 400px;
     background-color: inherit;
     font-size: 16pt; 
-    font-family: 'Inconsolata'; 
 }
 
 #code-player{
