@@ -42,6 +42,10 @@ div.cs-box{
     display: table;
 }
 
+.hidden{
+    display: none;
+}
+
 .white{
     color: white;
 }
@@ -89,9 +93,9 @@ div.header{
 
 #info-panel{
 	min-height: 400px;
-    background-color: #AD4E3D;
-    font-size: 12pt; 
-    font-family: 'Open Sans'; 
+    background-color: inherit;
+    font-size: 16pt; 
+    font-family: 'Inconsolata'; 
 }
 
 #code-player{

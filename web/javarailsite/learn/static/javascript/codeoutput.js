@@ -32,7 +32,17 @@ $.ajaxSetup({
 var codeMirror;
 var app;
 
+var infoText;
+var infoPanel;
+var textIndex = 0;
+
 function onLoad(){
+    
+    infoPanel = $("#info-desc");
+    infoText = infoPanel.text();
+    infoPanel.text("");
+    infoPanel.removeClass("hidden");
+    displayInfoText();
     
     var has_indent = document.getElementById("has-indent") == "true";
     
@@ -47,7 +57,7 @@ function onLoad(){
   codeMirror.setSize(null, 750);
   
   codeMirror.on("change", function(){ codeChanged = true; });
-  
+    
     Vue.component('output-panel', {
       
       props: [ "className", "content" ],
@@ -55,7 +65,7 @@ function onLoad(){
       template: '<div :class="className"> {{ content }} </div>'
       
     });
-    
+        
    app = new Vue({
 	  delimiters: ['[[', ']]'],
 	  el: '#code-output',
@@ -63,7 +73,17 @@ function onLoad(){
           outputs: []
       }
 	});
+        
+}
+
+function displayInfoText(){
     
+    if(textIndex <= infoText.length){
+        var nextChar = infoText.charAt(textIndex);
+        infoPanel.text(infoText.substring(0, textIndex));
+        textIndex++;
+        setTimeout(displayInfoText, 30);
+    }
 }
 
 // Called when the run button is clicked
