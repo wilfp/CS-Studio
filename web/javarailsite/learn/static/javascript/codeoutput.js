@@ -45,6 +45,7 @@ var app = new Vue({
         methods: {
     onTextAppear: function (el, done) {
         alert("hello");
+        Console.log("test 1234");
         el.innerHTML = "hello there";
         done();
     }
@@ -54,18 +55,8 @@ var app = new Vue({
 
 var codeMirror;
 
-var infoText;
-var infoPanel;
-var textIndex = 0;
-
 function onLoad(){
-    
-    infoPanel = $("#info-desc");
-    infoText = infoPanel.text();
-    infoPanel.text("");
-    infoPanel.removeClass("hidden");
-    displayInfoText();
-    
+        
     var has_indent = document.getElementById("has-indent") == "true";
     
     codeMirror = CodeMirror.fromTextArea(document.getElementById("code-area"), {
@@ -79,16 +70,6 @@ function onLoad(){
   codeMirror.setSize(null, 500);
   
   codeMirror.on("change", function(){ codeChanged = true; });        
-}
-
-function displayInfoText(){
-    
-    if(textIndex <= infoText.length){
-        var nextChar = infoText.charAt(textIndex);
-        infoPanel.text(infoText.substring(0, textIndex));
-        textIndex++;
-        setTimeout(displayInfoText, 30);
-    }
 }
 
 // Called when the run button is clicked
