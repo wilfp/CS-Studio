@@ -1,0 +1,37 @@
+{
+  "name": "Java Test Mappings",
+  
+  "levels": {
+    
+    "Beginner": {
+      "give-type": "method",
+      "semi-colons": false,
+	  
+	  "direct-replacements": [ 
+		{ "old": "print(", "new": "System.out.println(" }
+	  ]
+    },
+    
+    "Intermediate": {
+      "give-type": "class",
+      "semi-colons": false,
+	  
+	  "direct-replacements": []
+    },
+    
+    "Pure Java": {
+      "give-type": "none",
+	  "semi-colons": true,
+      
+      "direct-replacements": []
+    },
+    
+    "Prompt": {
+      "give-type": "infer",
+	  "semi-colons": true,
+      
+      "direct-replacements": []
+    }
+  }
+}
+

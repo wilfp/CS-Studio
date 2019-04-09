@@ -34,8 +34,16 @@ def profile(request):
 def challenge(request, challenge_id):
 
     challenge_obj = Challenge.objects.get(id=challenge_id)
+    starting_code = ""
+    
+    # If there is any code to start with
+    if challenge_obj.starting_code_file != "":
+    
+        # Load that code into memory
+        starting_code_file_obj = FileUpload.objects.get(name=challenge_obj.starting_code_file).file
+        starting_code = starting_code_file_obj.read().decode()
 
-    context = {"challenge": challenge_obj}
+    context = {"challenge": challenge_obj, "starting_code": starting_code}
     template = loader.get_template("learn/challenge.html")
 
     return HttpResponse(template.render(context, request))

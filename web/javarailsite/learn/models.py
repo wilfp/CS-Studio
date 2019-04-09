@@ -17,7 +17,7 @@ class Challenge(models.Model):
     has_output = models.BooleanField()
     validate_text = models.BooleanField()
     validation_format = models.CharField(max_length=200)
-
+    starting_code_file = models.CharField(max_length=200)
 
 class FileUpload(models.Model):
     name = models.CharField(max_length=200)
