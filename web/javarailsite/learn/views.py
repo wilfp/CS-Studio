@@ -30,6 +30,12 @@ def profile(request):
 
     return HttpResponse(template.render(context, request))
 
+def progress(request):
+
+    template = loader.get_template("learn/progress.html")
+
+    return HttpResponse(template.render(None, request))
+
 
 def challenge(request, challenge_id):
 
