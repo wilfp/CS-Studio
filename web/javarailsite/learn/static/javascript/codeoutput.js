@@ -38,17 +38,21 @@ $.ajaxSetup({
     });
             
 var app = new Vue({
+      el: '#app',
 	  delimiters: ['[[', ']]'],
       data:{
           outputs: []
       },
-        methods: {
-    onTextAppear: function (el, done) {
-        alert("hello");
-        Console.log("test 1234");
-        el.innerHTML = "hello there";
-        done();
-    }
+      methods: {
+          
+          onBeforeTextAppear: function (el) {
+              el.innerHTML = "<div></div>";
+          },
+          
+          onTextAppear: function (el, done) {
+              el.innerHTML = "<div>WORKING</div>";
+              done();
+          }
 
         }
 	});
