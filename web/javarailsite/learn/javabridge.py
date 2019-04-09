@@ -46,7 +46,7 @@ class CommandExecution:
 
         # call process
         
-        p = subprocess.Popen(["java", "-jar", "JavaBridge_2cY5cFo.jar", self.temp_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        p = subprocess.Popen(["java", "-jar", "JavaBridge.jar", self.temp_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
         
         p.stdin.write(code_id.encode())
         p.stdin.close()

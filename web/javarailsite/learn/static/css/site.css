@@ -66,9 +66,14 @@ div.cs-box{
 }
 
 a.player-button{
+    color: white;
     border-width: 0px;
     padding: 20px;
     font-size: 15pt;
+}
+
+a.player-button:hover{
+    color: grey!important;
 }
 
 a.light{
