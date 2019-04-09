@@ -58,13 +58,13 @@ Vue.component('text-transition', {
     methods: {
 
         onBeforeTextAppear: function(el) {
-            displayText = el.innerHTML;
-            displayTextIndex = 0;
+            this.displayText = el.innerHTML;
+            this.displayTextIndex = 0;
             el.innerHTML = "";
         },
 
         onTextAppear: function(el, done) {
-            displayTextStep(el);
+            displayTextStep(el, this.displayText, this.displayTextIndex);
             done();
         }
 
@@ -72,15 +72,15 @@ Vue.component('text-transition', {
 
 });
 
-function displayTextStep(el) {
+function displayTextStep(el, displayText, displayTextIndex) {
 
     if (displayTextIndex <= displayText.length) {
         var nextChar = displayText.charAt(displayTextIndex);
         el.innerHTML += nextChar;
         displayTextIndex++;
         setTimeout(function() {
-            displayTextStep(el)
-        }, 30);
+            displayTextStep(el, displayText, displayTextIndex)
+        }, 25);
     }
 }
 

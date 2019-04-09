@@ -98,6 +98,11 @@ div.header{
 	min-height: 400px;
 }
 
+div.text-box{
+    background-color: inherit;
+    font-size: 16pt; 
+}
+
 #info-panel{
     background-color: inherit;
     font-size: 16pt; 
