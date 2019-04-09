@@ -29,8 +29,30 @@ $.ajaxSetup({
     }
 });
 
+    Vue.component('output-panel', {
+      
+      props: [ "className", "content" ],
+      
+      template: '<div :class="className"> {{ content }} </div>'
+      
+    });
+            
+var app = new Vue({
+	  delimiters: ['[[', ']]'],
+      data:{
+          outputs: []
+      },
+        methods: {
+    onTextAppear: function (el, done) {
+        alert("hello");
+        el.innerHTML = "hello there";
+        done();
+    }
+
+        }
+	});
+
 var codeMirror;
-var app;
 
 var infoText;
 var infoPanel;
@@ -56,24 +78,7 @@ function onLoad(){
   
   codeMirror.setSize(null, 500);
   
-  codeMirror.on("change", function(){ codeChanged = true; });
-    
-    Vue.component('output-panel', {
-      
-      props: [ "className", "content" ],
-      
-      template: '<div :class="className"> {{ content }} </div>'
-      
-    });
-        
-   app = new Vue({
-	  delimiters: ['[[', ']]'],
-	  el: '#code-output',
-      data:{
-          outputs: []
-      }
-	});
-        
+  codeMirror.on("change", function(){ codeChanged = true; });        
 }
 
 function displayInfoText(){

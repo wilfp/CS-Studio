@@ -31,7 +31,18 @@ CSUK - {{ challenge.name }}
          <div class="tile is-child is-12" id="tile-output">
             <div id="info-panel">
                <div class="center padding-v"><h1>{{ challenge.name }}</h1></div>
-               <div class="center padding-v margin-text hidden" id="info-desc">{{ challenge.desc }}</div>
+                              
+               <div class="center padding-v margin-text" id="info-desc">
+<transition
+  appear
+  v-on:appear="onTextAppear"
+  v-bind:css="false"
+>
+               {{ challenge.desc }}
+               
+               </transition>
+               
+               </div>
             </div>
          </div>
       </div>
@@ -47,6 +58,7 @@ CSUK - {{ challenge.name }}
                 v-bind:content="out.content"
                 ></output-panel>
                 </ul>
+                
             </div>
          </div>
       </div>
