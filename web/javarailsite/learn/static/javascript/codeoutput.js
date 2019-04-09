@@ -97,16 +97,25 @@ var codeMirror;
 function onLoad() {
 
     var has_indent = document.getElementById("has-indent") == "true";
-
-    codeMirror = CodeMirror.fromTextArea(document.getElementById("code-area"), {
-        lineNumbers: true,
-        matchBrackets: true,
-        mode: "text/x-java",
-        theme: "eclipse",
-        smartIndent: has_indent
-    });
-
-    codeMirror.setSize(null, 500);
+    var target_area = document.getElementById("code-area");
+    
+    codeMirror = CodeMirror(function(elt) {
+        
+        target_area.parentNode.replaceChild(elt, target_area);
+        },
+        {
+            value: target_area.innerHTML,
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "text/x-java",
+            theme: "eclipse",
+            smartIndent: has_indent
+        }
+    );
+    
+    codeMirror.setValue(codeMirror.getValue().trim());
+    
+    codeMirror.setSize(null, 450);
 
     codeMirror.on("change", function() {
         codeChanged = true;
