@@ -32,16 +32,12 @@ CSUK - {{ challenge.name }}
                <div class="center padding-v"><h1>{{ challenge.name }}</h1></div>
                               
                <div class="center padding-v margin-text" id="info-desc">
-<transition
-  appear
-  mode="out-in"
-  v-on:appear="onTextAppear"
-  v-on:before-appear="onBeforeTextAppear"
-  v-bind:css="false"
->
+               
+               <text-transition>
+               
                <div>{{ challenge.desc }}</div>
                
-               </transition>
+               </text-transition>
                
                </div>
             </div>

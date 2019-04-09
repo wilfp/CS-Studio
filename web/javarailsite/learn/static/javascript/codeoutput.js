@@ -36,25 +36,59 @@ $.ajaxSetup({
       template: '<div :class="className"> {{ content }} </div>'
       
     });
-            
+    
+    Vue.component('text-transition', {
+        
+      data: function () {
+          return {
+              displayTextIndex: 0,
+              displayText: null
+          }
+      },
+      template: `
+      <transition
+      appear
+      mode="out-in"
+      v-on:appear="onTextAppear"
+      v-on:before-appear="onBeforeTextAppear"
+      v-bind:css="false"
+      >
+      <slot></slot>
+      </transition>
+      `,
+      methods: {
+                    
+          onBeforeTextAppear: function (el) {
+              displayText = el.innerHTML;
+              displayTextIndex = 0;
+              el.innerHTML = "";
+          },
+          
+          onTextAppear: function (el, done) {
+              displayTextStep(el);
+              done();
+          }
+          
+        }
+
+    });
+    
+function displayTextStep(el){
+              
+          if(displayTextIndex <= displayText.length){
+              var nextChar = displayText.charAt(displayTextIndex);
+              el.innerHTML += nextChar;
+              displayTextIndex++;
+              setTimeout(function(){ displayTextStep(el) }, 30);
+          }
+      }
+
 var app = new Vue({
       el: '#app',
 	  delimiters: ['[[', ']]'],
       data:{
           outputs: []
-      },
-      methods: {
-          
-          onBeforeTextAppear: function (el) {
-              el.innerHTML = "<div></div>";
-          },
-          
-          onTextAppear: function (el, done) {
-              el.innerHTML = "<div>WORKING</div>";
-              done();
-          }
-
-        }
+      }
 	});
 
 var codeMirror;
