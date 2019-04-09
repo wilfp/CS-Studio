@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="badge.svg">
+   sodipodi:docname="badge-beginner.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="155.87709"
+     inkscape:cx="-8.2726995"
      inkscape:cy="163.66405"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -59,5 +59,34 @@
        id="path3731"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="28.298338"
+       y="276.15302"
+       id="text4540"><tspan
+         sodipodi:role="line"
+         id="tspan4538"
+         x="28.298338"
+         y="285.8085"
+         style="font-size:10.58333302px;fill:#ffffff;fill-opacity:1;stroke-width:0.26458332" /></text>
+    <path
+       sodipodi:type="star"
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:2.66503485;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
+       id="path4542"
+       sodipodi:sides="5"
+       sodipodi:cx="37.685001"
+       sodipodi:cy="229.11356"
+       sodipodi:r1="12.027128"
+       sodipodi:r2="6.0135641"
+       sodipodi:arg1="0.92729522"
+       sodipodi:arg2="1.5556137"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 44.901278,238.73526 -7.124978,-3.60883 -7.012129,3.82348 1.230463,-7.89145 -5.803218,-5.4874 7.885447,-1.26836 3.425543,-7.21489 3.64301,7.10757 7.920321,1.02836 -5.633943,5.66107 z"
+       inkscape:transform-center-x="0.044299135"
+       inkscape:transform-center-y="-0.85919421"
+       transform="matrix(0.78508907,0,0,0.78487165,20.51179,62.090574)" />
   </g>
 </svg>
