@@ -34,6 +34,11 @@ div.cs-box{
     padding: 2.5%;
 }
 
+i.large-icon{
+    font-size: 45pt;
+    text-align: center;
+}
+
 .v-center{
     margin: auto;
 }
