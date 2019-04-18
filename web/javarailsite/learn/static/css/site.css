@@ -1,5 +1,5 @@
 body {
-    background-color: #1E1E1E;
+    background-color: #0B0E09;
     font-family: 'Inconsolata';
     color: white;
 }
@@ -29,7 +29,7 @@ div.code-panel{
 }
 
 div.cs-box{
-    background-color: #AD4E3D;
+    background-color: inherit;
     padding: 2.5%;
 }
 
@@ -37,8 +37,12 @@ div.cs-container{
     padding: 3% 3% 5% 5%;
 }
 
+.red{
+    background-color: #AD4E3D!important;
+}
+
 .dark-blue{
-    background-color: #1F2A44!important;
+    background-color: #323292!important;
 }
 
 .black{

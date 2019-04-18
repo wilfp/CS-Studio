@@ -28,11 +28,11 @@
 .cm-s-eclipse span.cm-attribute { color: white; }
 .cm-s-eclipse span.cm-link { color: #219; }
 .cm-s-eclipse span.cm-error { color: #f00; }
-.cm-s-eclipse.CodeMirror{ background:#1E1E1E; font-size: 16pt; font-family: 'Inconsolata', monospace; }
+.cm-s-eclipse.CodeMirror{ background:#0B0E09; font-size: 16pt; font-family: 'Inconsolata', monospace; }
 .cm-s-eclipse.CodeMirror pre { padding: 0px 20px; }
 .cm-s-eclipse .CodeMirror-lines { padding: 10px 0px; }
 
-.cm-s-eclipse .CodeMirror-gutters { background-color: #1E1E1E; }
+.cm-s-eclipse .CodeMirror-gutters { background-color: #0B0E09; }
 
 .cm-s-eclipse .CodeMirror-activeline-background { background: #e8f2ff; }
 .cm-s-eclipse .CodeMirror-matchingbracket { outline:1px solid grey; color:black !important; }
