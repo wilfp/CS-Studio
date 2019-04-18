@@ -1,7 +1,7 @@
 body {
     background-color: #0B0E09;
     font-family: 'Inconsolata';
-    font-size: 16pt;
+    font-size: 18pt;
     color: white;
 }
 
@@ -32,6 +32,10 @@ div.code-panel{
 div.cs-box{
     background-color: inherit;
     padding: 2.5%;
+}
+
+.v-center{
+    margin: auto;
 }
 
 .red{
@@ -91,7 +95,7 @@ button.is-loading{
 }
 
 div.header{
-    padding: 3% 3% 5% 5%;
+    padding: 5% 5% 8% 8%;
 }
 
 #footer{
@@ -99,7 +103,7 @@ div.header{
 }
 
 #code-column{
-	min-height: 600px;
+	min-height: 700px;
 }
 
 #variables-panel{
