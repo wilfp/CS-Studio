@@ -17,10 +17,15 @@ CSUK - {{ challenge.name }}
    <div id="has-indent">{{ challenge.has_indent }}</div>
 </div>
 
+<div class="cs-container black">
+
 <text-transition>
-<div class="text-box center margin-bottom">Hello and welcome to CSUK STUDIO Beta!</div>
+<div class="text-box center">Hello and welcome to CSUK STUDIO Beta!</div>
 </text-transition>
 
+</div>
+
+<div class="cs-container" id="code-panel">
 <div class="tile is-ancestor" id="tile-root">
 
    <div class="tile is-parent is-8" id="tile-code-panel">
@@ -74,6 +79,26 @@ CSUK - {{ challenge.name }}
       
    </div>
 </div>
+</div>
+
+<div class="cs-box black">
+
+<div class="cs-container">
+<div class="columns">
+  <div class="column">
+    Content 1
+  </div>
+  <div class="column">
+    Content 2
+  </div>
+  <div class="column">
+    Content 3
+  </div>
+</div>
+</div>
+
+</div>
+
 {% endblock %}
 
 {% block tail %}
