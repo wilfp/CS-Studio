@@ -115,7 +115,7 @@ function onLoad() {
     
     codeMirror.setValue(codeMirror.getValue().trim());
     
-    codeMirror.setSize(null, 450);
+    codeMirror.setSize(null, 500);
 
     codeMirror.on("change", function() {
         codeChanged = true;

@@ -1,6 +1,7 @@
 body {
-    background-color: #1E1E1E;
+    background-color: #0B0E09;
     font-family: 'Inconsolata';
+    font-size: 18pt;
     color: white;
 }
 
@@ -29,16 +30,20 @@ div.code-panel{
 }
 
 div.cs-box{
-    background-color: #AD4E3D;
+    background-color: inherit;
     padding: 2.5%;
 }
 
-div.cs-container{
-    padding: 3% 3% 5% 5%;
+.v-center{
+    margin: auto;
+}
+
+.red{
+    background-color: #AD4E3D!important;
 }
 
 .dark-blue{
-    background-color: #2E2E45!important;
+    background-color: #323292!important;
 }
 
 .black{
@@ -81,7 +86,7 @@ a.player-button:hover{
     color: grey!important;
 }
 
-a.light{
+a{
     color: #CFCFFF;
 }
 
@@ -90,7 +95,7 @@ button.is-loading{
 }
 
 div.header{
-    background-color: inherit;
+    padding: 5% 5% 8% 8%;
 }
 
 #footer{
@@ -98,7 +103,7 @@ div.header{
 }
 
 #code-column{
-	min-height: 600px;
+	min-height: 700px;
 }
 
 #variables-panel{
@@ -107,12 +112,10 @@ div.header{
 
 div.text-box{
     background-color: inherit;
-    font-size: 16pt; 
 }
 
 #info-panel{
     background-color: inherit;
-    font-size: 16pt; 
 }
 
 #code-player{

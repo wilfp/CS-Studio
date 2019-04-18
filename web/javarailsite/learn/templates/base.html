@@ -1,48 +1,40 @@
 {% load static %}
-
 <!DOCTYPE html>
-
 <html>
-<head>
-
-    <meta charset="UTF-8">
-
-	<link rel="stylesheet" type="text/css" href="{% static "css/bulma.css" %}">
-	<link rel="stylesheet" type="text/css" href="{% static "css/site.css" %}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	
-    <script src="{% static "javascript/base.js" %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
-	
-	{% block head %}
-	{% endblock %}
-	
-</head>
-<body>
-        
-    <div id="app">
-    
-    <div class="cs-container dark-blue">
-    <div class="header center">
-    <img src="{% static "images/site_logo.png" %}" alt="Logo" width="400px" height="150px">
-    </div>
-    </div>
-    
-	{% block content %}{% endblock %}
-    </div>
-    
-    <div class="cs-box dark-blue" id="footer">
-    <p><a class="light" href="https://github.com/wilfp/CS-Studio">GitHub</a> | <a class="light" href="https://www.linkedin.com/company/csukltd">Company</a> | <a class="light" href="https://www.linkedin.com/in/wilf/">Creator</a></p>
-	<p>© 2019 CSUK LIMITED</p>
-	</div>
-        
-    </body>
-    
-    {% block tail %}
-	{% endblock %}
-
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="{% static "css/bulma.css" %}">
+      <link rel="stylesheet" type="text/css" href="{% static "css/site.css" %}">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+      <script src="{% static "javascript/base.js" %}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <title>{% block title %}{% endblock %}</title>
+      <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
+      {% block head %}
+      {% endblock %}
+   </head>
+   <body>
+      <div id="app">
+         <div class="header dark-blue">
+            <div class="columns center">
+               <div class="column">
+                  <img src="{% static "images/site_logo.png" %}" alt="CSUK STUDIO Logo" width="400px" height="150px">
+               </div>
+               <div class="column v-center">
+                  <a href="">Home</a> | <a href="">Start</a> | <a href="">Login</a> | <a href="">Share</a> | <a href="">Blog</a>
+               </div>
+            </div>
+            {% block header %}
+            {% endblock %}
+         </div>
+         {% block content %}{% endblock %}
+      </div>
+      <div class="cs-box dark-blue" id="footer">
+         <p><a href="https://github.com/wilfp/CS-Studio">GitHub</a> | <a href="https://www.linkedin.com/company/csukltd">About</a> | <a href="https://www.linkedin.com/in/wilf/">Creator</a></p>
+         <p>© 2019 CSUK LIMITED</p>
+      </div>
+   </body>
+   {% block tail %}
+   {% endblock %}
 </html>
