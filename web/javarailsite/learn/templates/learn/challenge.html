@@ -6,152 +6,113 @@
 <script src="{% static "javascript/mode/clike/clike.js" %}"></script>
 <link rel="stylesheet" href="{% static "javascript/theme/eclipse.css" %}">
 {% endblock %}
-
 {% block title %}
 CSUK - {{ challenge.name }}
 {% endblock %}
-
 {% block header %}
-
 <text-transition>
-<div class="text-box center">Hello and welcome to The CSUK STUDIO Showcase!</div>
+   <div class="text-box center">Hello and welcome to The CSUK STUDIO Showcase!</div>
 </text-transition>
-
 {% endblock %}
-
 {% block content %}
 <div id="challenge" class="hidden">
    <div id="challengeID">{{ challenge.id }}</div>
    <div id="has-indent">{{ challenge.has_indent }}</div>
 </div>
-
 <div class="cs-box" id="code-panel">
-<div class="tile is-ancestor" id="tile-root">
-
-   <div class="tile is-parent is-8" id="tile-code-panel">
-      <div id="code-area" class="hidden">
-      {{ starting_code }}
+   <div class="tile is-ancestor" id="tile-root">
+      <div class="tile is-parent is-8" id="tile-code-panel">
+         <div id="code-area" class="hidden">
+            {{ starting_code }}
+         </div>
       </div>
-   </div>
-   
-   <div class="tile is-parent is-vertical is-4" id="tile-parent-1">
-   
-      <div class="tile is-parent" id="tile-parent-2">
-         <div class="tile is-child is-12" id="tile-output">
-            <div class="text-box" id="info-panel">
-               <div class="center padding-v"><h1>{{ challenge.name }}</h1></div>
-                              
-               <text-transition>
-               <div class="center padding-v margin-text" id="info-desc">
-                              
-               {{ challenge.desc }}
-                              
+      <div class="tile is-parent is-vertical is-4" id="tile-parent-1">
+         <div class="tile is-parent" id="tile-parent-2">
+            <div class="tile is-child is-12" id="tile-output">
+               <div class="text-box" id="info-panel">
+                  <div class="center padding-v">
+                     <h1>{{ challenge.name }}</h1>
+                  </div>
+                  <text-transition>
+                     <div class="center padding-v margin-text" id="info-desc">
+                        {{ challenge.desc }}
+                     </div>
+                  </text-transition>
                </div>
-               </text-transition>
-               
+            </div>
+         </div>
+         <div class="tile is-parent" id="tile-parent-3">
+            <div class="tile is-child is-12" id="tile-code-output">
+               <div id="code-output">
+                  <ul>
+                     <output-panel
+                        v-for="out in outputs"
+                        v-bind:key="out.content"
+                        v-bind:class="out.className"
+                        v-bind:content="out.content"
+                        ></output-panel>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="tile is-parent" id="tile-parent-4">
+            <div class="tile is-child is-12" id="tile-code-player">
+               <div id="code-player">
+                  <a class="player-button" id="button-play-code"><i class="fas fa-play"></i></a>
+               </div>
             </div>
          </div>
       </div>
-      
-      <div class="tile is-parent" id="tile-parent-3">
-         <div class="tile is-child is-12" id="tile-code-output">
-            <div id="code-output">
-                <ul>
-                <output-panel
-                v-for="out in outputs"
-                v-bind:key="out.content"
-                v-bind:class="out.className"
-                v-bind:content="out.content"
-                ></output-panel>
-                </ul>
-                
-            </div>
-         </div>
-      </div>
-      
-      <div class="tile is-parent" id="tile-parent-4">
-         <div class="tile is-child is-12" id="tile-code-player">
-            <div id="code-player">
-               <a class="player-button" id="button-play-code"><i class="fas fa-play"></i></a>
-            </div>
-         </div>
-      </div>
-      
    </div>
 </div>
-</div>
-
 <div class="cs-box white">
-
-<div class="cs-container">
-<div class="columns">
-  <div class="column">
-    Free forever
-    
-    <div class="text-box">Image here.</div>
-    <div class="text-box">Description here.</div>
-    <div class="text-box">Link here.</div>
-    
-  </div>
-  <div class="column">
-    Open Source
-    
-    <div class="text-box">Image here.</div>
-    <div class="text-box">Description here.</div>
-    <div class="text-box">Link here.</div>
-    
-  </div>
-  <div class="column">
-    Certification
-    
-    <div class="text-box">Image here.</div>
-    <div class="text-box">Description here.</div>
-    <div class="text-box">Link here.</div>
-
-  </div>
+   <div class="cs-container">
+      <div class="columns">
+         <div class="column">
+            Free forever
+            <div class="text-box">Image here.</div>
+            <div class="text-box">Description here.</div>
+            <div class="text-box">Link here.</div>
+         </div>
+         <div class="column">
+            Open Source
+            <div class="text-box">Image here.</div>
+            <div class="text-box">Description here.</div>
+            <div class="text-box">Link here.</div>
+         </div>
+         <div class="column">
+            Certification
+            <div class="text-box">Image here.</div>
+            <div class="text-box">Description here.</div>
+            <div class="text-box">Link here.</div>
+         </div>
+      </div>
+   </div>
 </div>
-
-</div>
-
-</div>
-
 <div class="cs-box black">
-
-<div class="cs-box center">Perfect for...</div>
-
-<div class="cs-container">
-<div class="columns">
-  <div class="column">
-    Beginners
-    
-    <div class="text-box">Description here.</div>
-    
-  </div>
-  <div class="column">
-    Students
-    
-    <div class="text-box">Description here.</div>
-    
-  </div>
-  <div class="column">
-    Teachers
-    
-    <div class="text-box">Description here.</div>
-    
-  </div>
-  <div class="column">
-    Experts
-    
-    <div class="text-box">Description here.</div>
-    
-  </div>
+   <div class="cs-box center">Perfect for...</div>
+   <div class="cs-container">
+      <div class="columns">
+         <div class="column">
+            Beginners
+            <div class="text-box">Description here.</div>
+         </div>
+         <div class="column">
+            Students
+            <div class="text-box">Description here.</div>
+         </div>
+         <div class="column">
+            Teachers
+            <div class="text-box">Description here.</div>
+         </div>
+         <div class="column">
+            Experts
+            <div class="text-box">Description here.</div>
+         </div>
+      </div>
+   </div>
 </div>
-</div>
-
-</div>
-
 {% endblock %}
-
 {% block tail %}
 <script src="{% static "javascript/codeoutput.js" %}"></script>
 {% endblock %}
