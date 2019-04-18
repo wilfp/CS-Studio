@@ -42,7 +42,8 @@ div.cs-box{
 }
 
 .white{
-    background-color: white;
+    background-color: white!important;
+    color: black!important;
 }
 
 .center{
