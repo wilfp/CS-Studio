@@ -18,11 +18,11 @@
       <div id="app">
          <div class="header dark-blue">
             <div class="columns center">
-               <div class="column">
+               <div class="column v-center">
                   <img src="{% static "images/site_logo.png" %}" alt="CSUK STUDIO Logo" width="400px" height="150px">
                </div>
                <div class="column v-center">
-                  <a href="">Home</a> | <a href="">Start</a> | <a href="">Login</a> | <a href="">Share</a> | <a href="">Blog</a>
+                  <a href="/learn/">Home</a> | <a href="">Start</a> | <a href="/learn/login">Login</a> | <a href="">Share</a> | <a href="/learn/blog">Blog</a>
                </div>
             </div>
             {% block header %}
@@ -31,7 +31,7 @@
          {% block content %}{% endblock %}
       </div>
       <div class="cs-box dark-blue" id="footer">
-         <p><a href="https://github.com/wilfp/CS-Studio">GitHub</a> | <a href="https://www.linkedin.com/company/csukltd">About</a> | <a href="https://www.linkedin.com/in/wilf/">Creator</a></p>
+         <p><a href="https://github.com/wilfp/CS-Studio">GitHub</a> | <a href="https://www.linkedin.com/company/csukltd">Company</a> | <a href="https://www.linkedin.com/in/wilf/">Creator</a></p>
          <p>© 2019 CSUK LIMITED</p>
       </div>
    </body>

@@ -31,7 +31,12 @@ div.code-panel{
 
 div.cs-box{
     background-color: inherit;
-    padding: 2.5%;
+    padding: 5.5% 2.5% 5.5% 2.5%;
+}
+
+i.large-icon{
+    font-size: 45pt;
+    text-align: center;
 }
 
 .v-center{
@@ -53,6 +58,16 @@ div.cs-box{
 .white{
     background-color: white!important;
     color: black!important;
+}
+
+.red a, .dark-blue a, .black a{
+    color: #CFCFFF;
+    font-weight: bold;
+}
+
+.white a{
+    color: #000090;
+    font-weight: bold;
 }
 
 .center{
@@ -86,16 +101,12 @@ a.player-button:hover{
     color: grey!important;
 }
 
-a{
-    color: #CFCFFF;
-}
-
 button.is-loading{
     color: green;
 }
 
 div.header{
-    padding: 5% 5% 8% 8%;
+    padding: 1% 1% 6% 6%;
 }
 
 #footer{
@@ -112,6 +123,8 @@ div.header{
 
 div.text-box{
     background-color: inherit;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 #info-panel{

@@ -15,11 +15,24 @@ cmd = javabridge.CommandExecution(java_bridge_jar, tempfile.gettempdir())
 
 def index(request):
 
-    template = loader.get_template("learn/index.html")
+    # template = loader.get_template("learn/login.html")
+
+    # return HttpResponse(template.render(None, request))
+    
+    return challenge(request, 0) # return starter challenge page
+
+def blog(request):
+
+    template = loader.get_template("learn/blog.html")
 
     return HttpResponse(template.render(None, request))
 
+def login(request):
 
+    template = loader.get_template("learn/login.html")
+
+    return HttpResponse(template.render(None, request))
+    
 def profile(request):
 
     context = {
