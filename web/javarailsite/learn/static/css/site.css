@@ -1,6 +1,7 @@
 body {
     background-color: #0B0E09;
     font-family: 'Inconsolata';
+    font-size: 16pt;
     color: white;
 }
 
@@ -31,10 +32,6 @@ div.code-panel{
 div.cs-box{
     background-color: inherit;
     padding: 2.5%;
-}
-
-div.cs-container{
-    padding: 3% 3% 5% 5%;
 }
 
 .red{
@@ -94,7 +91,7 @@ button.is-loading{
 }
 
 div.header{
-    background-color: inherit;
+    padding: 3% 3% 5% 5%;
 }
 
 #footer{
@@ -111,7 +108,7 @@ div.header{
 
 div.text-box{
     background-color: inherit;
-    font-size: 16pt; 
+    font-size: 16pt;
 }
 
 #info-panel{
