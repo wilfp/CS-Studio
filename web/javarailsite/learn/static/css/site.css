@@ -33,6 +33,10 @@ div.cs-box{
     padding: 2.5%;
 }
 
+div.cs-container{
+    padding: 5%;
+}
+
 .dark-blue{
     background-color: #1E1E35!important;
 }
