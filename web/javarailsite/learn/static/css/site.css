@@ -60,6 +60,16 @@ i.large-icon{
     color: black!important;
 }
 
+.red a, .dark-blue a, .black a{
+    color: #CFCFFF;
+    font-weight: bold;
+}
+
+.white a{
+    color: #000090;
+    font-weight: bold;
+}
+
 .center{
     text-align: center;
     margin: auto;
@@ -89,10 +99,6 @@ a.player-button{
 
 a.player-button:hover{
     color: grey!important;
-}
-
-a{
-    color: #CFCFFF;
 }
 
 button.is-loading{
