@@ -30,6 +30,10 @@
     <div class="header center">
     <img src="{% static "images/site_logo.png" %}" alt="Logo" width="400px" height="150px">
     </div>
+    
+	{% block header %}
+	{% endblock %}
+    
     </div>
     
 	{% block content %}{% endblock %}
