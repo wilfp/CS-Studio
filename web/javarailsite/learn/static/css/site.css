@@ -34,11 +34,11 @@ div.cs-box{
 }
 
 div.cs-container{
-    padding: 3.5%;
+    padding: 3.5% 3.5% 5% 5%;
 }
 
 .dark-blue{
-    background-color: #1E1E35!important;
+    background-color: #2E2E45!important;
 }
 
 .black{
