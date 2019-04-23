@@ -4,6 +4,7 @@ from learn.models import Challenge
 from learn.models import FileUpload
 from learn import preprocessor
 from learn import javabridge
+import urllib.parse
 import base64
 import json
 import tempfile
@@ -62,7 +63,7 @@ def challenge(request, challenge_id):
         starting_code_file_obj = FileUpload.objects.get(name=challenge_obj.starting_code_file).file
         starting_code = starting_code_file_obj.read().decode()
 
-    context = {"challenge": challenge_obj, "starting_code": starting_code}
+    context = {"challenge": challenge_obj, "starting_code": urllib.parse.quote(starting_code)}
     template = loader.get_template("learn/challenge.html")
 
     return HttpResponse(template.render(context, request))
