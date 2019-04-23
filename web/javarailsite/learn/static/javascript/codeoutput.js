@@ -104,7 +104,7 @@ function onLoad() {
         target_area.parentNode.replaceChild(elt, target_area);
         },
         {
-            value: target_area.innerHTML,
+            value: decodeURIComponent(target_area.innerHTML),
             lineNumbers: true,
             matchBrackets: true,
             mode: "text/x-java",
